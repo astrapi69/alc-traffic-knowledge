@@ -1,0 +1,30 @@
+# Root manifest — lists the sets your repository offers.
+#
+# This template ships ONE example set (sets/en/es-a1). Replace it
+# with your own:
+#   - point `path` at your set directory (convention: sets/<source-lang>/<set-id>)
+#   - keep `lesson_count` honest (it must match the lessons you ship)
+#   - a set needs at least: id, title, target_language, level, version, lesson_count
+#
+# `schema_version` is optional and not strict.
+# Validate everything with:  python3 scripts/validate_content.py
+schema_version: '1.5'
+name: My Adaptive Learner content
+description: >-
+  A content repository created from adaptive-learner-content-template.
+  Replace this example set with your own lessons.
+sets:
+  - id: example-set
+    title: Spanish A1 (example)
+    title_native: Español A1 (ejemplo)
+    target_language: es
+    source_language: en
+    domain: language
+    level: A1
+    path: sets/en/es-a1
+    version: '1.0.0'
+    lesson_count: 1
+    tags:
+      - example
+      - spanish
+      - a1

@@ -1,0 +1,93 @@
+{
+  "id": "01-example",
+  "title": "Example lesson — greetings in Spanish",
+  "description": "A minimal, valid template lesson. Replace it with your own content, keeping the shape the validator enforces.",
+  "target_language": "es",
+  "source_language": "en",
+  "domain": "language",
+  "estimated_minutes": 8,
+  "cards": [
+    { "id": "hola", "front": "hola", "back": "hello", "tags": ["greeting"] },
+    { "id": "gracias", "front": "gracias", "back": "thank you", "tags": ["greeting"] },
+    { "id": "por-favor", "front": "por favor", "back": "please", "tags": ["greeting"] },
+    { "id": "adios", "front": "adiós", "back": "goodbye", "tags": ["greeting"] }
+  ],
+  "steps": [
+    {
+      "id": "intro",
+      "type": "theory",
+      "title": "Saying hello",
+      "body": "# Greetings\n\n- **hola** = hello\n- **gracias** = thank you\n- **por favor** = please\n- **adiós** = goodbye\n\nThis is the one example lesson shipped with the template. Replace it with your own — the validator enforces the shape, so if it passes, the app will load it."
+    },
+    {
+      "id": "ex-select",
+      "type": "exercise",
+      "title": "Choose the word (single multiple-choice)",
+      "exercise": {
+        "id": "ex-select",
+        "type": "cloze",
+        "cloze_mode": "select",
+        "prompt": "Choose the correct greeting.",
+        "sentence": "When you meet someone you say \"___\".",
+        "blanks": [{ "accept": ["hola"] }],
+        "distractors": ["gracias", "adiós"],
+        "card_ids": ["hola"]
+      }
+    },
+    {
+      "id": "ex-type",
+      "type": "exercise",
+      "title": "Type the word",
+      "exercise": {
+        "id": "ex-type",
+        "type": "cloze",
+        "cloze_mode": "type",
+        "prompt": "Fill in the blank.",
+        "sentence": "To ask for something politely you add \"___\".",
+        "blanks": [{ "accept": ["por favor"] }],
+        "card_ids": ["por-favor"]
+      }
+    },
+    {
+      "id": "ex-free",
+      "type": "exercise",
+      "title": "Free text",
+      "exercise": {
+        "id": "ex-free",
+        "type": "free_text",
+        "prompt": "How do you say \"thank you\" in Spanish?",
+        "accept": ["gracias", "Gracias"],
+        "distractors": ["hola"],
+        "card_ids": ["gracias"]
+      }
+    },
+    {
+      "id": "ex-match",
+      "type": "exercise",
+      "title": "Matching",
+      "exercise": {
+        "id": "ex-match",
+        "type": "matching",
+        "prompt": "Match each Spanish word to its English meaning.",
+        "pairs": [
+          { "left": "hola", "right": "hello" },
+          { "left": "gracias", "right": "thank you" },
+          { "left": "adiós", "right": "goodbye" }
+        ],
+        "card_ids": ["hola", "gracias", "adios"]
+      }
+    },
+    {
+      "id": "ex-tiles",
+      "type": "exercise",
+      "title": "Word order",
+      "exercise": {
+        "id": "ex-tiles",
+        "type": "word_tiles",
+        "prompt": "Arrange the tiles to say \"thank you very much\".",
+        "tiles": ["muchas", "gracias"],
+        "accept_orderings": [[0, 1]]
+      }
+    }
+  ]
+}
