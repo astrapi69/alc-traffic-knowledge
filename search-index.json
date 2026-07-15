@@ -1,6 +1,6 @@
 {
-  "repo": "git@github.com:astrapi69/alc-traffic-knowledge",
-  "generated": "2026-07-15T13:38:24Z",
+  "repo": "astrapi69/alc-traffic-knowledge",
+  "generated": "2026-07-15T13:39:55Z",
   "schema_version": "1.0",
   "sets": [
     {
@@ -22,7 +22,7 @@
       "ai_validated": false,
       "trust_level": 1,
       "book": null,
-      "updated_at": "2026-07-15T15:38:24+02:00"
+      "updated_at": "2026-07-15T15:39:42+02:00"
     }
   ],
   "total_lessons": 5,
