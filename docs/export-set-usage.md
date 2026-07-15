@@ -25,7 +25,7 @@ python3 scripts/export_set.py <set-slug> [--lang <lang>] [--format yaml|json] [-
 
 | Argument | Meaning | Default |
 | --- | --- | --- |
-| `<set-slug>` | Set id from the root `manifest.yaml` (e.g. `example-set`) or the folder name of the set path (e.g. `es-a1` for `sets/en/es-a1`) | required |
+| `<set-slug>` | Set id from the root `manifest.yaml` (e.g. `fuehrerschein-uebung-from-de`) or the folder name of the set path (e.g. `fuehrerschein-uebung` for `sets/de/fuehrerschein-uebung`) | required |
 | `--lang` | Source-language directory (`sets/<lang>/`) that disambiguates a folder-name slug existing under several source languages | `de` |
 | `--format` | Output format: `yaml` or `json` | `yaml` |
 | `--out` | Output file path | `exports/<set-slug>-<lang>-<timestamp>.<format>` |
@@ -33,12 +33,12 @@ python3 scripts/export_set.py <set-slug> [--lang <lang>] [--format yaml|json] [-
 Examples:
 
 ```bash
-# Standard case: YAML export into exports/ (the example set lives under sets/en/)
-python3 scripts/export_set.py es-a1 --lang en
-# -> exports/es-a1-en-<timestamp>.yaml
+# Standard case: YAML export into exports/ (the set lives under sets/de/)
+python3 scripts/export_set.py fuehrerschein-uebung
+# -> exports/fuehrerschein-uebung-de-<timestamp>.yaml
 
 # Special case: JSON to a custom path (only when a tool explicitly needs JSON)
-python3 scripts/export_set.py es-a1 --lang en --format json --out /tmp/review.json
+python3 scripts/export_set.py fuehrerschein-uebung --format json --out /tmp/review.json
 ```
 
 Without `--out`, the file is written to `exports/` following the
@@ -55,7 +55,7 @@ UTF-8.
 1. **Create the export:**
 
    ```bash
-   python3 scripts/export_set.py es-a1 --lang en
+   python3 scripts/export_set.py fuehrerschein-uebung
    ```
 
 2. **Open the export file** and find the section "Quellkapitel"

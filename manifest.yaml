@@ -1,30 +1,47 @@
-# Root manifest — lists the sets your repository offers.
+# Wurzel-Manifest von alc-traffic-knowledge — Verkehrskunde.
 #
-# This template ships ONE example set (sets/en/es-a1). Replace it
-# with your own:
-#   - point `path` at your set directory (convention: sets/<source-lang>/<set-id>)
-#   - keep `lesson_count` honest (it must match the lessons you ship)
-#   - a set needs at least: id, title, target_language, level, version, lesson_count
+# Adaptive-Learner-Content-Repo für Verkehrskunde. Ein deutschsprachiges
+# Set (domain: knowledge, domain_label: Verkehrskunde):
 #
-# `schema_version` is optional and not strict.
-# Validate everything with:  python3 scripts/validate_content.py
+#   fuehrerschein-uebung  Führerscheinprüfung (Übungsfragen)  (A2, 5 Lektionen)
+#
+# Vormals in astrapi69/adaptive-learner-content-test; in dieses
+# eigenständige Content-Repo ausgelagert (siehe
+# adaptive-learner-content#144). Validieren mit:
+#
+#     python3 scripts/validate_content.py
+#     node scripts/validate_with_engine.mjs .
+#
+# Anleitung: docs/GETTING-STARTED.md
 schema_version: '1.5'
-name: My Adaptive Learner content
+name: Adaptive Learner — Verkehrskunde
 description: >-
-  A content repository created from adaptive-learner-content-template.
-  Replace this example set with your own lessons.
+  Verkehrskunde-Inhalte für Adaptive Learner: frei formulierte
+  Übungsfragen im Stil einer Führerscheinprüfung (Beispiel
+  Deutschland), auf Deutsch erklärt.
 sets:
-  - id: example-set
-    title: Spanish A1 (example)
-    title_native: Español A1 (ejemplo)
-    target_language: es
-    source_language: en
-    domain: language
-    level: A1
-    path: sets/en/es-a1
+  - id: fuehrerschein-uebung-from-de
+    title: Führerscheinprüfung (Übungsfragen)
+    title_native: Führerscheinprüfung (Übungsfragen)
+    target_language: de
+    source_language: de
+    domain: knowledge
+    level: A2
+    path: sets/de/fuehrerschein-uebung
     version: '1.0.0'
-    lesson_count: 1
+    lesson_count: 5
+    domain_label: Verkehrskunde
+    description: >-
+      Ausschließlich Multiple-Choice: eigene, frei formulierte Übungsfragen
+      im Stil einer Führerscheinprüfung (Beispiel Deutschland) über freie
+      Fakten der deutschen StVO — Vorfahrt, Geschwindigkeit/Abstand,
+      Alkohol/Fahrtüchtigkeit, Parken/Halten sowie Rettungsgasse und
+      Einsatzfahrzeuge. Keine amtlichen Fragen oder Bilder, kein Anspruch
+      auf Prüfungsechtheit. Test-Set zum Festnageln der MC-Mechanik (MC im
+      Schema als cloze select-mode und als nativer multiple_choice-Typ,
+      Schema v1.6).
     tags:
-      - example
-      - spanish
-      - a1
+      - knowledge
+      - verkehr
+      - multiple-choice
+      - test

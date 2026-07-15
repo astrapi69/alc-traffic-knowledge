@@ -25,7 +25,7 @@ python3 scripts/export_set.py <set-slug> [--lang <lang>] [--format yaml|json] [-
 
 | Argument | Bedeutung | Default |
 | --- | --- | --- |
-| `<set-slug>` | Set-Id aus dem Wurzel-`manifest.yaml` (z. B. `example-set`) oder der Ordnername des Set-Pfads (z. B. `es-a1` für `sets/en/es-a1`) | Pflicht |
+| `<set-slug>` | Set-Id aus dem Wurzel-`manifest.yaml` (z. B. `fuehrerschein-uebung-from-de`) oder der Ordnername des Set-Pfads (z. B. `fuehrerschein-uebung` für `sets/de/fuehrerschein-uebung`) | Pflicht |
 | `--lang` | Quellsprachen-Verzeichnis (`sets/<lang>/`), das einen Ordnernamen-Slug eindeutig macht, der unter mehreren Quellsprachen existiert | `de` |
 | `--format` | Ausgabeformat: `yaml` oder `json` | `yaml` |
 | `--out` | Pfad der Ausgabedatei | `exports/<set-slug>-<lang>-<timestamp>.<format>` |
@@ -33,12 +33,12 @@ python3 scripts/export_set.py <set-slug> [--lang <lang>] [--format yaml|json] [-
 Beispiele:
 
 ```bash
-# Standardfall: YAML-Export nach exports/ (das Beispiel-Set liegt unter sets/en/)
-python3 scripts/export_set.py es-a1 --lang en
-# -> exports/es-a1-en-<timestamp>.yaml
+# Standardfall: YAML-Export nach exports/ (das Set liegt unter sets/de/)
+python3 scripts/export_set.py fuehrerschein-uebung
+# -> exports/fuehrerschein-uebung-de-<timestamp>.yaml
 
 # Sonderfall: JSON an einen eigenen Pfad (nur wenn ein Tooling explizit JSON braucht)
-python3 scripts/export_set.py es-a1 --lang en --format json --out /tmp/review.json
+python3 scripts/export_set.py fuehrerschein-uebung --format json --out /tmp/review.json
 ```
 
 Ohne `--out` landet die Datei in `exports/` nach dem Muster
@@ -55,7 +55,7 @@ Nicht-ASCII-Zeichen bleiben echtes UTF-8.
 1. **Export erzeugen:**
 
    ```bash
-   python3 scripts/export_set.py es-a1 --lang en
+   python3 scripts/export_set.py fuehrerschein-uebung
    ```
 
 2. **Exportdatei öffnen** und im `review_instructions`-Block am Anfang
