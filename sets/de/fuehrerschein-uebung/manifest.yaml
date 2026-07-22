@@ -16,7 +16,7 @@
 # "Übungsfragen im Stil einer Führerscheinprüfung, Beispiel Deutschland" —
 # KEIN Anspruch auf Prüfungsechtheit.
 #
-# Sachthema-Set (domain: knowledge): Material und Erklärung sind beide auf
+# Sachthema-Set (domain: traffic-knowledge): Material und Erklärung sind beide auf
 # Deutsch (source_language == target_language); der Set-Ordner trägt einen
 # Themennamen. Der Content-Loader liest metadata.lessons für die Dateiliste.
 schema_version: '1.3'
@@ -34,12 +34,11 @@ sets:
     title_native: Führerscheinprüfung (Übungsfragen)
     target_language: de
     source_language: de
-    domain: knowledge
+    domain: traffic-knowledge
     level: A2
     path: sets/de/fuehrerschein-uebung
     version: '1.0.0'
     lesson_count: 5
-    domain_label: Verkehrskunde
     description: >-
       Fünf Lektionen mit ausschließlich Multiple-Choice-Übungen (im Schema
       als cloze select-mode und als nativer multiple_choice-Typ) rund um

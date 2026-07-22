@@ -8,9 +8,9 @@ content repository for **Verkehrskunde** (traffic knowledge): a Git
 repository of plain lesson files that the app loads directly and no
 vendor can lock away.
 
-It ships one German-language knowledge set (domain `knowledge`,
-`domain_label` Verkehrskunde): free-form practice questions in the style
-of the German driving-licence exam. This repository was created from
+It ships one German-language knowledge set (domain `traffic-knowledge`):
+free-form practice questions in the style of the German driving-licence
+exam. This repository was created from
 [adaptive-learner-content-template](https://github.com/astrapi69/adaptive-learner-content-template),
 which provides the schema mirror, validator, CI and authoring tooling
 described below.
