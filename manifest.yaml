@@ -1,7 +1,7 @@
 # Wurzel-Manifest von alc-traffic-knowledge — Verkehrskunde.
 #
 # Adaptive-Learner-Content-Repo für Verkehrskunde. Ein deutschsprachiges
-# Set (domain: knowledge, domain_label: Verkehrskunde):
+# Set (domain: traffic-knowledge):
 #
 #   fuehrerschein-uebung  Führerscheinprüfung (Übungsfragen)  (A2, 5 Lektionen)
 #
@@ -25,12 +25,11 @@ sets:
     title_native: Führerscheinprüfung (Übungsfragen)
     target_language: de
     source_language: de
-    domain: knowledge
+    domain: traffic-knowledge
     level: A2
     path: sets/de/fuehrerschein-uebung
     version: '1.0.0'
     lesson_count: 5
-    domain_label: Verkehrskunde
     description: >-
       Ausschließlich Multiple-Choice: eigene, frei formulierte Übungsfragen
       im Stil einer Führerscheinprüfung (Beispiel Deutschland) über freie

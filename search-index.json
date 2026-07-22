@@ -1,6 +1,6 @@
 {
   "repo": "astrapi69/alc-traffic-knowledge",
-  "generated": "2026-07-15T13:39:55Z",
+  "generated": "2026-07-22T13:05:59Z",
   "schema_version": "1.0",
   "sets": [
     {
@@ -10,7 +10,7 @@
       "source_language": "de",
       "target_language": "de",
       "level": "a2",
-      "domain": "knowledge",
+      "domain": "traffic-knowledge",
       "lesson_count": 5,
       "card_count": 36,
       "tags": [
@@ -22,7 +22,7 @@
       "ai_validated": false,
       "trust_level": 1,
       "book": null,
-      "updated_at": "2026-07-15T15:39:42+02:00"
+      "updated_at": "2026-07-22T15:05:59+02:00"
     }
   ],
   "total_lessons": 5,
