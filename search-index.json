@@ -1,6 +1,6 @@
 {
   "repo": "astrapi69/alc-traffic-knowledge",
-  "generated": "2026-07-22T13:10:35Z",
+  "generated": "2026-07-23T16:13:24Z",
   "schema_version": "1.0",
   "sets": [
     {
@@ -19,6 +19,7 @@
         "multiple-choice",
         "test"
       ],
+      "visibility": "visible",
       "ai_validated": false,
       "trust_level": 1,
       "book": null,
