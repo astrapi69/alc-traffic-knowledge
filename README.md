@@ -131,7 +131,7 @@ Full usage guide and best practices (incl. the source-chapter workflow):
 ## Export a graded quiz to PDF (school tests)
 
 `scripts/export_quiz_pdf.py` turns a lesson that carries a graded-quiz
-exercise (an `ext:*-graded-quiz`: a scored question set - points per
+exercise (an `ext:*-graded-quiz`: a scored question set, points per
 question, optional partial credit on multi-select, an optional
 percentage pass threshold) into two print-ready PDFs:
 
