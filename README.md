@@ -21,7 +21,7 @@ described below.
 > `adaptive-learner-content#144`).
 >
 > **Hinweis:** Eigene, frei formulierte Übungsfragen über freie Fakten
-> der deutschen StVO — keine amtlichen Prüfungsfragen oder Bilder, kein
+> der deutschen StVO: keine amtlichen Prüfungsfragen oder Bilder, kein
 > Anspruch auf Prüfungsechtheit.
 
 ## Das Set
@@ -41,18 +41,18 @@ nativer `multiple_choice`-Typ):
 
 ## What's inside
 
-- `manifest.yaml` — the root manifest listing the set.
-- `sets/de/fuehrerschein-uebung/` — the lesson set.
-- `schema/` — the pinned [`learn-content-engine`](https://github.com/astrapi69/learn-content-engine)
+- `manifest.yaml`: the root manifest listing the set.
+- `sets/de/fuehrerschein-uebung/`: the lesson set.
+- `schema/`: the pinned [`learn-content-engine`](https://github.com/astrapi69/learn-content-engine)
   schema mirror; [`engine-version.txt`](schema/engine-version.txt) holds the
   pinned engine version and is the source of truth. This is what the content
-  is validated against — independent of the app.
-- `templates/` — starting-point lessons per domain (language / programming / knowledge).
-- `scripts/validate_content.py` — the local validator.
-- `scripts/generate_exercises.py` — an optional BYOK AI exercise generator.
-- `generated/` — staging area for AI drafts (never shipped directly).
-- `.github/workflows/` — CI that validates every push/PR against the pinned engine.
-- `docs/` — [GETTING-STARTED.md](docs/GETTING-STARTED.md) and a local
+  is validated against, independent of the app.
+- `templates/`: starting-point lessons per domain (language / programming / knowledge).
+- `scripts/validate_content.py`: the local validator.
+- `scripts/generate_exercises.py`: an optional BYOK AI exercise generator.
+- `generated/`: staging area for AI drafts (never shipped directly).
+- `.github/workflows/`: CI that validates every push/PR against the pinned engine.
+- `docs/`: [GETTING-STARTED.md](docs/GETTING-STARTED.md) and a local
   [LESSON-FORMAT.md](docs/LESSON-FORMAT.md). The **canonical, test-validated**
   format reference is the engine's
   [`docs/lesson-format.md`](https://github.com/astrapi69/learn-content-engine/blob/main/docs/lesson-format.md).
@@ -78,7 +78,7 @@ and npm) and checks every lesson and manifest with the engine's rule ids
 (`E-CARD-REF` & co.). `make lint-warnings` additionally prints the engine gate's warnings (`W-*`).
 
 No `make` (e.g. Windows without WSL)? Two options: run the validator in a
-virtualenv yourself —
+virtualenv yourself:
 
 ```bash
 python3 -m venv .venv && . .venv/bin/activate     # Windows: .venv\Scripts\activate
@@ -86,7 +86,7 @@ pip install -r requirements.txt
 python3 scripts/validate_content.py
 ```
 
-— or just commit and let the GitHub Actions CI validate (it runs the same
+Or just commit and let the GitHub Actions CI validate (it runs the same
 checks). Installing the deps globally with a bare `pip install` fails on
 modern Debian/Ubuntu/macOS (PEP 668, "externally-managed-environment");
 the virtualenv above is why.
