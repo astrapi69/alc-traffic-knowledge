@@ -85,3 +85,27 @@ def test_every_index_entry_carries_visibility() -> None:
     assert index["sets"], "index carries no sets"
     for entry in index["sets"]:
         assert entry["visibility"] in ("visible", "hidden")
+
+
+def test_absent_review_status_defaults_to_authored() -> None:
+    assert gsi.normalize_review_status(None) == "authored"
+
+
+def test_review_status_states_pass_through() -> None:
+    for state in ("authored", "generated", "reviewed"):
+        assert gsi.normalize_review_status(state) == state
+
+
+def test_out_of_enum_review_status_normalizes_to_authored() -> None:
+    assert gsi.normalize_review_status("verified") == "authored"
+
+
+def test_every_index_entry_carries_review_status() -> None:
+    """The field has to reach the INDEX, not just the manifest: the index is
+    what consumers read, so a badge counting advertisable sets would
+    otherwise count every set (engine#94)."""
+    index, build_errors = gsi.build_index()
+    assert not build_errors
+    assert index["sets"], "index carries no sets"
+    for entry in index["sets"]:
+        assert entry["review_status"] in ("authored", "generated", "reviewed")
