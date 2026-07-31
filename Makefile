@@ -91,3 +91,8 @@ audit: $(VENV)/.ready
 
 clean:
 	rm -rf $(VENV)
+
+stable-ids: $(ENGINE_STAMP) ## Stabilitaets-Gate (mitgeliefert) + Abdeckungs-Ratchet (repo-lokal)
+	npx --no-install learn-content-engine check-stable-ids --base origin/main
+	python3 scripts/check_stable_id_coverage.py --self-test
+	python3 scripts/check_stable_id_coverage.py

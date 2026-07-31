@@ -9,6 +9,7 @@
   "cards": [
     {
       "id": "grenze-05",
+      "stable_id": "card-ms9411db011z7",
       "front": "0,5-Promille-Grenze",
       "back": "Ab 0,5 ‰ handelt man in der Regel ordnungswidrig — mit Bußgeld, Punkten und Fahrverbot.",
       "notes": "Die allgemein bekannte Grenze für erfahrene Fahrer.",
@@ -20,6 +21,7 @@
     },
     {
       "id": "grenze-11",
+      "stable_id": "card-ms9411db012i3",
       "front": "1,1 Promille",
       "back": "Ab 1,1 ‰ gilt absolute Fahruntüchtigkeit — das ist eine Straftat.",
       "notes": "Unabhängig davon, ob man Ausfallerscheinungen zeigt.",
@@ -31,6 +33,7 @@
     },
     {
       "id": "grenze-03",
+      "stable_id": "card-ms9411db013ts",
       "front": "0,3 Promille",
       "back": "Schon ab 0,3 ‰ kann man sich strafbar machen, wenn Ausfallerscheinungen oder ein Unfall hinzukommen.",
       "notes": "Das nennt man relative Fahruntüchtigkeit.",
@@ -42,6 +45,7 @@
     },
     {
       "id": "null-promille",
+      "stable_id": "card-ms9411db0143i",
       "front": "0,0 für Fahranfänger",
       "back": "In der Probezeit und für Fahrer unter 21 Jahren gilt ein absolutes Alkoholverbot: 0,0 ‰.",
       "notes": "Schon geringe Mengen sind hier verboten.",
@@ -53,6 +57,7 @@
     },
     {
       "id": "probezeit",
+      "stable_id": "card-ms9411db015id",
       "front": "Probezeit",
       "back": "Die Probezeit für Fahranfänger dauert zwei Jahre.",
       "notes": "In dieser Zeit werden Verstöße strenger geahndet.",
@@ -64,6 +69,7 @@
     },
     {
       "id": "drogen",
+      "stable_id": "card-ms9411db016r6",
       "front": "Drogen am Steuer",
       "back": "Für illegale Drogen gilt am Steuer grundsätzlich null Toleranz.",
       "notes": "Auch ohne erkennbare Ausfallerscheinungen ist Fahren verboten.",
@@ -75,6 +81,7 @@
     },
     {
       "id": "muedigkeit",
+      "stable_id": "card-ms9411db017og",
       "front": "Müdigkeit",
       "back": "Müdigkeit mindert die Fahrtüchtigkeit ähnlich wie Alkohol — besser eine Pause machen.",
       "notes": "Sekundenschlaf ist eine häufige Unfallursache.",
@@ -86,6 +93,7 @@
     },
     {
       "id": "verstoss-probezeit",
+      "stable_id": "card-ms9411db018n7",
       "front": "Verstoß in der Probezeit",
       "back": "Ein schwerer Verstoß in der Probezeit führt meist zu einer Verlängerung der Probezeit und einem Aufbauseminar.",
       "notes": "Die Probezeit wird dann um zwei Jahre verlängert.",
@@ -116,6 +124,7 @@
       "title": "Die bekannte Grenze",
       "exercise": {
         "id": "ex-mc-05",
+        "stable_id": "ex-ms9411db0194n",
         "type": "cloze",
         "prompt": "Ab welchem Promillewert handelt ein erfahrener Fahrer in der Regel ordnungswidrig?",
         "card_ids": [
@@ -145,6 +154,7 @@
       "title": "Absolute Fahruntüchtigkeit",
       "exercise": {
         "id": "ex-mc-11",
+        "stable_id": "ex-ms9411db01anw",
         "type": "cloze",
         "prompt": "Ab welchem Wert spricht man von absoluter Fahruntüchtigkeit (Straftat)?",
         "card_ids": [
@@ -174,6 +184,7 @@
       "title": "Fahranfänger und Alkohol",
       "exercise": {
         "id": "ex-mc-null",
+        "stable_id": "ex-ms9411db01bn3",
         "type": "cloze",
         "prompt": "Welche Promillegrenze gilt in der Probezeit und für Fahrer unter 21?",
         "card_ids": [
@@ -203,6 +214,7 @@
       "title": "Dauer der Probezeit",
       "exercise": {
         "id": "ex-mc-probe",
+        "stable_id": "ex-ms9411db01ck7",
         "type": "cloze",
         "prompt": "Wie lange dauert die Probezeit für Fahranfänger?",
         "card_ids": [
@@ -232,6 +244,7 @@
       "title": "Illegale Drogen",
       "exercise": {
         "id": "ex-mc-drogen",
+        "stable_id": "ex-ms9411db01drp",
         "type": "cloze",
         "prompt": "Was gilt für illegale Drogen am Steuer?",
         "card_ids": [
@@ -261,6 +274,7 @@
       "title": "Schon ab 0,3 Promille",
       "exercise": {
         "id": "ex-mc-03",
+        "stable_id": "ex-ms9411db01evs",
         "type": "cloze",
         "prompt": "Wann kann man sich bereits ab 0,3 ‰ strafbar machen?",
         "card_ids": [
@@ -290,6 +304,7 @@
       "title": "Müdigkeit am Steuer",
       "exercise": {
         "id": "ex-mc-muede",
+        "stable_id": "ex-ms9411db01fie",
         "type": "cloze",
         "prompt": "Wie wirkt sich starke Müdigkeit auf das Fahren aus?",
         "card_ids": [
@@ -319,6 +334,7 @@
       "title": "Schwerer Verstoß in der Probezeit",
       "exercise": {
         "id": "ex-mc-verstoss",
+        "stable_id": "ex-ms9411db01gzh",
         "type": "cloze",
         "prompt": "Welche Folge hat ein schwerer Verstoß in der Probezeit meist?",
         "card_ids": [
@@ -348,6 +364,7 @@
       "title": "Wirkung von Alkohol",
       "exercise": {
         "id": "ex-ms-wirkung",
+        "stable_id": "ex-ms9411db01hyd",
         "type": "cloze",
         "cloze_mode": "multiselect",
         "prompt": "Alkohol dämpft",
@@ -376,6 +393,7 @@
       "title": "Fahrtüchtigkeit und Mythen",
       "exercise": {
         "id": "ex-ms-mythen",
+        "stable_id": "ex-ms9411db01iso",
         "type": "cloze",
         "cloze_mode": "multiselect",
         "prompt": "Was die Fahrtüchtigkeit mindert",

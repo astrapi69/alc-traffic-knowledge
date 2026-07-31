@@ -9,6 +9,7 @@
   "cards": [
     {
       "id": "innerorts",
+      "stable_id": "card-ms9411da00jxg",
       "front": "Tempo innerorts",
       "back": "Innerhalb geschlossener Ortschaften gilt für PKW in der Regel 50 km/h.",
       "notes": "Sofern kein anderes Zeichen etwas anderes vorgibt.",
@@ -20,6 +21,7 @@
     },
     {
       "id": "ausserorts",
+      "stable_id": "card-ms9411da00kj2",
       "front": "Tempo außerorts",
       "back": "Auf Landstraßen gilt für PKW in der Regel 100 km/h.",
       "notes": "LKW und Gespanne haben niedrigere Grenzen.",
@@ -31,6 +33,7 @@
     },
     {
       "id": "autobahn",
+      "stable_id": "card-ms9411da00ljj",
       "front": "Tempo Autobahn",
       "back": "Auf Autobahnen gibt es keine generelle Tempogrenze, aber eine Richtgeschwindigkeit von 130 km/h.",
       "notes": "Streckenweise gelten aber Tempolimits per Schild.",
@@ -42,6 +45,7 @@
     },
     {
       "id": "verkehrsberuhigt",
+      "stable_id": "card-ms9411da00mob",
       "front": "Verkehrsberuhigter Bereich",
       "back": "Im Zeichen „Spielstraße\" fährt man nur mit Schrittgeschwindigkeit.",
       "notes": "Fußgänger und spielende Kinder haben Vorrang.",
@@ -53,6 +57,7 @@
     },
     {
       "id": "halber-tacho",
+      "stable_id": "card-ms9411da00not",
       "front": "Halber-Tacho-Regel",
       "back": "Außerorts als Faustregel: Abstand in Metern etwa halber Tachowert; bei 100 km/h also rund 50 m.",
       "notes": "Ein einfacher Anhaltspunkt für den Sicherheitsabstand.",
@@ -64,6 +69,7 @@
     },
     {
       "id": "anhalteweg",
+      "stable_id": "card-ms9411da00ozd",
       "front": "Anhalteweg",
       "back": "Der Anhalteweg ist Reaktionsweg plus Bremsweg.",
       "notes": "Der Reaktionsweg ist die Strecke, bevor die Bremse überhaupt wirkt.",
@@ -75,6 +81,7 @@
     },
     {
       "id": "bremsweg-quadrat",
+      "stable_id": "card-ms9411da00ps2",
       "front": "Bremsweg und Tempo",
       "back": "Verdoppelt sich die Geschwindigkeit, wird der Bremsweg etwa viermal so lang.",
       "notes": "Der Bremsweg wächst mit dem Quadrat der Geschwindigkeit.",
@@ -86,6 +93,7 @@
     },
     {
       "id": "naesse",
+      "stable_id": "card-ms9411da00qe6",
       "front": "Fahren bei Nässe",
       "back": "Bei Nässe und schlechter Sicht langsamer fahren und den Abstand vergrößern.",
       "notes": "Der Bremsweg wird länger, die Sicht kürzer.",
@@ -116,6 +124,7 @@
       "title": "Tempo in der Stadt",
       "exercise": {
         "id": "ex-mc-innerorts",
+        "stable_id": "ex-ms9411da00ra5",
         "type": "cloze",
         "prompt": "Welches Tempo gilt für PKW innerorts, wenn kein Zeichen etwas anderes vorgibt?",
         "card_ids": [
@@ -145,6 +154,7 @@
       "title": "Tempo auf der Landstraße",
       "exercise": {
         "id": "ex-mc-ausserorts",
+        "stable_id": "ex-ms9411da00sk1",
         "type": "cloze",
         "prompt": "Welches Tempo gilt für PKW außerorts auf Landstraßen in der Regel?",
         "card_ids": [
@@ -174,6 +184,7 @@
       "title": "Autobahn",
       "exercise": {
         "id": "ex-mc-autobahn",
+        "stable_id": "ex-ms9411da00tq3",
         "type": "cloze",
         "prompt": "Was gilt allgemein auf deutschen Autobahnen?",
         "card_ids": [
@@ -203,6 +214,7 @@
       "title": "Halber Tacho",
       "exercise": {
         "id": "ex-mc-tacho",
+        "stable_id": "ex-ms9411da00uh4",
         "type": "cloze",
         "prompt": "Wie groß ist nach der Halber-Tacho-Regel der Abstand außerorts bei 100 km/h?",
         "card_ids": [
@@ -232,6 +244,7 @@
       "title": "Woraus besteht der Anhalteweg?",
       "exercise": {
         "id": "ex-mc-anhalteweg",
+        "stable_id": "ex-ms9411da00voj",
         "type": "cloze",
         "prompt": "Wie setzt sich der Anhalteweg zusammen?",
         "card_ids": [
@@ -261,6 +274,7 @@
       "title": "Spielstraße",
       "exercise": {
         "id": "ex-mc-verkehrsberuhigt",
+        "stable_id": "ex-ms9411da00wlp",
         "type": "cloze",
         "prompt": "Wie schnell darf man im verkehrsberuhigten Bereich („Spielstraße\") fahren?",
         "card_ids": [
@@ -290,6 +304,7 @@
       "title": "Doppeltes Tempo",
       "exercise": {
         "id": "ex-mc-quadrat",
+        "stable_id": "ex-ms9411da00x90",
         "type": "cloze",
         "prompt": "Wie verändert sich der Bremsweg, wenn sich die Geschwindigkeit verdoppelt?",
         "card_ids": [
@@ -319,6 +334,7 @@
       "title": "Bei Regen",
       "exercise": {
         "id": "ex-mc-naesse",
+        "stable_id": "ex-ms9411da00ys3",
         "type": "cloze",
         "prompt": "Wie fährt man bei Nässe und schlechter Sicht am sichersten?",
         "card_ids": [
@@ -348,6 +364,7 @@
       "title": "Faktoren des Anhaltewegs",
       "exercise": {
         "id": "ex-ms-anhalteweg",
+        "stable_id": "ex-ms9411da00zie",
         "type": "cloze",
         "cloze_mode": "multiselect",
         "prompt": "Anhalteweg = Reaktionsweg + Bremsweg",
@@ -377,6 +394,7 @@
       "title": "Sicherheitsabstand",
       "exercise": {
         "id": "ex-ms-abstand",
+        "stable_id": "ex-ms9411da0109p",
         "type": "cloze",
         "cloze_mode": "multiselect",
         "prompt": "Abstand halten",
