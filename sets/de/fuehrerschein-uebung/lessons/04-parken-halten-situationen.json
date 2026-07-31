@@ -9,6 +9,7 @@
   "cards": [
     {
       "id": "halten-parken",
+      "stable_id": "card-ms9411dc01jgn",
       "front": "Halten und Parken",
       "back": "Halten ist ein kurzes Anhalten; Parken ist längeres Abstellen oder das Verlassen des Fahrzeugs.",
       "notes": "Faustregel: Wer aussteigt oder länger als drei Minuten steht, parkt.",
@@ -20,6 +21,7 @@
     },
     {
       "id": "eingeschr-halteverbot",
+      "stable_id": "card-ms9411dc01kj9",
       "front": "Eingeschränktes Halteverbot",
       "back": "Hier darf man kurz halten (z. B. zum Ein- und Aussteigen), aber nicht parken.",
       "notes": "Das Zeichen zeigt einen einzelnen schrägen Strich.",
@@ -31,6 +33,7 @@
     },
     {
       "id": "rettungsgasse",
+      "stable_id": "card-ms9411dc01l8f",
       "front": "Rettungsgasse",
       "back": "Bei stockendem Verkehr bildet man die Rettungsgasse zwischen dem linken und den übrigen Fahrstreifen.",
       "notes": "Sie wird sofort gebildet, nicht erst wenn Einsatzfahrzeuge kommen.",
@@ -42,6 +45,7 @@
     },
     {
       "id": "zebrastreifen",
+      "stable_id": "card-ms9411dc01m4o",
       "front": "Fußgängerüberweg",
       "back": "Am Zebrastreifen haben Fußgänger, die queren wollen, Vorrang.",
       "notes": "Fahrzeuge müssen sie sicher überqueren lassen.",
@@ -53,6 +57,7 @@
     },
     {
       "id": "schulbus",
+      "stable_id": "card-ms9411dc01nqb",
       "front": "Bus mit Warnblinklicht",
       "back": "An einem haltenden Bus mit eingeschaltetem Warnblinklicht darf man nur mit Schrittgeschwindigkeit vorbeifahren.",
       "notes": "Kinder können unerwartet auf die Straße treten.",
@@ -64,6 +69,7 @@
     },
     {
       "id": "feuerwehrzufahrt",
+      "stable_id": "card-ms9411dc01o2f",
       "front": "Feuerwehrzufahrt",
       "back": "Eine gekennzeichnete Feuerwehrzufahrt muss frei bleiben — dort darf man nicht parken.",
       "notes": "Auch kurzes Zuparken kann Menschenleben gefährden.",
@@ -75,6 +81,7 @@
     },
     {
       "id": "kreuzung-5m",
+      "stable_id": "card-ms9411dc01p00",
       "front": "5 Meter an Kreuzungen",
       "back": "Vor und hinter Kreuzungen und Einmündungen gilt ein Parkverbot im Bereich von fünf Metern.",
       "notes": "So bleibt die Sicht auf den Querverkehr frei.",
@@ -105,6 +112,7 @@
       "title": "Halten oder Parken?",
       "exercise": {
         "id": "ex-mc-halten-parken",
+        "stable_id": "ex-ms9411dc01q3a",
         "type": "cloze",
         "prompt": "Worin unterscheiden sich Halten und Parken?",
         "card_ids": [
@@ -134,6 +142,7 @@
       "title": "Wo bildet man die Rettungsgasse?",
       "exercise": {
         "id": "ex-mc-rettungsgasse",
+        "stable_id": "ex-ms9411dc01riu",
         "type": "cloze",
         "prompt": "Wo bildet man bei stockendem Verkehr auf der Autobahn die Rettungsgasse?",
         "card_ids": [
@@ -163,6 +172,7 @@
       "title": "Am Zebrastreifen",
       "exercise": {
         "id": "ex-mc-zebra",
+        "stable_id": "ex-ms9411dc01slq",
         "type": "cloze",
         "prompt": "Was gilt am Fußgängerüberweg (Zebrastreifen)?",
         "card_ids": [
@@ -192,6 +202,7 @@
       "title": "Bus mit Warnblinklicht",
       "exercise": {
         "id": "ex-mc-schulbus",
+        "stable_id": "ex-ms9411dc01tbo",
         "type": "cloze",
         "prompt": "Wie fährst du an einem haltenden Bus mit eingeschaltetem Warnblinklicht vorbei?",
         "card_ids": [
@@ -221,6 +232,7 @@
       "title": "Eingeschränktes Halteverbot",
       "exercise": {
         "id": "ex-mc-eingeschr",
+        "stable_id": "ex-ms9411dc01ucc",
         "type": "cloze",
         "prompt": "Was ist im eingeschränkten Halteverbot erlaubt?",
         "card_ids": [
@@ -250,6 +262,7 @@
       "title": "Feuerwehrzufahrt",
       "exercise": {
         "id": "ex-mc-feuerwehr",
+        "stable_id": "ex-ms9411dc01vz3",
         "type": "cloze",
         "prompt": "Was gilt für eine gekennzeichnete Feuerwehrzufahrt?",
         "card_ids": [
@@ -279,6 +292,7 @@
       "title": "Abstand zur Kreuzung",
       "exercise": {
         "id": "ex-mc-5m",
+        "stable_id": "ex-ms9411dc01wfr",
         "type": "cloze",
         "prompt": "In welchem Bereich vor und hinter Kreuzungen darf man nicht parken?",
         "card_ids": [
@@ -308,6 +322,7 @@
       "title": "Rettungsgasse",
       "exercise": {
         "id": "ex-ms-rettungsgasse",
+        "stable_id": "ex-ms9411dc01xtw",
         "type": "cloze",
         "cloze_mode": "multiselect",
         "prompt": "Rettungsgasse bilden",
@@ -335,6 +350,7 @@
       "title": "Wo Halten unzulässig ist",
       "exercise": {
         "id": "ex-ms-halteverbot",
+        "stable_id": "ex-ms9411dc01y7f",
         "type": "cloze",
         "cloze_mode": "multiselect",
         "prompt": "Halten und Parken",

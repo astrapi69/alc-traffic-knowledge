@@ -9,6 +9,7 @@
   "cards": [
     {
       "id": "gasse-wo",
+      "stable_id": "card-ms9411dd01z79",
       "front": "Rettungsgasse - wo?",
       "back": "Auf Autobahnen und mehrspurigen Außerortsstraßen wird die Rettungsgasse zwischen dem linken und dem unmittelbar rechts daneben liegenden Fahrstreifen gebildet.",
       "notes": "Bei drei Spuren also zwischen der linken und der mittleren Spur.",
@@ -20,6 +21,7 @@
     },
     {
       "id": "gasse-wann",
+      "stable_id": "card-ms9411dd02089",
       "front": "Rettungsgasse - wann?",
       "back": "Die Rettungsgasse wird gebildet, sobald der Verkehr stockt - nicht erst, wenn sich ein Einsatzfahrzeug nähert.",
       "notes": "Im Stau lässt sich nachträglich kaum noch Platz schaffen.",
@@ -31,6 +33,7 @@
     },
     {
       "id": "gasse-missbrauch",
+      "stable_id": "card-ms9411dd021wb",
       "front": "Rettungsgasse unerlaubt befahren",
       "back": "Wer eine Rettungsgasse unerlaubt befährt, riskiert Bußgeld, Punkte und ein Fahrverbot.",
       "notes": "Die Gasse ist ausschließlich für Einsatz- und Hilfsfahrzeuge da.",
@@ -42,6 +45,7 @@
     },
     {
       "id": "blaulicht-horn",
+      "stable_id": "card-ms9411dd0222o",
       "front": "Blaulicht mit Einsatzhorn",
       "back": "Blaues Blinklicht zusammen mit dem Einsatzhorn bedeutet: sofort freie Bahn schaffen.",
       "notes": "Ruhig bleiben, blinken und geordnet Platz machen.",
@@ -53,6 +57,7 @@
     },
     {
       "id": "bus-warnblink",
+      "stable_id": "card-ms9411dd0237h",
       "front": "Bus mit Warnblinklicht",
       "back": "An einem Bus, der mit eingeschaltetem Warnblinklicht an einer Haltestelle steht, darf nur mit Schrittgeschwindigkeit vorbeigefahren werden.",
       "notes": "Das gilt auch für den Gegenverkehr.",
@@ -83,6 +88,7 @@
       "title": "Wo entsteht die Gasse?",
       "exercise": {
         "id": "ex-nmc-wo",
+        "stable_id": "ex-ms9411dd024co",
         "type": "multiple_choice",
         "prompt": "Wo wird auf einer dreispurigen Autobahn die Rettungsgasse gebildet?",
         "card_ids": [
@@ -113,6 +119,7 @@
       "title": "Wann entsteht die Gasse?",
       "exercise": {
         "id": "ex-nmc-wann",
+        "stable_id": "ex-ms9411dd025cg",
         "type": "multiple_choice",
         "prompt": "Wann muss die Rettungsgasse gebildet werden?",
         "card_ids": [
@@ -143,6 +150,7 @@
       "title": "Was stimmt zur Rettungsgasse?",
       "exercise": {
         "id": "ex-nmc-regeln",
+        "stable_id": "ex-ms9411dd026s8",
         "type": "multiple_choice",
         "multiple": true,
         "prompt": "Welche Aussagen zur Rettungsgasse treffen zu? (Mehrfachauswahl)",
@@ -176,6 +184,7 @@
       "title": "Blaulicht und Einsatzhorn",
       "exercise": {
         "id": "ex-mc-blaulicht",
+        "stable_id": "ex-ms9411dd027yx",
         "type": "cloze",
         "prompt": "Was bedeutet blaues Blinklicht zusammen mit dem Einsatzhorn?",
         "card_ids": [
@@ -205,6 +214,7 @@
       "title": "Bus an der Haltestelle",
       "exercise": {
         "id": "ex-mc-bus",
+        "stable_id": "ex-ms9411dd028te",
         "type": "cloze",
         "prompt": "Ein Bus steht mit Warnblinklicht an der Haltestelle. Wie darf man vorbeifahren?",
         "card_ids": [

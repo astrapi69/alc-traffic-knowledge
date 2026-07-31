@@ -9,6 +9,7 @@
   "cards": [
     {
       "id": "rvl",
+      "stable_id": "card-ms9411d9001fy",
       "front": "Rechts vor links",
       "back": "An Kreuzungen ohne Zeichen oder Ampel hat, wer von rechts kommt, Vorfahrt.",
       "notes": "Die Grundregel für gleichrangige Kreuzungen und Einmündungen.",
@@ -20,6 +21,7 @@
     },
     {
       "id": "vorfahrt-gewaehren",
+      "stable_id": "card-ms9411d90025u",
       "front": "Vorfahrt gewähren",
       "back": "Das auf der Spitze stehende Dreieck: anderen die Vorfahrt lassen, nötigenfalls anhalten.",
       "notes": "Umgangssprachlich das „Achtung, Vorfahrt beachten\"-Zeichen.",
@@ -31,6 +33,7 @@
     },
     {
       "id": "stopp",
+      "stable_id": "card-ms9411d9003as",
       "front": "Stoppschild",
       "back": "Das achteckige STOP-Zeichen: anhalten und dann Vorfahrt gewähren.",
       "notes": "Anhalten ist Pflicht, auch wenn die Straße frei erscheint.",
@@ -42,6 +45,7 @@
     },
     {
       "id": "vorfahrtstrasse",
+      "stable_id": "card-ms9411d9004wt",
       "front": "Vorfahrtstraße",
       "back": "Der gelbe Diamant: du hast Vorfahrt, bis ein Ende-Zeichen folgt.",
       "notes": "Gilt entlang der ganzen Vorfahrtstraße.",
@@ -53,6 +57,7 @@
     },
     {
       "id": "kreisverkehr",
+      "stable_id": "card-ms9411d9005y5",
       "front": "Kreisverkehr",
       "back": "Mit dem Zeichen Kreisverkehr samt „Vorfahrt gewähren\" haben Fahrzeuge im Kreis Vorfahrt.",
       "notes": "Beim Einfahren nicht blinken, beim Verlassen rechts blinken.",
@@ -64,6 +69,7 @@
     },
     {
       "id": "ampel-vorrang",
+      "stable_id": "card-ms9411d9006at",
       "front": "Ampel vor Schild",
       "back": "Zeigt eine Ampel und widerspricht einem Vorfahrtsschild, gilt die Ampel.",
       "notes": "Lichtzeichen stehen über Verkehrszeichen; Polizeizeichen über allem.",
@@ -75,6 +81,7 @@
     },
     {
       "id": "linksabbiegen",
+      "stable_id": "card-ms9411d90079f",
       "front": "Linksabbiegen",
       "back": "Wer links abbiegt, muss entgegenkommende Fahrzeuge zuerst durchfahren lassen.",
       "notes": "Der Gegenverkehr, der geradeaus fährt, hat Vorrang.",
@@ -86,6 +93,7 @@
     },
     {
       "id": "gleichrangig",
+      "stable_id": "card-ms9411d9008hm",
       "front": "Gleichrangige Kreuzung",
       "back": "Eine Kreuzung ohne Vorfahrtszeichen und ohne Ampel — hier gilt rechts vor links.",
       "notes": "„Gleichrangig\" heißt: keine Straße hat Vorrang durch ein Schild.",
@@ -116,6 +124,7 @@
       "title": "Kreuzung ohne Zeichen",
       "exercise": {
         "id": "ex-mc-rvl",
+        "stable_id": "ex-ms9411d9009kl",
         "type": "cloze",
         "prompt": "An einer Kreuzung ohne Verkehrszeichen und ohne Ampel — wer hat Vorfahrt?",
         "card_ids": [
@@ -146,6 +155,7 @@
       "title": "Dreieck auf der Spitze",
       "exercise": {
         "id": "ex-mc-dreieck",
+        "stable_id": "ex-ms9411d900axv",
         "type": "cloze",
         "prompt": "Was verlangt das auf der Spitze stehende Dreieck („Vorfahrt gewähren\")?",
         "card_ids": [
@@ -175,6 +185,7 @@
       "title": "Das achteckige Zeichen",
       "exercise": {
         "id": "ex-mc-stopp",
+        "stable_id": "ex-ms9411d900bgg",
         "type": "cloze",
         "prompt": "Was schreibt das achteckige STOP-Zeichen vor?",
         "card_ids": [
@@ -204,6 +215,7 @@
       "title": "Der gelbe Diamant",
       "exercise": {
         "id": "ex-mc-diamant",
+        "stable_id": "ex-ms9411d900c52",
         "type": "cloze",
         "prompt": "Der gelbe Diamant (Vorfahrtstraße) bedeutet für dich:",
         "card_ids": [
@@ -233,6 +245,7 @@
       "title": "Einfahrt in den Kreisel",
       "exercise": {
         "id": "ex-mc-kreis-vorfahrt",
+        "stable_id": "ex-ms9411d900dcn",
         "type": "cloze",
         "prompt": "Wer hat beim üblichen Kreisverkehr Vorfahrt?",
         "card_ids": [
@@ -262,6 +275,7 @@
       "title": "Blinken im Kreisel",
       "exercise": {
         "id": "ex-mc-kreis-blinken",
+        "stable_id": "ex-ms9411d900enk",
         "type": "cloze",
         "prompt": "Wann blinkt man im Kreisverkehr?",
         "card_ids": [
@@ -291,6 +305,7 @@
       "title": "Ampel und Schild widersprechen sich",
       "exercise": {
         "id": "ex-mc-ampel",
+        "stable_id": "ex-ms9411d900fmo",
         "type": "cloze",
         "prompt": "Eine Ampel und ein Vorfahrtsschild widersprechen sich. Was gilt?",
         "card_ids": [
@@ -320,6 +335,7 @@
       "title": "Linksabbiegen",
       "exercise": {
         "id": "ex-mc-linksab",
+        "stable_id": "ex-ms9411d900gc6",
         "type": "cloze",
         "prompt": "Du willst links abbiegen, es kommt Gegenverkehr. Wer fährt zuerst?",
         "card_ids": [
@@ -349,6 +365,7 @@
       "title": "Grundregel „rechts vor links“",
       "exercise": {
         "id": "ex-ms-rvl",
+        "stable_id": "ex-ms9411d900h8n",
         "type": "cloze",
         "cloze_mode": "multiselect",
         "prompt": "Rechts vor links",
@@ -377,6 +394,7 @@
       "title": "Was der Grundregel vorgeht",
       "exercise": {
         "id": "ex-ms-vorrang",
+        "stable_id": "ex-ms9411d900i9m",
         "type": "cloze",
         "cloze_mode": "multiselect",
         "prompt": "Rangfolge der Vorfahrtregeln",
