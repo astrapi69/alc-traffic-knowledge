@@ -20,7 +20,9 @@ Lektions-JSONs unter `sets/` ein.
 ## Nutzung
 
 ```bash
-python3 scripts/export_set.py <set-slug> [--lang <lang>] [--format yaml|json] [--out PFAD]
+make export ARGS="<set-slug> [--lang <lang>] [--format yaml|json] [--out PFAD] [--split-size N]"
+# oder direkt (Fallback; innerhalb der venv aus dem Quick Start):
+python3 scripts/export_set.py <set-slug> [--lang <lang>] [--format yaml|json] [--out PFAD] [--split-size N]
 ```
 
 | Argument | Bedeutung | Default |
@@ -28,23 +30,37 @@ python3 scripts/export_set.py <set-slug> [--lang <lang>] [--format yaml|json] [-
 | `<set-slug>` | Set-Id aus dem Wurzel-`manifest.yaml` (z. B. `fuehrerschein-uebung-from-de`) oder der Ordnername des Set-Pfads (z. B. `fuehrerschein-uebung` für `sets/de/fuehrerschein-uebung`) | Pflicht |
 | `--lang` | Quellsprachen-Verzeichnis (`sets/<lang>/`), das einen Ordnernamen-Slug eindeutig macht, der unter mehreren Quellsprachen existiert | `de` |
 | `--format` | Ausgabeformat: `yaml` oder `json` | `yaml` |
-| `--out` | Pfad der Ausgabedatei | `exports/<set-slug>-<lang>-<timestamp>.<format>` |
+| `--out` | Pfad der Ausgabedatei (nicht kombinierbar mit `--split-size`) | `exports/<set-slug>-<lang>-<timestamp>.<format>` |
+| `--split-size` | Export in mehrere Dateien von je hoechstens N Lektionen aufteilen, statt einer Datei | aus (eine Datei) |
 
 Beispiele:
 
 ```bash
 # Standardfall: YAML-Export nach exports/ (das Set liegt unter sets/de/)
-python3 scripts/export_set.py fuehrerschein-uebung
+make export ARGS="fuehrerschein-uebung"
 # -> exports/fuehrerschein-uebung-de-<timestamp>.yaml
 
 # Sonderfall: JSON an einen eigenen Pfad (nur wenn ein Tooling explizit JSON braucht)
-python3 scripts/export_set.py fuehrerschein-uebung --format json --out /tmp/review.json
+make export ARGS="fuehrerschein-uebung --format json --out /tmp/review.json"
+
+# Kleines/grosses Set: in Teile von je hoechstens 2 Lektionen aufteilen,
+# fuer eine KI mit begrenztem Kontextfenster
+make export ARGS="fuehrerschein-uebung --split-size 2"
+# -> exports/fuehrerschein-uebung-de-<timestamp>-part01-of-3.yaml, part02-of-3, part03-of-3
 ```
 
 Ohne `--out` landet die Datei in `exports/` nach dem Muster
-`<set-slug>-<lang>-<timestamp>.<format>`. Das Verzeichnis `exports/`
-wird bei Bedarf angelegt und ist **gitignored**: Exportdateien sind
-Wegwerf-Artefakte fürs Review und werden nie committet.
+`<set-slug>-<lang>-<timestamp>.<format>` (bei `--split-size` je eine
+Datei pro Teil nach `<set-slug>-<lang>-<timestamp>-partNN-of-MM.<format>`).
+Das Verzeichnis `exports/` wird bei Bedarf angelegt und ist
+**gitignored**: Exportdateien sind Wegwerf-Artefakte fürs Review und
+werden nie committet.
+
+Jeder von `--split-size` geschriebene Teil ist eigenstaendig: er traegt
+seine eigene `review_instructions`-Kopie sowie die Felder
+`part`/`of`/`lesson_count`/`total_lesson_count`, sodass jeder einzelne
+Teil fuer sich, in beliebiger Reihenfolge, an eine KI zum Review
+gegeben werden kann.
 
 Ein unbekannter oder mehrdeutiger Slug bricht mit Exit-Code 2 und
 einer Liste der verfügbaren Sets ab. Umlaute und alle anderen
@@ -55,7 +71,7 @@ Nicht-ASCII-Zeichen bleiben echtes UTF-8.
 1. **Export erzeugen:**
 
    ```bash
-   python3 scripts/export_set.py fuehrerschein-uebung
+   make export ARGS="fuehrerschein-uebung"
    ```
 
 2. **Exportdatei öffnen** und im `review_instructions`-Block am Anfang
@@ -100,7 +116,8 @@ Nicht-ASCII-Zeichen bleiben echtes UTF-8.
 - **Quellkapitel bei jedem Review neu einfügen**, wenn es sich
   geändert hat; nicht aus einem alten Export kopieren.
 - **Große Sets in Portionen prüfen** (z. B. 8-10 Lektionen pro
-  Durchgang), wenn der Kontext der verwendeten KI begrenzt ist.
+  Durchgang), wenn der Kontext der verwendeten KI begrenzt ist - dafür
+  `--split-size` nutzen, statt den Export von Hand zu zerschneiden.
 - **YAML als Standard belassen**; JSON nur, wenn ein Tooling das
   explizit braucht.
 - **Kein Copy-Paste von KI-Vorschlägen ohne Gegenlesen.** Die KI
