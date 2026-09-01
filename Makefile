@@ -20,6 +20,7 @@
 #                          statt abgewiesen.
 #     make setup           Nur die lokale Umgebung anlegen/aktualisieren.
 #     make generate        KI-Aufgaben generieren (braucht einen API-Schluessel, siehe README).
+#     make export          Ein Set fuer KI-Review exportieren (ARGS="<slug> [--split-size N] ...").
 #     make audit           Ueberblick ueber deine Inhalte ausgeben.
 #     make clean           Die lokale Umgebung entfernen.
 #
@@ -38,7 +39,7 @@ PIP := $(VENV)/bin/pip
 ENGINE_PIN := $(shell cat schema/engine-version.txt)
 ENGINE_STAMP := node_modules/.engine-$(ENGINE_PIN)
 
-.PHONY: validate lint lint-warnings setup generate audit clean help
+.PHONY: validate lint lint-warnings setup generate export audit clean help
 
 help:
 	@echo "make validate        - Inhalte pruefen (richtet sich beim ersten Mal selbst ein)"
@@ -46,6 +47,7 @@ help:
 	@echo "make lint-warnings   - derselbe Lauf, zusätzlich mit Warnungen (W-*)"
 	@echo "make setup           - lokale Umgebung anlegen"
 	@echo "make generate        - KI-Aufgaben generieren (API-Schluessel noetig; ARGS=\"--topic ...\")"
+	@echo "make export          - Set fuer KI-Review exportieren (ARGS=\"<slug> [--split-size N] ...\")"
 	@echo "make audit           - Inhalts-Ueberblick"
 	@echo "make clean           - lokale Umgebung entfernen"
 
@@ -85,6 +87,12 @@ lint-warnings: $(ENGINE_STAMP)
 # GEMINI_API_KEY), siehe README.
 generate: $(VENV)/.ready
 	@$(PY) scripts/generate_exercises.py $(ARGS)
+
+# Ein Set fuer KI-Review exportieren, z. B.:
+#     make export ARGS="<set-slug>"
+#     make export ARGS="<set-slug> --split-size 5"
+export: $(VENV)/.ready
+	@$(PY) scripts/export_set.py $(ARGS)
 
 audit: $(VENV)/.ready
 	@$(PY) scripts/audit_content.py
