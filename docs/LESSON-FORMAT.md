@@ -126,6 +126,16 @@ Most carry `card_ids` (the cards they draw on) and a `direction`.
 - `source_to_target`: learner produces the target language (harder).
 - `target_to_source`: learner recognises/translates into the source (easier).
 
+**`variables`** (schema v1.14, optional, any exercise type): makes one
+authored exercise stand for many concrete instances. Each entry is sampled
+(`min`/`max`, optional `step`) or computed (`expression` over earlier
+entries, optional `tolerance`); any string field of the exercise may
+reference one as `{{name}}`, and the app draws, computes and substitutes per
+attempt. Only an exercise that declares `variables` is parametric: without
+it, `{{` is ordinary text (a lesson about Jinja2 templates is not
+parametric). Rules and a full example: `docs/lesson-format.md`, section
+"Variables (parametric exercises)", in the engine repo.
+
 ## The six exercise types
 
 Since schema 1.7 the engine additionally defines an opt-in `ext:` namespace
