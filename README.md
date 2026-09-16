@@ -161,12 +161,12 @@ a partial-credit note, and the pass threshold. This is a consumer tool -
 it renders one presentation of a canonical lesson and does not invoke the
 engine, so it is independent of the pinned engine version.
 
-**Caveat (adaptive-learner-content-test#66):** graded-quiz content uses
-the `ext:` extension tier, which the content gate (`make lint`) does not
-yet accept (it validates core-only and refuses ext lessons). Until that
-adoption lands, keep graded-quiz lessons OUTSIDE `sets/` and run the tool
-on them directly (a runnable sample lives in
-[`tests/fixtures/graded-quiz-sample.json`](tests/fixtures/graded-quiz-sample.json)).
+**Where the lesson may live:** the content gate (`make lint`) accepts the
+adopted `ext:` types, `ext:al-graded-quiz` among them (the adopted list and
+its self-test live in `scripts/validate_with_engine.mjs`), so a graded-quiz
+lesson can sit under `sets/` like any other. The tool also reads a lesson
+kept elsewhere; a runnable sample lives in
+[`tests/fixtures/graded-quiz-sample.json`](tests/fixtures/graded-quiz-sample.json).
 
 ## Export a set to Anki (.apkg)
 
