@@ -21,6 +21,7 @@
 #     make setup           Nur die lokale Umgebung anlegen/aktualisieren.
 #     make generate        KI-Aufgaben generieren (braucht einen API-Schluessel, siehe README).
 #     make export          Ein Set fuer KI-Review exportieren (ARGS="<slug> [--split-size N] ...").
+#     make export-anki     Ein Set als Anki-Deck (.apkg) exportieren (ARGS="<slug> [--lang xx] [--out PATH]").
 #     make audit           Ueberblick ueber deine Inhalte ausgeben.
 #     make clean           Die lokale Umgebung entfernen.
 #
@@ -39,7 +40,7 @@ PIP := $(VENV)/bin/pip
 ENGINE_PIN := $(shell cat schema/engine-version.txt)
 ENGINE_STAMP := node_modules/.engine-$(ENGINE_PIN)
 
-.PHONY: validate lint lint-warnings setup generate export audit clean help
+.PHONY: validate lint lint-warnings setup generate export export-anki audit clean help
 
 help:
 	@echo "make validate        - Inhalte pruefen (richtet sich beim ersten Mal selbst ein)"
@@ -48,6 +49,7 @@ help:
 	@echo "make setup           - lokale Umgebung anlegen"
 	@echo "make generate        - KI-Aufgaben generieren (API-Schluessel noetig; ARGS=\"--topic ...\")"
 	@echo "make export          - Set fuer KI-Review exportieren (ARGS=\"<slug> [--split-size N] ...\")"
+	@echo "make export-anki     - Set als Anki-Deck (.apkg) exportieren (ARGS=\"<slug> [--lang xx] [--out PATH]\")"
 	@echo "make audit           - Inhalts-Ueberblick"
 	@echo "make clean           - lokale Umgebung entfernen"
 
@@ -93,6 +95,12 @@ generate: $(VENV)/.ready
 #     make export ARGS="<set-slug> --split-size 5"
 export: $(VENV)/.ready
 	@$(PY) scripts/export_set.py $(ARGS)
+
+# Ein Set als Anki-Deck (.apkg) exportieren, z. B.:
+#     make export-anki ARGS="<set-slug>"
+#     make export-anki ARGS="<set-slug> --lang en --out /tmp/deck.apkg"
+export-anki: $(VENV)/.ready
+	@$(PY) scripts/export_anki.py $(ARGS)
 
 audit: $(VENV)/.ready
 	@$(PY) scripts/audit_content.py

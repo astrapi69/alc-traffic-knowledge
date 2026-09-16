@@ -168,6 +168,35 @@ adoption lands, keep graded-quiz lessons OUTSIDE `sets/` and run the tool
 on them directly (a runnable sample lives in
 [`tests/fixtures/graded-quiz-sample.json`](tests/fixtures/graded-quiz-sample.json)).
 
+## Export a set to Anki (.apkg)
+
+`scripts/export_anki.py` turns one set into an Anki deck, so the content can
+travel to the largest spaced-repetition ecosystem without leaving this
+format behind:
+
+```bash
+make export-anki ARGS="<set-slug>"
+# -> exports/<set-slug>-<lang>-<timestamp>.apkg   (import via Anki: File > Import)
+
+python3 scripts/export_anki.py <set-slug> --out /tmp/deck.apkg
+```
+
+What becomes a note: every card (front / back), `free_text` (prompt /
+canonical answer, alternatives listed), `cloze` (one `{{cN::...}}` per
+blank, the `explanation` as extra), `multiple_choice` (lettered options /
+the correct letters), `matching` (one note per pair), `word_tiles` (tiles
+in alphabetical order / the sentence). Skipped and named in the report,
+never silently: theory steps, `picture_choice` (assets are not exported),
+`matching` with `from_cards` (its pairs are the cards, exported once), and
+every `ext:` type.
+
+Note identity carries over: a note's GUID derives from the element's
+`stable_id` (else lesson id plus element id), so re-importing a newer
+export into Anki updates the notes and keeps the learner's scheduling
+instead of duplicating them. This is a consumer tool: it renders one
+presentation of the canonical lessons and does not invoke the engine.
+`genanki` (MIT) comes with `make setup`.
+
 ## Generate exercises with AI (optional)
 
 `scripts/generate_exercises.py` turns a topic into a full **language**
