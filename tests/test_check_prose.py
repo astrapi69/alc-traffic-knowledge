@@ -1,0 +1,278 @@
+"""Unit tests for the prose gate (scripts/check_prose.py).
+
+The gate's own ``--self-test`` proves it fires on every banned character;
+these tests pin the behaviour that a reader would otherwise have to trust:
+which characters are banned, which legitimate typography stays untouched,
+and that the mirrored schema/ tree is out of scope by construction.
+"""
+from __future__ import annotations
+
+import json
+import importlib.util
+import sys
+from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+SPEC = importlib.util.spec_from_file_location(
+    "check_prose", REPO_ROOT / "scripts" / "check_prose.py"
+)
+check_prose = importlib.util.module_from_spec(SPEC)
+sys.modules["check_prose"] = check_prose
+SPEC.loader.exec_module(check_prose)
+
+
+EM_DASH = chr(0x2014)
+ZERO_WIDTH_SPACE = chr(0x200B)
+ELLIPSIS = chr(0x2026)
+EN_DASH = chr(0x2013)
+NO_BREAK_SPACE = chr(0x00A0)
+
+
+def test_flags_an_em_dash():
+    findings = check_prose.findings_in(f"a comment {EM_DASH} with an em dash")
+    assert [f[1] for f in findings] == [EM_DASH]
+    assert findings[0][0] == 1
+
+
+def test_flags_an_invisible_character():
+    assert check_prose.findings_in(f"zero{ZERO_WIDTH_SPACE}width")
+
+
+def test_leaves_legitimate_typography_alone():
+    # Ellipsis, en dash and no-break space are deliberately not banned: a
+    # gate that fights legitimate typography gets switched off.
+    assert check_prose.findings_in(f"one{ELLIPSIS}twelve, 5{EN_DASH}10, 12{NO_BREAK_SPACE}h") == []
+
+
+def test_reports_the_line_number():
+    findings = check_prose.findings_in(f"clean\nstill clean\nnow {EM_DASH} here")
+    assert findings[0][0] == 3
+
+
+def test_excludes_the_mirrored_schema_tree():
+    # schema/ is a byte-identical mirror of the pinned engine release; its
+    # typography belongs to the engine, and editing it here would turn the
+    # drift gate red.
+    assert any(path.startswith("schema/") for path in _all_git_files())
+    assert not any(path.startswith("schema/") for path in check_prose.tracked_files())
+
+
+def test_self_test_passes():
+    assert check_prose.self_test() == 0
+
+
+def _all_git_files() -> list[str]:
+    import subprocess
+
+    return subprocess.run(
+        ["git", "ls-files"], capture_output=True, text=True, check=True, cwd=REPO_ROOT
+    ).stdout.split()
+
+# --- the umlaut half (ASCII-substituted German) ------------------------------
+# This file is UMLAUT_EXEMPT, so it may spell the misspellings out.
+
+
+def test_flags_a_substituted_german_word():
+    findings = check_prose.substituted_words("Die Abhaengigkeitsliste laeuft")
+    words = [w for w, _ in findings]
+    assert words == ["Abhaengigkeitsliste", "laeuft"]
+
+
+def test_suggests_the_correct_spelling_and_keeps_the_capital():
+    [(word, suggestion)] = check_prose.substituted_words("Abhaengigkeit")
+    assert word == "Abhaengigkeit"
+    assert suggestion == "Abh\u00e4ngigkeit"
+
+
+def test_leaves_english_and_code_words_alone():
+    # The reason this is a stem list and not a pattern on "ue".
+    assert check_prose.substituted_words("value true queue Sequence useState defaultValue") == []
+
+
+def test_leaves_correct_german_alone():
+    correct = " ".join(check_prose.SUBSTITUTED_STEMS.values())
+    assert check_prose.substituted_words(correct) == []
+
+
+def test_skips_a_foreign_lookalike():
+    # Spanish "fueron"/"fuera" would otherwise be claimed by the stem "fuer".
+    assert check_prose.substituted_words("fueron fuera fuerte") == []
+    assert check_prose.substituted_words("dafuer") != []
+
+
+def test_lesson_code_fields_are_out_of_scope():
+    lesson = json.dumps(
+        {
+            "title": "Eine Uebung",
+            "steps": [
+                {
+                    "exercise": {
+                        "sentence": "const laeuft = true;",
+                        "ext_payload": {"passage": "const zurueck = 1;", "prompt": "Was laeuft hier?"},
+                    }
+                }
+            ],
+        },
+        ensure_ascii=False,
+    )
+    scanned = " ".join(segment for _, segment in check_prose.prose_segments("lesson.json", lesson))
+    assert "Uebung" in scanned
+    assert "Was laeuft hier?" in scanned
+    assert "const laeuft" not in scanned
+    assert "zurueck" not in scanned
+
+
+def test_fenced_code_in_a_theory_body_is_out_of_scope():
+    body = "Prosa ueber Effekte\n\n```jsx\nconst laeuft = true;\n```\n\nmehr Prosa"
+    lesson = json.dumps({"steps": [{"type": "theory", "body": body}]}, ensure_ascii=False)
+    scanned = " ".join(segment for _, segment in check_prose.prose_segments("lesson.json", lesson))
+    assert "ueber" in scanned
+    assert "const laeuft" not in scanned
+
+
+def test_the_gate_and_its_test_are_exempt_from_the_umlaut_check():
+    # A list of misspellings has to contain them. The exemption is narrow and
+    # pinned here so it cannot quietly widen.
+    assert check_prose.UMLAUT_EXEMPT == ("scripts/check_prose.py", "tests/test_check_prose.py")
+    for path in check_prose.UMLAUT_EXEMPT:
+        assert check_prose.substituted_words((REPO_ROOT / path).read_text(encoding="utf-8"))
+
+
+def test_every_stem_is_itself_a_substitution():
+    for stem, correct in check_prose.SUBSTITUTED_STEMS.items():
+        assert stem == stem.lower()
+        assert stem != correct
+        assert any(pair in stem for pair in ("ae", "oe", "ue", "ss"))
+
+
+def test_camel_case_is_treated_as_code():
+    # A prompt may name the function it asks about; renaming it in prose would
+    # point the sentence at something that does not exist.
+    assert check_prose.substituted_words("fuegeOptimistischHinzu(text) aufrufen") == []
+    assert check_prose.substituted_words("defaultValue useDeferredValue neuerText") == []
+    # ... while an ordinary German noun still gets caught.
+    assert check_prose.substituted_words("Abhaengigkeitsliste")
+
+
+def test_an_all_caps_word_is_not_mistaken_for_an_identifier():
+    assert check_prose.substituted_words("CSS")[:1] == []
+    assert [w for w, _ in check_prose.substituted_words("PRUEFUNG")] == ["PRUEFUNG"]
+
+
+def test_applies_every_matching_stem_in_one_word():
+    # "zurueckhaelt" carries two stems; stopping at the first leaves half a
+    # correction behind.
+    [(word, suggestion)] = check_prose.substituted_words("zurueckhaelt")
+    assert word == "zurueckhaelt"
+    assert suggestion == "zur\u00fcckh\u00e4lt"
+    [(_, gr)] = check_prose.substituted_words("Groessenaendern")
+    assert gr == "Gr\u00f6\u00dfen\u00e4ndern"
+
+
+def test_id_fields_are_out_of_scope():
+    # An id is a machine key: the manifest and the app look it up verbatim, so
+    # "correcting" it renames the thing. It is also how a slug quietly stops
+    # being ASCII.
+    lesson = json.dumps(
+        {
+            "id": "ex-drei-rueckgaben",
+            "steps": [
+                {
+                    "id": "ex-zustaendigkeiten",
+                    "theory_ref": "buendelung",
+                    "title": "Die Zustaendigkeiten",
+                    "exercise": {"id": "ex-zustaendigkeiten", "card_ids": ["karte-rueckfall"]},
+                }
+            ],
+        },
+        ensure_ascii=False,
+    )
+    scanned = " ".join(segment for _, segment in check_prose.prose_segments("lesson.json", lesson))
+    assert "Die Zustaendigkeiten" in scanned
+    for machine_key in ("ex-drei-rueckgaben", "ex-zustaendigkeiten", "buendelung", "karte-rueckfall"):
+        assert machine_key not in scanned
+
+
+def test_whole_word_substitutions_do_not_claim_innocent_compounds():
+    # "weiss" sits inside "Hinweisschilder", so it cannot be a stem.
+    assert [s for _, s in check_prose.substituted_words("weiss")] == ["wei\u00df"]
+    assert check_prose.substituted_words("Hinweisschilder") == []
+
+
+def test_card_code_fields_are_out_of_scope():
+    # A card can carry a snippet and its expected output; both are code.
+    lesson = json.dumps(
+        {
+            "cards": [
+                {
+                    "id": "karte",
+                    "front": "Die Uebung",
+                    "code_snippet": "const laeuft = true;",
+                    "code_language": "javascript",
+                    "expected_output": "laeuft",
+                    "tags": ["uebung"],
+                }
+            ]
+        },
+        ensure_ascii=False,
+    )
+    scanned = " ".join(segment for _, segment in check_prose.prose_segments("lesson.json", lesson))
+    assert "Die Uebung" in scanned
+    for code in ("const laeuft", "expected", "javascript"):
+        assert code not in scanned
+
+
+def test_an_inline_example_is_code_when_it_declares_a_language():
+    prose_example = json.dumps(
+        {"examples": [{"content": "Der Hund laeuft weg.", "title": "Beispiel"}]}, ensure_ascii=False
+    )
+    code_example = json.dumps(
+        {"examples": [{"content": "const laeuft = true;", "language": "javascript"}]}, ensure_ascii=False
+    )
+    prose_scanned = " ".join(s for _, s in check_prose.prose_segments("l.json", prose_example))
+    code_scanned = " ".join(s for _, s in check_prose.prose_segments("l.json", code_example))
+    assert "laeuft weg" in prose_scanned
+    assert "const laeuft" not in code_scanned
+
+
+# --- machine strings stay ASCII on purpose ------------------------------------
+
+
+def test_lowercase_technical_tokens_are_not_prose():
+    # Slugs, paths, file names, snake_case, URLs, repository names: the repos
+    # keep them ASCII deliberately, so the gate must not demand umlauts there.
+    for machine_string in (
+        "ex-wo-laeuft-was",
+        "sets/de/fuehrerschein-uebung",
+        "check_fuer_x.py",
+        "https://example.org/ueber",
+        "alc-die-waehrung-des-geistes",
+    ):
+        assert check_prose.substituted_words(machine_string) == [], machine_string
+
+
+def test_a_sentence_final_period_does_not_hide_a_word():
+    assert [w for w, _ in check_prose.substituted_words("Das ist fuer.")] == ["fuer"]
+
+
+def test_a_capitalised_hyphen_compound_is_prose():
+    assert [w for w, _ in check_prose.substituted_words("Der Rueckgabe-Wert")] == ["Rueckgabe"]
+
+
+def test_inline_code_spans_are_not_prose():
+    assert check_prose.substituted_words("nutze `onAendern` hier") == []
+    assert check_prose.substituted_words("siehe ``zurueck`` bitte") == []
+    assert [w for w, _ in check_prose.substituted_words("`x` ist fuer dich")] == ["fuer"]
+
+
+def test_the_generated_search_index_is_out_of_scope():
+    assert "search-index.json" in check_prose.EXCLUDED_FILES
+
+
+def test_listing_is_nul_separated_so_non_ascii_paths_are_read():
+    # Without -z git quotes a non-ASCII path and the quoted string names no
+    # file, so the gate would skip it and still report clean.
+    import inspect
+
+    source = inspect.getsource(check_prose.tracked_files)
+    assert '"-z"' in source
