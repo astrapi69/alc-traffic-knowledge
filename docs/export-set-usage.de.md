@@ -31,7 +31,7 @@ python3 scripts/export_set.py <set-slug> [--lang <lang>] [--format yaml|json] [-
 | `--lang` | Quellsprachen-Verzeichnis (`sets/<lang>/`), das einen Ordnernamen-Slug eindeutig macht, der unter mehreren Quellsprachen existiert | `de` |
 | `--format` | Ausgabeformat: `yaml` oder `json` | `yaml` |
 | `--out` | Pfad der Ausgabedatei (nicht kombinierbar mit `--split-size`) | `exports/<set-slug>-<lang>-<timestamp>.<format>` |
-| `--split-size` | Export in mehrere Dateien von je hoechstens N Lektionen aufteilen, statt einer Datei | aus (eine Datei) |
+| `--split-size` | Export in mehrere Dateien von je höchstens N Lektionen aufteilen, statt einer Datei | aus (eine Datei) |
 
 Beispiele:
 
@@ -56,10 +56,10 @@ Das Verzeichnis `exports/` wird bei Bedarf angelegt und ist
 **gitignored**: Exportdateien sind Wegwerf-Artefakte fürs Review und
 werden nie committet.
 
-Jeder von `--split-size` geschriebene Teil ist eigenstaendig: er traegt
+Jeder von `--split-size` geschriebene Teil ist eigenständig: er trägt
 seine eigene `review_instructions`-Kopie sowie die Felder
 `part`/`of`/`lesson_count`/`total_lesson_count`, sodass jeder einzelne
-Teil fuer sich, in beliebiger Reihenfolge, an eine KI zum Review
+Teil für sich, in beliebiger Reihenfolge, an eine KI zum Review
 gegeben werden kann.
 
 Ein unbekannter oder mehrdeutiger Slug bricht mit Exit-Code 2 und

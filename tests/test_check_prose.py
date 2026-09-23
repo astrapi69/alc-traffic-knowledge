@@ -276,3 +276,19 @@ def test_listing_is_nul_separated_so_non_ascii_paths_are_read():
 
     source = inspect.getsource(check_prose.tracked_files)
     assert '"-z"' in source
+
+
+def test_capitals_write_sharp_s_as_ss():
+    # "AUSSCHLIESSLICH" is correct German: in capitals the sharp s is SS.
+    assert check_prose.substituted_words("AUSSCHLIESSLICH") == []
+    assert check_prose.substituted_words("GROSSE") == []
+    # ...but a missing umlaut is still missing when shouted
+    assert [s for _, s in check_prose.substituted_words("PRUEFUNG")] == ["PR\u00dcFUNG"]
+    assert [s for _, s in check_prose.substituted_words("AUSSCHLIESSLICH GEPRUEFT")] == ["GEPR\u00dcFT"]
+
+
+def test_markdown_findings_carry_their_line_number():
+    text = "# Titel\n\nZeile ohne Befund.\n```\nfuer im Code\n```\nHier steht fuer drin.\n"
+    segments = check_prose.prose_segments("doc.md", text)
+    hits = [(n, w) for n, seg in segments for w, _ in check_prose.substituted_words(seg)]
+    assert hits == [(7, "fuer")]

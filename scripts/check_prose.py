@@ -318,11 +318,8 @@ def substituted_words(text: str) -> list[tuple[str, str]]:
             continue
         if lowered in WHOLE_WORD_SUBSTITUTIONS:
             suggestion = WHOLE_WORD_SUBSTITUTIONS[lowered]
-            if word[:1].isupper():
-                suggestion = suggestion[:1].upper() + suggestion[1:]
-            findings.append((word, suggestion))
-            continue
-        suggestion = lowered
+        else:
+            suggestion = lowered
         for stem, correct in SUBSTITUTED_STEMS.items():
             # Every matching stem, not just the first: "zurueckhaelt" carries
             # two ("rueck" and "haelt"), and stopping at one leaves half a
@@ -330,9 +327,16 @@ def substituted_words(text: str) -> list[tuple[str, str]]:
             # full pass over a real set.
             if stem in suggestion:
                 suggestion = suggestion.replace(stem, correct)
+        if word.isupper():
+            # In capitals the sharp s is regularly written SS
+            # ("AUSSCHLIESSLICH"), so only the umlaut half of a correction
+            # applies to a shouted word.
+            suggestion = suggestion.replace("\u00df", "ss")
         if suggestion == lowered:
             continue
-        if word[:1].isupper():
+        if word.isupper():
+            suggestion = suggestion.upper()
+        elif word[:1].isupper():
             suggestion = suggestion[:1].upper() + suggestion[1:]
         findings.append((word, suggestion))
     return findings
@@ -374,7 +378,15 @@ def prose_segments(path: str, text: str) -> list[tuple[int, str]]:
             segments.append((line_no, _outside_fences(value)))
         return segments
     if path.endswith(".md"):
-        return [(1, _outside_fences(text))]
+        segments = []
+        in_fence = False
+        for number, line in enumerate(text.splitlines(), start=1):
+            if line.lstrip().startswith("```"):
+                in_fence = not in_fence
+                continue
+            if not in_fence:
+                segments.append((number, line))
+        return segments
     return list(enumerate(text.splitlines(), start=1))
 
 

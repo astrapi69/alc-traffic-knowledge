@@ -109,11 +109,13 @@ def test_non_ascii_survives_as_real_utf8(tmp_path: Path) -> None:
     assert "ä" in raw_text
     assert "\\u00fc" not in raw_text
     assert "\\u00e4" not in raw_text
-    # A known lesson phrase must keep its umlaut, never an ue-substitution.
-    # (Plain "gewaehren" DOES occur in the source as the ASCII card id
-    # "vorfahrt-gewaehren", so assert on the prose phrase, not the token.)
+    # A known lesson phrase must keep its umlaut, never an ae-substitution.
+    # (The substituted word DOES occur in the source as the ASCII card id
+    # `vorfahrt-gewaehren`, so assert on the prose phrase, not the token.)
+    # The negative control is derived from the correct phrase rather than
+    # spelled out, so the prose gate does not read it as a misspelling.
     assert "Vorfahrt gewähren" in raw_text
-    assert "Vorfahrt gewaehren" not in raw_text
+    assert "Vorfahrt gewähren".replace("ä", "ae") not in raw_text
 
 
 def test_yaml_reparse_content_equals_source_lessons(tmp_path: Path) -> None:

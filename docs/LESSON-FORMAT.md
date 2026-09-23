@@ -44,8 +44,8 @@ manifest.yaml            # root: lists every set
   "id": "01-greetings",            // kebab-case; match the filename (without .json)
   "title": "Greetings",            // shown in the app
   "description": "…",              // one or two sentences
-  "target_language": "es",         // ISO 639-1 — the language being LEARNED
-  "source_language": "en",         // ISO 639-1 — the explanation language
+  "target_language": "es",         // ISO 639-1, the language being LEARNED
+  "source_language": "en",         // ISO 639-1, the explanation language
   "domain": "language",            // "language" (default) | "psychology" | "programming" | …
   "estimated_minutes": 10,         // integer
   "cards": [ … ],                  // see below

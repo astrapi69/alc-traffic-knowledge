@@ -6,7 +6,7 @@ authored hint stating a letter/character count ("Vier Buchstaben.") is
 redundant at best - and drifts into visible contradiction when the content
 changes (the DSGVO cloze said "Vier Buchstaben." for a five-letter answer).
 
-Scope: the rule covers ``exercise.hint`` and ``exercise.blanks[].hint`` —
+Scope: the rule covers ``exercise.hint`` and ``exercise.blanks[].hint`` -
 the surfaces the app pairs with its automatic length hint. Card hints are
 deliberately NOT covered: a character count there can be legitimate teaching
 content (e.g. the python-basics slicing card explains that ``s[0:3]``
