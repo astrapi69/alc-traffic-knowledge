@@ -48,7 +48,7 @@ jobs:
           set -e
           cat /tmp/prose.txt
           {
-            echo "### Prose gate (non-blocking until the cleanup PR)"
+            echo "### Prose gate"
             echo
             echo "| file | findings |"
             echo "|---|---|"

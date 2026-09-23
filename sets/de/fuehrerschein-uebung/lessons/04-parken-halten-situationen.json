@@ -408,29 +408,30 @@
       }
     },
     {
-      "id": "ex-cl-rettungsgasse-mitte",
+      "id": "ex-cl-rettungsgasse-drei",
       "type": "exercise",
       "theory_ref": "step-rettungsgasse",
-      "title": "Ausweichen auf dem mittleren Fahrstreifen",
+      "title": "Rettungsgasse auf drei Fahrstreifen",
       "exercise": {
-        "id": "ex-cl-rettungsgasse-mitte",
-        "stable_id": "ex-mue6cpnp001xr",
+        "id": "ex-cl-rettungsgasse-drei",
+        "stable_id": "ex-mue6p304001pr",
         "type": "cloze",
         "cloze_mode": "select",
-        "prompt": "Ergänze die Richtung, in die dieses Fahrzeug ausweicht.",
+        "prompt": "Ergänze, neben welchem Fahrstreifen die Gasse entsteht.",
         "card_ids": [
           "rettungsgasse"
         ],
-        "sentence": "Auf einer dreispurigen Autobahn stockt der Verkehr; ein Auto auf dem mittleren Fahrstreifen weicht nach ___ aus.",
+        "sentence": "Auf einer dreispurigen Autobahn stockt der Verkehr; die Rettungsgasse entsteht rechts neben dem ___ Fahrstreifen.",
         "blanks": [
           {
             "accept": [
-              "rechts"
-            ], "stable_id": "blank-mue6cpnp002jt"
+              "linken"
+            ], "stable_id": "blank-mue6p304002pm"
           }
         ],
         "distractors": [
-          "links"
+          "mittleren",
+          "rechten"
         ],
         "hint": "Überlege, welcher Fahrstreifen als einziger anders ausweicht als die übrigen."
       }

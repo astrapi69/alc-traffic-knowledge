@@ -11,7 +11,7 @@
       "id": "grenze-05",
       "stable_id": "card-ms9411db011z7",
       "front": "0,5-Promille-Grenze",
-      "back": "Ab 0,5 ‰ handelt man in der Regel ordnungswidrig, mit Bußgeld, Punkten und Fahrverbot.",
+      "back": "Ab 0,5 ‰ handelt man in der Regel ordnungswidrig (Bußgeld, Punkte, Fahrverbot).",
       "notes": "Die allgemein bekannte Grenze für erfahrene Fahrer.",
       "media_type": "text",
       "difficulty": 2,
@@ -459,7 +459,7 @@
       "id": "ex-cl-grenze-lea",
       "type": "exercise",
       "theory_ref": "intro",
-      "title": "Grenze für eine Fahranfängerin",
+      "title": "Promillegrenze für Lea",
       "exercise": {
         "id": "ex-cl-grenze-lea",
         "stable_id": "ex-mue6bzkp00rmw",
@@ -475,7 +475,8 @@
           {
             "accept": [
               "0,0"
-            ], "stable_id": "blank-mue6bzkp00sie"
+            ],
+            "stable_id": "blank-mue6bzkp00sie"
           }
         ],
         "distractors": [

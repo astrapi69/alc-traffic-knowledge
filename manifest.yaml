@@ -36,8 +36,9 @@ sets:
       Fakten der deutschen StVO: Vorfahrt, Geschwindigkeit/Abstand,
       Alkohol/Fahrtüchtigkeit, Parken/Halten sowie Rettungsgasse und
       Einsatzfahrzeuge. Keine amtlichen Fragen oder Bilder, kein Anspruch
-      auf Prüfungsechtheit. Test-Set zum Festnageln der MC-Mechanik
-      (nativer multiple_choice-Typ, Schema v1.6).
+      auf Prüfungsechtheit. Test-Set zum Festnageln der Auswahl-Mechanik
+      (nativer multiple_choice-Typ, cloze multiselect und Lückentexte mit
+      Auswahl).
     tags:
       - knowledge
       - verkehr

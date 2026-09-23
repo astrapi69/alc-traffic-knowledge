@@ -460,7 +460,7 @@
       "id": "ex-cl-tacho-80",
       "type": "exercise",
       "theory_ref": "step-abstand",
-      "title": "Halber Tacho bei 80 km/h",
+      "title": "Abstand bei 80 km/h",
       "exercise": {
         "id": "ex-cl-tacho-80",
         "stable_id": "ex-mue6bzko00h5c",
@@ -475,7 +475,8 @@
           {
             "accept": [
               "40"
-            ], "stable_id": "blank-mue6bzko00ilv"
+            ],
+            "stable_id": "blank-mue6bzko00ilv"
           }
         ],
         "distractors": [
