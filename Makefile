@@ -40,7 +40,7 @@ PIP := $(VENV)/bin/pip
 ENGINE_PIN := $(shell cat schema/engine-version.txt)
 ENGINE_STAMP := node_modules/.engine-$(ENGINE_PIN)
 
-.PHONY: validate lint lint-warnings setup generate export export-anki audit clean help
+.PHONY: validate lint lint-warnings setup generate export export-anki audit clean help prose-check
 
 help:
 	@echo "make validate        - Inhalte pruefen (richtet sich beim ersten Mal selbst ein)"
@@ -79,6 +79,15 @@ $(ENGINE_STAMP):
 lint: $(ENGINE_STAMP)
 	node scripts/validate_with_engine.mjs --self-test
 	node scripts/validate_with_engine.mjs .
+
+# Prosa-Gate: Em-Dash, unsichtbare Zeichen und deutsche Wörter ohne ihre
+# Umlaute (ae/oe/ue/ss statt ä/ö/ü/ß) in allen getrackten Dateien.
+# Der Selbsttest läuft zuerst - ein Gate, das auf bekannt schlechte Eingabe
+# nicht anschlägt, ist kein Gate. Braucht nur Python 3 (keine Engine, kein
+# venv).
+prose-check:
+	@python3 scripts/check_prose.py --self-test
+	@python3 scripts/check_prose.py
 
 lint-warnings: $(ENGINE_STAMP)
 	node scripts/validate_with_engine.mjs --warnings .
