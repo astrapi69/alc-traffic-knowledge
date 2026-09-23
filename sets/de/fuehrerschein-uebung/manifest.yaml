@@ -1,19 +1,20 @@
-# Set-Manifest: Führerscheinprüfung (Übungsfragen) — deutschsprachig.
+# Set-Manifest: Führerscheinprüfung (Übungsfragen), deutschsprachig.
 #
 # Zweck (Test-Repo): der fokussierte Ende-zu-Ende-Test der Multiple-Choice-
-# Mechanik. Das Set besteht AUSSCHLIESSLICH aus MC-Aufgaben — im Schema
-# umgesetzt als cloze select-mode (eine richtige Antwort + plausible
-# distractors) sowie, seit Engine 0.8.1 (Schema v1.6), als nativer
-# multiple_choice-Typ (options mit correct-Flag, optional multiple: true).
-# Lektion 05 ist die Referenz-Lektion für den nativen Typ; einen anderen
-# Aufgabentyp als MC gibt es bewusst nicht.
+# Mechanik. Das Set besteht AUSSCHLIESSLICH aus MC-Aufgaben, alle im nativen
+# multiple_choice-Typ (options mit correct-Flag, optional multiple: true;
+# seit Engine 0.8.1, Schema v1.6). Bis Version 1.0.0 war der größte Teil als
+# cloze select-mode mit leerem Trägersatz kodiert, die Umgehung aus der Zeit
+# vor dem nativen Typ; seit Engine 0.28.0 meldet W-CLOZE-NO-CARRIER genau
+# diese Form, und Version 1.1.0 hat sie auf den Typ umgestellt, der sie ist.
+# Einen anderen Aufgabentyp als MC gibt es bewusst nicht.
 #
 # Urheberrecht: Der amtliche Fragenkatalog (TÜV/DEKRA) und dessen Bildtafeln
 # sind geschützt. Dieses Set übernimmt KEINE amtlichen Prüfungsfragen (weder
 # wörtlich noch paraphrasiert) und KEINE amtlichen Bilder. Es sind eigene,
 # frei formulierte Übungsfragen über freie Fakten der deutschen StVO
 # (Vorfahrt, Geschwindigkeit/Abstand, Promillegrenzen, Parken/Halten).
-# "Übungsfragen im Stil einer Führerscheinprüfung, Beispiel Deutschland" —
+# "Übungsfragen im Stil einer Führerscheinprüfung, Beispiel Deutschland":
 # KEIN Anspruch auf Prüfungsechtheit.
 #
 # Sachthema-Set (domain: traffic-knowledge): Material und Erklärung sind beide auf
@@ -23,7 +24,7 @@ schema_version: '1.3'
 name: Führerscheinprüfung (Übungsfragen)
 description: >-
   Eigene, frei formulierte Übungsfragen im Stil einer Führerscheinprüfung
-  (Beispiel Deutschland) — ausschließlich Multiple-Choice. Fünf Lektionen zu
+  (Beispiel Deutschland), ausschließlich Multiple-Choice. Fünf Lektionen zu
   Vorfahrt und Kreuzungen, Geschwindigkeit und Abstand, Alkohol/Drogen und
   Fahrtüchtigkeit, Parken/Halten sowie Rettungsgasse und Einsatzfahrzeugen.
   Kein amtlicher Fragenkatalog, keine amtlichen Bilder, kein Anspruch auf
@@ -37,15 +38,15 @@ sets:
     domain: traffic-knowledge
     level: A2
     path: sets/de/fuehrerschein-uebung
-    version: '1.0.0'
+    version: '1.1.0'
     lesson_count: 5
     description: >-
-      Fünf Lektionen mit ausschließlich Multiple-Choice-Übungen (im Schema
-      als cloze select-mode und als nativer multiple_choice-Typ) rund um
+      Fünf Lektionen mit ausschließlich Multiple-Choice-Übungen (nativer
+      multiple_choice-Typ) rund um
       freie Fakten der deutschen StVO: Vorfahrt und Kreuzungen,
       Geschwindigkeit und Abstand, Alkohol/Drogen und Fahrtüchtigkeit,
-      Parken/Halten sowie Rettungsgasse und Einsatzfahrzeuge (Referenz für
-      den nativen Typ, Schema v1.6). Eigene Formulierungen — keine
+      Parken/Halten sowie Rettungsgasse und Einsatzfahrzeuge. Eigene
+      Formulierungen, keine
       amtlichen Prüfungsfragen, keine Bilder, kein Anspruch auf
       Prüfungsechtheit. Test-Set zum Festnageln der MC-Mechanik.
     tags:
@@ -54,6 +55,46 @@ sets:
       - multiple-choice
       - test
 metadata:
+  # Version 1.1.0 hat 33 Übungen von cloze (select, ohne Trägersatz) auf den
+  # nativen multiple_choice-Typ umgestellt. Eine stable_id darf ihre Art nicht
+  # wechseln (Stabilitätsregel V3), also sind die alten Ids hier ausgemustert
+  # und die Übungen tragen neue. Die App archiviert den Fortschritt hinter den
+  # alten Ids (adaptive-learner#2188). Die Liste wächst nur, V5 verbietet das
+  # Zurücknehmen.
+  retired_ids:
+    - ex-ms9411d9009kl
+    - ex-ms9411d900axv
+    - ex-ms9411d900bgg
+    - ex-ms9411d900c52
+    - ex-ms9411d900dcn
+    - ex-ms9411d900enk
+    - ex-ms9411d900fmo
+    - ex-ms9411d900gc6
+    - ex-ms9411da00ra5
+    - ex-ms9411da00sk1
+    - ex-ms9411da00tq3
+    - ex-ms9411da00uh4
+    - ex-ms9411da00voj
+    - ex-ms9411da00wlp
+    - ex-ms9411da00x90
+    - ex-ms9411da00ys3
+    - ex-ms9411db0194n
+    - ex-ms9411db01anw
+    - ex-ms9411db01bn3
+    - ex-ms9411db01ck7
+    - ex-ms9411db01drp
+    - ex-ms9411db01evs
+    - ex-ms9411db01fie
+    - ex-ms9411db01gzh
+    - ex-ms9411dc01q3a
+    - ex-ms9411dc01riu
+    - ex-ms9411dc01slq
+    - ex-ms9411dc01tbo
+    - ex-ms9411dc01ucc
+    - ex-ms9411dc01vz3
+    - ex-ms9411dc01wfr
+    - ex-ms9411dd027yx
+    - ex-ms9411dd028te
   author: Asterios Raptis
   license: CC-BY-SA-4.0
   lessons:
