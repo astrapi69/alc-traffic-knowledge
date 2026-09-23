@@ -106,7 +106,7 @@ def build_answer_lines(prompt: str, payload: dict[str, Any]) -> list[str]:
     """The teacher answer sheet: correct answers, points, partial-credit note,
     pass threshold."""
     total = sum(float(q.get("points", 0)) for q in payload.get("questions", []))
-    lines: list[str] = ["LOESUNGSBLATT"]
+    lines: list[str] = ["Lösungsblatt"]
     if prompt.strip():
         lines.append(prompt.strip())
     lines += _threshold_line(payload)
@@ -146,7 +146,7 @@ def _write_pdf(lines: list[str], title: str, out_path: Path) -> None:
         if line == "":
             pdf.ln(5)
             continue
-        style = "B" if line in ("TEST", "LOESUNGSBLATT") else ""
+        style = "B" if line in ("TEST", "Lösungsblatt") else ""
         pdf.set_font("Helvetica", style=style, size=14 if style else 12)
         # Core fonts are latin-1; keep the demo robust for other scripts. Return
         # the cursor to the left margin after each line so the next line has the
@@ -179,7 +179,7 @@ def main(argv: list[str] | None = None) -> int:
     test_path = args.out_dir / f"{stem}-test.pdf"
     answer_path = args.out_dir / f"{stem}-loesung.pdf"
     _write_pdf(build_test_lines(prompt, payload), f"{stem} - Test", test_path)
-    _write_pdf(build_answer_lines(prompt, payload), f"{stem} - Loesung", answer_path)
+    _write_pdf(build_answer_lines(prompt, payload), f"{stem} - Lösung", answer_path)
     print(f"wrote {test_path}")
     print(f"wrote {answer_path}")
     return 0

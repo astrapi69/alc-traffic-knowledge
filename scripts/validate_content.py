@@ -6,7 +6,7 @@ runs the same checks client-side before a community share). The
 **structural** definition of a lesson is canonical: the JSON Schema under
 ``schema/lesson.schema.json`` is MIRRORED from the pinned
 learn-content-engine release (source-of-truth chain: engine
-(canonical) → this mirror — see ``schema/README.md``) and this
+(canonical) → this mirror - see ``schema/README.md``) and this
 validator FOLLOWS it instead of re-implementing the field rules. It reads
 only the vendored mirror, so validation works fully offline.
 
@@ -25,7 +25,7 @@ What stays here (content-repo specifics the canonical schema does NOT cover):
     folder-name rule is relaxed for non-language domains).
   * Non-Latin source scripts: card backs use that script.
   * Distractor minimums for ``free_text`` / ``picture_choice`` and the
-    ``word_tiles`` ``accept_orderings`` permutation check — content-repo
+    ``word_tiles`` ``accept_orderings`` permutation check - content-repo
     quality rules that are not expressible in the JSON Schema.
 
 A set's ``domain`` (optional, default ``language``) selects which rules
@@ -80,7 +80,7 @@ def hint_states_answer_length(hint: object) -> bool:
 
     Matches a digit or German number word followed by "Buchstabe(n)"/"Zeichen"
     (plus the English "letter(s)"/"character(s)" forms and "-buchstabig"
-    adjectives). Applied to exercise-level and blank-level hints only — see
+    adjectives). Applied to exercise-level and blank-level hints only - see
     the note on ``HINT_LENGTH_PATTERN``.
     """
     return isinstance(hint, str) and bool(HINT_LENGTH_PATTERN.search(hint))
@@ -123,7 +123,7 @@ def _load_quality_rules() -> dict:
 LESSON_VALIDATOR = _load_lesson_schema()
 QUALITY = _load_quality_rules()
 
-# Quality minimums — read from the mirrored quality-rules.json (App-shared).
+# Quality minimums - read from the mirrored quality-rules.json (App-shared).
 MIN_EXERCISES = QUALITY["minExercisesPerLesson"]
 MIN_TYPES = QUALITY["minExerciseTypes"]
 MIN_THEORY = QUALITY["minTheorySteps"]
@@ -227,7 +227,7 @@ def lesson_shape_ok(lesson) -> bool:
 
     Parity twin of the app's ``validateLessonShape(lesson).ok``. Only the
     structural schema (fields, types, closed enums, length/range bounds,
-    ``additionalProperties: false``) is checked here — the content-repo's
+    ``additionalProperties: false``) is checked here - the content-repo's
     quality minimums and language-pair rules are a separate, disjoint layer.
     """
     return not lesson_shape_errors(lesson)
@@ -244,9 +244,9 @@ def validate_lesson_quality(lesson: dict, source: str, label: str, errors: list[
     if len(exercises) < MIN_EXERCISES:
         errors.append(f"{label}: {len(exercises)} exercises (need >= {MIN_EXERCISES})")
     # MIN_TYPES enforces exercise variety for normal (language-learning) sets.
-    # A DELIBERATE multiple-choice-only set — every exercise a cloze in
+    # A DELIBERATE multiple-choice-only set - every exercise a cloze in
     # ``select`` (single-answer, EXP-036 §4.3 / #890) or ``multiselect``
-    # ("select all that apply", #1195) mode — is a valid, intended artifact in
+    # ("select all that apply", #1195) mode - is a valid, intended artifact in
     # this MC-focused test repo, so it is exempt from the variety rule (it
     # would otherwise be blocked for having only the one "cloze" type). This is
     # a content-repo quality-layer relaxation only; the canonical

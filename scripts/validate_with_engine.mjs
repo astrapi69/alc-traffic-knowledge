@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Engine conformance gate: run learn-content-engine's validateLesson() /
- * validateManifest() over the WHOLE repo content — every lesson, the root
+ * validateManifest() over the WHOLE repo content - every lesson, the root
  * manifest and every per-set manifest.
  *
  * This is the semantic layer the structural CI (validate_content.py against
@@ -9,20 +9,20 @@
  * referential integrity of card_ids, multiselect disjointness, picture
  * "exactly one correct". The engine mirrors the app's model_validator rules,
  * so a green run here means the content is valid for EVERY consumer of the
- * pinned engine release — without any reference to the app.
+ * pinned engine release - without any reference to the app.
  *
  * Run via CI (.github/workflows/engine-validate.yml) after
  * `npm install learn-content-engine@$(cat schema/engine-version.txt)`.
  * Gate: zero errors.
  *
  * `--self-test` feeds known-bad lessons (one per semantic rule class) to
- * validateLesson and exits non-zero unless EVERY one is rejected — so a
+ * validateLesson and exits non-zero unless EVERY one is rejected - so a
  * silently toothless validator cannot masquerade as a green gate. CI runs
  * it before the real pass.
  *
  * `--warnings` also lists the author lints (W-*) that never block. It runs
  * through the SAME extension registry as the error gate, so ext: lessons are
- * validated instead of refused — `make lint-warnings` used to shell out to the
+ * validated instead of refused - `make lint-warnings` used to shell out to the
  * bare CLI (no registry) and died on ext content (content-test#71).
  */
 import { validateLesson, validateManifest } from "learn-content-engine";
@@ -290,7 +290,7 @@ function validateAll(repoRoot, { showWarnings = false } = {}) {
 
   const totalWarnings = warned.reduce((sum, w) => sum + w.warnings.length, 0);
   console.log(
-    `engine-validate: ${lessons} lesson(s), ${manifests} manifest(s) checked — ` +
+    `engine-validate: ${lessons} lesson(s), ${manifests} manifest(s) checked - ` +
       `${problems.length} file(s) with errors` +
       (showWarnings ? `, ${totalWarnings} warning(s)` : ""),
   );

@@ -599,7 +599,7 @@ def _report_next_steps(path: Path) -> None:
         print("Semantic engine gate: passed.", file=sys.stderr)
     print(
         "REVIEW BEFORE SHIPPING: read the lesson, and for a language you do not "
-        "speak natively, get a native-speaker review — no validator catches an "
+        "speak natively, get a native-speaker review - no validator catches an "
         "unnatural phrasing or a wrong romanization.",
         file=sys.stderr,
     )

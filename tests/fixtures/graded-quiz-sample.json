@@ -24,9 +24,9 @@
               "points": 2
             },
             {
-              "prompt": "Nenne ein Synonym fuer 'schnell'.",
+              "prompt": "Nenne ein Synonym für 'schnell'.",
               "type": "free_text",
-              "accept": ["rasch", "flink", "zuegig"],
+              "accept": ["rasch", "flink", "zügig"],
               "points": 3
             },
             {
