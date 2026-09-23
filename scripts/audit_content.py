@@ -18,7 +18,7 @@ table so they can be fixed:
     body, titles)
   * lessons missing in their set manifest, or set fields missing
 
-Exit code is always 0 — this is advisory. ``--strict`` makes it exit 1
+Exit code is always 0 - this is advisory. ``--strict`` makes it exit 1
 when any finding is reported (handy in CI once the tree is clean).
 """
 from __future__ import annotations
@@ -103,7 +103,7 @@ def audit_lesson(lesson: dict, label: str, findings: list[tuple]):
                     add(f"matching '{eid}' duplicate left '{left}'", "remove duplicate pair")
                 seen_left.add(left.lower())
                 # NB: we deliberately do NOT cross-check the pair's right side
-                # against the card gloss — matching exercises legitimately pair
+                # against the card gloss - matching exercises legitimately pair
                 # a word with its article / gender / category, not its dictionary
                 # translation, so such a check is all false positives.
         elif etype == "free_text":

@@ -1,4 +1,4 @@
-# Engine conformance gate — structural AND semantic validation.
+# Engine conformance gate - structural AND semantic validation.
 #
 # Runs learn-content-engine's validateLesson()/validateManifest() (at the
 # version pinned in schema/engine-version.txt) over the WHOLE repo

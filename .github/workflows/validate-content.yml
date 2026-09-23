@@ -8,7 +8,7 @@
 # mirror), the quality minimums are read from
 # schema/quality-rules.json, and the content-repo specifics
 # (language pair, directory structure, non-Latin scripts) stay in
-# the validator. Everything here reads only committed files — the
+# the validator. Everything here reads only committed files - the
 # validation itself works fully offline.
 name: Validate content
 

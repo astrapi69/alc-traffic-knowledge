@@ -69,10 +69,10 @@ def test_answer_sheet_reveals_correct_answers_and_points() -> None:
     prompt, payload = _load()
     lines = build_answer_lines(prompt, payload)
     joined = "\n".join(lines)
-    assert "LOESUNGSBLATT" in joined
+    assert "Lösungsblatt" in joined
     assert "1. Paris  (2 P.)" in joined
     assert "rasch" in joined  # free_text canonical answer
-    assert "auch: flink, zuegig" in joined  # further accepted answers
+    assert "auch: flink, zügig" in joined  # further accepted answers
     assert "2, 3" in joined  # both correct primes
     assert "[Mehrfachauswahl, Teilpunkte]" in joined  # partial-credit note on Q3
     assert "Bestehensschwelle: 60%" in joined

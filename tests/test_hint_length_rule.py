@@ -3,7 +3,7 @@
 
 The app shows the answer's length automatically (the system hint), so an
 authored hint stating a letter/character count ("Vier Buchstaben.") is
-redundant at best — and drifts into visible contradiction when the content
+redundant at best - and drifts into visible contradiction when the content
 changes (the DSGVO cloze said "Vier Buchstaben." for a five-letter answer).
 
 Scope: the rule covers ``exercise.hint`` and ``exercise.blanks[].hint`` —
@@ -108,7 +108,7 @@ def test_card_hint_with_character_count_is_not_flagged() -> None:
             "id": "c1",
             "front": "String-Slicing",
             "back": "Teilstring",
-            "hint": "Der stop-Index ist ausschließend — s[0:3] liefert 3 Zeichen, nicht 4.",
+            "hint": "Der stop-Index ist ausschließend - s[0:3] liefert 3 Zeichen, nicht 4.",
         }
     ]
     errors = quality_errors(lesson_with_exercise(cloze(), cards=cards))

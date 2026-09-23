@@ -20,19 +20,19 @@ test/starter repo unchanged. Per set it derives:
 
   * ``id``/``name``/``description`` from the root + set manifest
   * ``source_language`` / ``target_language`` / ``level`` / ``domain``
-  * ``lesson_count`` — lessons listed in the set manifest
-  * ``card_count`` — EXACT sum of ``cards[]`` over every lesson file
-  * ``tags``        — from the manifest, else ``[]``
-  * ``visibility``  — consumer-display hint (engine schema 1.8);
+  * ``lesson_count`` - lessons listed in the set manifest
+  * ``card_count`` - EXACT sum of ``cards[]`` over every lesson file
+  * ``tags`` - from the manifest, else ``[]``
+  * ``visibility`` - consumer-display hint (engine schema 1.8);
     absent or out-of-enum normalizes to ``"visible"``
   * ``review_status`` - three-state review standing (engine schema 1.9),
     derived from ORIGIN; absent or out-of-enum normalizes to ``"authored"``.
     Consumers derive "advertisable" as ``review_status != "generated"``
-  * ``ai_validated``— ``true`` if the set/lesson carries an
+  * ``ai_validated`` - ``true`` if the set/lesson carries an
     ``ai_validation`` block
-  * ``trust_level`` — from ``recommended-repos.json``, else ``1``
-  * ``book``        — from the manifest, else ``null``
-  * ``updated_at``  — ``git log -1 --format=%cI`` for the set directory
+  * ``trust_level`` - from ``recommended-repos.json``, else ``1``
+  * ``book`` - from the manifest, else ``null``
+  * ``updated_at`` - ``git log -1 --format=%cI`` for the set directory
 """
 from __future__ import annotations
 
@@ -378,10 +378,10 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.check:
         if existing is None:
-            print("search-index.json is missing — run generate_search_index.py", file=sys.stderr)
+            print("search-index.json is missing - run generate_search_index.py", file=sys.stderr)
             return 1
         if not unchanged:
-            print("search-index.json is stale — run generate_search_index.py", file=sys.stderr)
+            print("search-index.json is stale - run generate_search_index.py", file=sys.stderr)
             return 1
         print("search-index.json is up to date.")
         return 0
