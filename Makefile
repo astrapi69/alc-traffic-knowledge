@@ -46,6 +46,7 @@ help:
 	@echo "make validate        - Inhalte pruefen (richtet sich beim ersten Mal selbst ein)"
 	@echo "make lint            - Engine-Gate lokal (Selbsttest + alle Lektionen/Manifeste)"
 	@echo "make lint-warnings   - derselbe Lauf, zusätzlich mit Warnungen (W-*)"
+	@echo "make prose-check      - Em-Dash, unsichtbare Zeichen, fehlende Umlaute in allen Dateien"
 	@echo "make setup           - lokale Umgebung anlegen"
 	@echo "make generate        - KI-Aufgaben generieren (API-Schluessel noetig; ARGS=\"--topic ...\")"
 	@echo "make export          - Set fuer KI-Review exportieren (ARGS=\"<slug> [--split-size N] ...\")"

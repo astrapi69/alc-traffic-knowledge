@@ -233,3 +233,46 @@ def test_an_inline_example_is_code_when_it_declares_a_language():
     code_scanned = " ".join(s for _, s in check_prose.prose_segments("l.json", code_example))
     assert "laeuft weg" in prose_scanned
     assert "const laeuft" not in code_scanned
+
+
+# --- machine strings stay ASCII on purpose ------------------------------------
+
+
+def test_lowercase_technical_tokens_are_not_prose():
+    # Slugs, paths, file names, snake_case, URLs, repository names: the repos
+    # keep them ASCII deliberately, so the gate must not demand umlauts there.
+    for machine_string in (
+        "ex-wo-laeuft-was",
+        "sets/de/fuehrerschein-uebung",
+        "check_fuer_x.py",
+        "https://example.org/ueber",
+        "alc-die-waehrung-des-geistes",
+    ):
+        assert check_prose.substituted_words(machine_string) == [], machine_string
+
+
+def test_a_sentence_final_period_does_not_hide_a_word():
+    assert [w for w, _ in check_prose.substituted_words("Das ist fuer.")] == ["fuer"]
+
+
+def test_a_capitalised_hyphen_compound_is_prose():
+    assert [w for w, _ in check_prose.substituted_words("Der Rueckgabe-Wert")] == ["Rueckgabe"]
+
+
+def test_inline_code_spans_are_not_prose():
+    assert check_prose.substituted_words("nutze `onAendern` hier") == []
+    assert check_prose.substituted_words("siehe ``zurueck`` bitte") == []
+    assert [w for w, _ in check_prose.substituted_words("`x` ist fuer dich")] == ["fuer"]
+
+
+def test_the_generated_search_index_is_out_of_scope():
+    assert "search-index.json" in check_prose.EXCLUDED_FILES
+
+
+def test_listing_is_nul_separated_so_non_ascii_paths_are_read():
+    # Without -z git quotes a non-ASCII path and the quoted string names no
+    # file, so the gate would skip it and still report clean.
+    import inspect
+
+    source = inspect.getsource(check_prose.tracked_files)
+    assert '"-z"' in source

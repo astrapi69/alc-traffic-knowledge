@@ -45,7 +45,7 @@ jobs:
         continue-on-error: true
         run: |
           set +e
-          python scripts/check_prose.py > /tmp/prose.txt 2>&1
+          python -u scripts/check_prose.py > /tmp/prose.txt 2>&1
           status=$?
           set -e
           cat /tmp/prose.txt
@@ -54,10 +54,13 @@ jobs:
             echo
             echo "| file | findings |"
             echo "|---|---|"
-            grep -E '^[^ ].*:[0-9]+: ' /tmp/prose.txt | cut -d: -f1 | sort | uniq -c | sort -rn | head -50 \
-              | awk '{print "| `" $2 "` | " $1 " |"}' || true
+            grep -E '^[^ ].*:[0-9]+: ' /tmp/prose.txt | cut -d: -f1 | sort | uniq -c | sort -rn > /tmp/prose-files.txt || true
+            head -50 /tmp/prose-files.txt | awk '{print "| `" $2 "` | " $1 " |"}'
+            # No silent cap: say how many files the table leaves out.
+            more=$(( $(wc -l < /tmp/prose-files.txt) - 50 ))
+            if [ "$more" -gt 0 ]; then echo "| ... and $more more file(s) | |"; fi
             echo
-            tail -1 /tmp/prose.txt
+            grep -E '^(PROSE GATE|prose gate):' /tmp/prose.txt || true
           } >> "$GITHUB_STEP_SUMMARY"
           exit $status
       - name: Validate content tree
