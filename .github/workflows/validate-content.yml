@@ -33,8 +33,8 @@ jobs:
       - name: Install validator dependencies
         run: pip install "pyyaml>=6,<7" "jsonschema>=4,<5" "pytest>=8,<9" regex "genanki>=0.13,<0.14"
       - name: Prose gate self-test
-        # Blocking even while the backlog below is open: a gate that does not
-        # fire on known-bad input is broken, backlog or not.
+        # Blocking always: a gate that does not fire on known-bad input is
+        # broken.
         run: python scripts/check_prose.py --self-test
       - name: Prose gate (em dash, invisible characters, substituted umlauts)
         # Blocking since the cleanup PR worked this repository's backlog off

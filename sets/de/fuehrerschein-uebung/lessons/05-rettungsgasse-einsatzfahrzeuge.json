@@ -1,7 +1,7 @@
 {
   "id": "05-rettungsgasse-einsatzfahrzeuge",
   "title": "Rettungsgasse und Einsatzfahrzeuge",
-  "description": "Übungsfragen im Stil einer Führerscheinprüfung (Beispiel Deutschland): Rettungsgasse, Blaulicht mit Einsatzhorn und Busse an Haltestellen. Referenz-Lektion für den nativen multiple_choice-Typ (Schema v1.6): zwei Single-Choice-Aufgaben, eine Mehrfachauswahl (multiple: true) und zwei klassische cloze-select-Fragen. Eigene Formulierungen, keine amtlichen Fragen.",
+  "description": "Übungsfragen im Stil einer Führerscheinprüfung (Beispiel Deutschland): Rettungsgasse, Blaulicht mit Einsatzhorn und Busse an Haltestellen. Referenz-Lektion für den nativen multiple_choice-Typ (Schema v1.6): vier Single-Choice-Aufgaben und eine Mehrfachauswahl (multiple: true). Eigene Formulierungen, keine amtlichen Fragen.",
   "target_language": "de",
   "source_language": "de",
   "domain": "knowledge",
@@ -97,20 +97,16 @@
         "options": [
           {
             "text": "Zwischen dem linken und dem mittleren Fahrstreifen",
-            "correct": true,
-            "stable_id": "opt-mue657kl03hrk"
+            "correct": true
           },
           {
-            "text": "Zwischen dem mittleren und dem rechten Fahrstreifen",
-            "stable_id": "opt-mue657kl03i1h"
+            "text": "Zwischen dem mittleren und dem rechten Fahrstreifen"
           },
           {
-            "text": "Auf dem Seitenstreifen",
-            "stable_id": "opt-mue657kl03j1z"
+            "text": "Auf dem Seitenstreifen"
           },
           {
-            "text": "Erst kurz vor der Unfallstelle",
-            "stable_id": "opt-mue657kl03ke9"
+            "text": "Erst kurz vor der Unfallstelle"
           }
         ],
         "hint": "Immer rechts neben dem linken Fahrstreifen."
@@ -132,20 +128,16 @@
         "options": [
           {
             "text": "Sobald der Verkehr stockt",
-            "correct": true,
-            "stable_id": "opt-mue657kl03l7z"
+            "correct": true
           },
           {
-            "text": "Erst wenn ein Einsatzfahrzeug sichtbar ist",
-            "stable_id": "opt-mue657kl03mwy"
+            "text": "Erst wenn ein Einsatzfahrzeug sichtbar ist"
           },
           {
-            "text": "Nur bei einem Unfall mit Verletzten",
-            "stable_id": "opt-mue657kl03nqg"
+            "text": "Nur bei einem Unfall mit Verletzten"
           },
           {
-            "text": "Nur bei Dunkelheit und schlechter Sicht",
-            "stable_id": "opt-mue657kl03of7"
+            "text": "Nur bei Dunkelheit und schlechter Sicht"
           }
         ],
         "hint": "Im stehenden Stau ist es zu spät."
@@ -169,21 +161,17 @@
         "options": [
           {
             "text": "Sie entsteht zwischen dem linken und dem unmittelbar rechts daneben liegenden Fahrstreifen",
-            "correct": true,
-            "stable_id": "opt-mue657kl03p3d"
+            "correct": true
           },
           {
             "text": "Unerlaubtes Befahren kann Bußgeld, Punkte und ein Fahrverbot kosten",
-            "correct": true,
-            "stable_id": "opt-mue657kl03qe6"
+            "correct": true
           },
           {
-            "text": "Sie wird erst gebildet, wenn ein Einsatzfahrzeug hupt",
-            "stable_id": "opt-mue657kl03r72"
+            "text": "Sie wird erst gebildet, wenn ein Einsatzfahrzeug hupt"
           },
           {
-            "text": "Auf zweispurigen Autobahnen ist keine Rettungsgasse nötig",
-            "stable_id": "opt-mue657kl03sfo"
+            "text": "Auf zweispurigen Autobahnen ist keine Rettungsgasse nötig"
           }
         ],
         "hint": "Zwei Aussagen sind richtig."
