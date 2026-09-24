@@ -8,7 +8,7 @@ multi-select, an optional percentage ``pass_threshold``) and renders two PDFs:
 
   * ``<id>-test.pdf``     - the question paper for students (no answers shown,
                             blank checkboxes / answer lines, points per question).
-  * ``<id>-loesung.pdf``  - the answer sheet for the teacher (correct answers,
+  * ``<id>-lösung.pdf``  - the answer sheet for the teacher (correct answers,
                             points, partial-credit note, pass threshold).
 
 This is a CONSUMER tool, not part of the engine: the engine validates and
@@ -177,7 +177,7 @@ def main(argv: list[str] | None = None) -> int:
     args.out_dir.mkdir(parents=True, exist_ok=True)
     stem = str(lesson.get("id", args.lesson.stem))
     test_path = args.out_dir / f"{stem}-test.pdf"
-    answer_path = args.out_dir / f"{stem}-loesung.pdf"
+    answer_path = args.out_dir / f"{stem}-lösung.pdf"
     _write_pdf(build_test_lines(prompt, payload), f"{stem} - Test", test_path)
     _write_pdf(build_answer_lines(prompt, payload), f"{stem} - Lösung", answer_path)
     print(f"wrote {test_path}")

@@ -1,6 +1,6 @@
 # Makefile für dein Adaptive-Learner-Content-Repo.
 #
-# Ein Befehl genuegt zum Loslegen:
+# Ein Befehl genügt zum Loslegen:
 #
 #     make validate        Prüft deine Inhalte (legt beim ersten Mal automatisch
 #                          eine lokale Python-Umgebung an, du musst nichts installieren).
@@ -40,7 +40,7 @@ PIP := $(VENV)/bin/pip
 ENGINE_PIN := $(shell cat schema/engine-version.txt)
 ENGINE_STAMP := node_modules/.engine-$(ENGINE_PIN)
 
-.PHONY: validate lint lint-warnings setup generate export export-anki audit clean help prose-check
+.PHONY: validate lint lint-warnings prose-check setup generate export export-anki audit clean help
 
 help:
 	@echo "make validate        - Inhalte prüfen (richtet sich beim ersten Mal selbst ein)"

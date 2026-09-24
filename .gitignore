@@ -18,3 +18,10 @@ node_modules/
 
 # export_set.py snapshots for AI review: read-only, never committed
 exports/
+
+# Editor and IDE settings (IntelliJ, VS Code): per developer, never
+# committed. Without this, an IDE folder in a checkout shows up as
+# untracked and a `git add -A` commits it.
+.idea/
+*.iml
+.vscode/

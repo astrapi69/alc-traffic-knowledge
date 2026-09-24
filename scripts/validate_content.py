@@ -64,9 +64,19 @@ ISO_639_1 = re.compile(r"^[a-z]{2}$")
 # content (e.g. explaining that ``s[0:3]`` yields 3 characters). Compounds
 # like "Leerzeichen" do not match (no word boundary inside the compound),
 # so indentation advice passes.
+#
+# The count words also cover the English number words (one to twelve;
+# hyphenated adjectives like "five-letter" match via the ``[-\s]+`` joiner)
+# and the single-character adjectives ("ein einzelnes Zeichen", "a single
+# character" state answer length 1), adaptive-learner-content#102. Compounds
+# still pass: "Ein einzelner Kleinbuchstabe" conveys CASE, which the system
+# hint does not show, and "the letter she wrote" has no count word before the
+# noun.
 _HINT_COUNT_WORDS = (
     r"\d+|ein(?:e[nmrs]?)?|zwei|drei|vier|f(?:ü|ue)nf|sechs|sieben|acht|neun"
     r"|zehn|elf|zw(?:ö|oe)lf"
+    r"|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve"
+    r"|einzeln\w*|single"
 )
 HINT_LENGTH_PATTERN = re.compile(
     rf"\b(?:{_HINT_COUNT_WORDS})[-\s]+(?:buchstaben?|zeichen|letters?|characters?)\b"
@@ -78,10 +88,11 @@ HINT_LENGTH_PATTERN = re.compile(
 def hint_states_answer_length(hint: object) -> bool:
     """True when an authored hint states the answer's letter/character count.
 
-    Matches a digit or German number word followed by "Buchstabe(n)"/"Zeichen"
-    (plus the English "letter(s)"/"character(s)" forms and "-buchstabig"
-    adjectives). Applied to exercise-level and blank-level hints only - see
-    the note on ``HINT_LENGTH_PATTERN``.
+    Matches a digit, a German or English number word, or a single-character
+    adjective ("einzeln..."/"single") followed by "Buchstabe(n)"/"Zeichen"/
+    "letter(s)"/"character(s)" (plus the "-buchstabig" adjectives). Applied to
+    exercise-level and blank-level hints only - see the note on
+    ``HINT_LENGTH_PATTERN``.
     """
     return isinstance(hint, str) and bool(HINT_LENGTH_PATTERN.search(hint))
 

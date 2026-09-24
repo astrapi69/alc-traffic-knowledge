@@ -9,8 +9,11 @@ from __future__ import annotations
 
 import json
 import importlib.util
+import os
 import sys
 from pathlib import Path
+
+import pytest
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location(
@@ -19,6 +22,11 @@ SPEC = importlib.util.spec_from_file_location(
 check_prose = importlib.util.module_from_spec(SPEC)
 sys.modules["check_prose"] = check_prose
 SPEC.loader.exec_module(check_prose)
+BUILD_SPEC = importlib.util.spec_from_file_location(
+    "build_umlaut_stems", REPO_ROOT / "scripts" / "build_umlaut_stems.py"
+)
+build_umlaut_stems = importlib.util.module_from_spec(BUILD_SPEC)
+BUILD_SPEC.loader.exec_module(build_umlaut_stems)
 
 
 EM_DASH = chr(0x2014)
@@ -90,7 +98,7 @@ def test_leaves_english_and_code_words_alone():
 
 
 def test_leaves_correct_german_alone():
-    correct = " ".join(check_prose.SUBSTITUTED_STEMS.values())
+    correct = "Die Abh\u00e4ngigkeit l\u00e4uft \u00fcber Zuverl\u00e4ssigkeit und Quellen, neue Klassen, dass"
     assert check_prose.substituted_words(correct) == []
 
 
@@ -133,16 +141,23 @@ def test_fenced_code_in_a_theory_body_is_out_of_scope():
 def test_the_gate_and_its_test_are_exempt_from_the_umlaut_check():
     # A list of misspellings has to contain them. The exemption is narrow and
     # pinned here so it cannot quietly widen.
-    assert check_prose.UMLAUT_EXEMPT == ("scripts/check_prose.py", "tests/test_check_prose.py")
+    assert check_prose.UMLAUT_EXEMPT == (
+        "scripts/check_prose.py",
+        "tests/test_check_prose.py",
+        "scripts/build_umlaut_stems.py",
+        "scripts/umlaut_stems.json",
+    )
     for path in check_prose.UMLAUT_EXEMPT:
         assert check_prose.substituted_words((REPO_ROOT / path).read_text(encoding="utf-8"))
 
 
-def test_every_stem_is_itself_a_substitution():
-    for stem, correct in check_prose.SUBSTITUTED_STEMS.items():
-        assert stem == stem.lower()
-        assert stem != correct
-        assert any(pair in stem for pair in ("ae", "oe", "ue", "ss"))
+def test_every_entry_is_itself_a_substitution():
+    umlauts = set("\u00e4\u00f6\u00fc\u00df")
+    for table in (check_prose.WHOLE_WORDS, check_prose.STEMS):
+        for form, correction in table.items():
+            assert form == form.lower() and form.isascii(), form
+            assert any(pair in form for pair in ("ae", "oe", "ue", "ss")), form
+            assert any(c in umlauts for c in correction), (form, correction)
 
 
 def test_camel_case_is_treated_as_code():
@@ -160,13 +175,22 @@ def test_an_all_caps_word_is_not_mistaken_for_an_identifier():
 
 
 def test_applies_every_matching_stem_in_one_word():
-    # "zurueckhaelt" carries two stems; stopping at the first leaves half a
+    # "zurueckfuehren" needs two stems; stopping at the first leaves half a
     # correction behind.
-    [(word, suggestion)] = check_prose.substituted_words("zurueckhaelt")
-    assert word == "zurueckhaelt"
-    assert suggestion == "zur\u00fcckh\u00e4lt"
+    [(word, suggestion)] = check_prose.substituted_words("zurueckfuehren")
+    assert word == "zurueckfuehren"
+    assert suggestion == "zur\u00fcckf\u00fchren"
+    # "oe" and "ss" of "Groessen" sit next to each other, so no stem can hold
+    # one without the other.
     [(_, gr)] = check_prose.substituted_words("Groessenaendern")
     assert gr == "Gr\u00f6\u00dfen\u00e4ndern"
+
+
+def test_keeps_a_letter_pair_the_correct_word_keeps():
+    [(_, suggestion)] = check_prose.substituted_words("Zuverlaessigkeit")
+    assert suggestion == "Zuverl\u00e4ssigkeit"
+    [(_, farmer)] = check_prose.substituted_words("Baeuerin")
+    assert farmer == "B\u00e4uerin"
 
 
 def test_id_fields_are_out_of_scope():
@@ -292,3 +316,62 @@ def test_markdown_findings_carry_their_line_number():
     segments = check_prose.prose_segments("doc.md", text)
     hits = [(n, w) for n, seg in segments for w, _ in check_prose.substituted_words(seg)]
     assert hits == [(7, "fuer")]
+
+
+# The umlaut data is generated from dictionaries (scripts/build_umlaut_stems.py)
+# and committed. These tests hold the COMMITTED data and the real gate against
+# the dictionaries, so a hand edit or a later generator change cannot quietly
+# trade precision for recall. They need wngerman, wamerican and wbritish; the
+# umlaut-data workflow installs them and sets REQUIRE_DICTIONARIES, which turns
+# a missing dictionary into a failure instead of a skip.
+DICTIONARY_FILES = {
+    "german": ["/usr/share/dict/ngerman"],
+    "english": ["/usr/share/dict/american-english", "/usr/share/dict/british-english"],
+}
+UMLAUT_TO_PAIR = {"\u00e4": "ae", "\u00f6": "oe", "\u00fc": "ue", "\u00df": "ss"}
+
+
+def _dictionary(language: str) -> list[str]:
+    paths = [Path(p) for p in DICTIONARY_FILES[language]]
+    missing = [str(p) for p in paths if not p.exists()]
+    if missing:
+        if os.environ.get("REQUIRE_DICTIONARIES"):
+            pytest.fail(f"dictionaries required but missing: {missing}")
+        pytest.skip(f"dictionaries not installed: {missing}")
+    return [
+        line.strip()
+        for p in paths
+        for line in p.read_text(encoding="utf-8", errors="ignore").splitlines()
+        if line.strip().isalpha()
+    ]
+
+
+def _without_umlauts(word: str) -> str:
+    return "".join(UMLAUT_TO_PAIR.get(c, c) for c in word)
+
+
+def test_dictionary_umlaut_words_are_found_and_corrected():
+    umlaut_words = [w.lower() for w in _dictionary("german") if any(c in UMLAUT_TO_PAIR for c in w.lower())]
+    flagged = corrected = 0
+    for word in umlaut_words:
+        findings = check_prose.substituted_words(_without_umlauts(word))
+        flagged += bool(findings)
+        corrected += bool(findings) and findings[0][1] == word
+    # Measured 2026-09-23: 98.2 % flagged, 98.1 % corrected completely.
+    assert flagged / len(umlaut_words) >= 0.97
+    assert corrected / len(umlaut_words) >= 0.97
+
+
+def test_no_correct_german_word_is_flagged():
+    flagged = [w for w in _dictionary("german") if check_prose.substituted_words(w)]
+    assert flagged == []
+
+
+def test_no_english_word_is_flagged_except_the_german_priority_words():
+    # "gross" and "weiss" are English (or a name) too, but in a German lesson
+    # they are substitutions; the generator lists them on purpose.
+    flagged = [
+        w for w in _dictionary("english")
+        if w.lower() not in build_umlaut_stems.GERMAN_PRIORITY and check_prose.substituted_words(w)
+    ]
+    assert flagged == []
