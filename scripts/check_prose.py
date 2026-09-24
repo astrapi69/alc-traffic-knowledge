@@ -20,13 +20,18 @@ byte-identical mirror of the pinned learn-content-engine release, held in
 place by the drift gate. Its typography is the engine's to fix, and editing
 it here would turn the drift gate red for a cosmetic reason.
 
-The second class is the umlaut written as a letter pair: "Abhaengigkeit" for
-"Abhängigkeit", "fuer" for "für", "heisst" for "heißt". It is legal text, it
+The second class is the umlaut written as a letter pair: "fuer" for "für",
+"Abhaengigkeit" for "Abhängigkeit", "heisst" for "heißt". It is legal text, it
 passes every structural check, and a whole lesson set can be authored that way
-without a single gate noticing - which is what happened once. It is checked
-against a STEM LIST, never against the letter pair: a pattern on "ue" fires on
-"value", "true", "queue" and "Sequence", so it would be switched off within a
-day.
+without a single gate noticing - which is what happened once. The check never
+matches the letter pair itself (a rule on "ue" fires on "value", "true" and
+"queue"). It uses scripts/umlaut_stems.json, built from dictionaries by
+scripts/build_umlaut_stems.py: short words as whole words, longer ones through
+stems that occur in no correct German word, no English word and none of the
+foreign-language material these repositories teach. It covers 98 percent of
+the German dictionary's umlaut words; tests/test_check_prose.py re-proves
+coverage and both false-alarm rates whenever the dictionaries are installed
+(the Umlaut data workflow installs them).
 
 Code is exempt from the umlaut check, and only from that one. An identifier is
 spelled by whoever wrote it: "laeuft" as a variable name is a choice, "laeuft"
@@ -34,9 +39,9 @@ in a sentence is a misspelling. In a lesson file that means the code-bearing
 fields (``passage``, ``sentence``, ``tokens``, ``code``) and the fenced blocks
 inside a theory body; in Markdown it means the fenced blocks.
 
-This file and its test are exempt from the umlaut check too, for the same
-reason the banned characters are built from code points: a list of
-misspellings has to contain them. ``tests/test_check_prose.py`` asserts the
+This file, its test, the stem generator and its data are exempt from the
+umlaut check too, for the same reason the banned characters are built from
+code points: a list of misspellings has to contain them. ``tests/test_check_prose.py`` asserts the
 exemption, so it cannot quietly widen.
 
 Usage:
@@ -71,178 +76,48 @@ EXCLUDED_PREFIXES = ("schema/",)
 # is a copy of a finding in a manifest, and the manifest is where it is fixed.
 EXCLUDED_FILES = {"search-index.json"}
 
-# German words whose umlaut or sharp s was written as a letter pair. Stems, not
-# whole words: German compounds are endless ("Abhaengigkeitsliste"), so a stem
-# catches the family. Every entry is a stem that occurs in German and in
-# essentially no English word - that is the reason this is a list and not a
-# pattern. Add an entry when one slips through; never add a stem that also
-# lives inside an English word.
-SUBSTITUTED_STEMS = {
-    "abhaeng": "abh\u00e4ng",
-    "aehnlich": "\u00e4hnlich",
-    "aender": "\u00e4nder",
-    "aerger": "\u00e4rger",
-    "aeusser": "\u00e4u\u00dfer",
-    "anhaelt": "anh\u00e4lt",
-    "aufloes": "aufl\u00f6s",
-    "aufraeum": "aufr\u00e4um",
-    "ausfuehr": "ausf\u00fchr",
-    "ausgeloest": "ausgel\u00f6st",
-    "ausmass": "ausma\u00df",
-    "aussen": "au\u00dfen",
-    "ausser": "au\u00dfer",
-    "behaelt": "beh\u00e4lt",
-    "bekaem": "bek\u00e4m",
-    "boes": "b\u00f6s",
-    "buendel": "b\u00fcndel",
-    "dafuer": "daf\u00fcr",
-    "darueber": "dar\u00fcber",
-    "duerf": "d\u00fcrf",
-    "einrueck": "einr\u00fcck",
-    "enthaelt": "enth\u00e4lt",
-    "enthuell": "enth\u00fcll",
-    "ergaenz": "erg\u00e4nz",
-    "erklaer": "erkl\u00e4r",
-    "faehig": "f\u00e4hig",
-    "faell": "f\u00e4ll",
-    "faellt": "f\u00e4llt",
-    "faeng": "f\u00e4ng",
-    "faerb": "f\u00e4rb",
-    "fliess": "flie\u00df",
-    "fluess": "fl\u00fcss",
-    "frueh": "fr\u00fch",
-    "fueg": "f\u00fcg",
-    "fuehl": "f\u00fchl",
-    "fuehr": "f\u00fchr",
-    "fuell": "f\u00fcll",
-    "fuer": "f\u00fcr",
-    "fuess": "f\u00fc\u00df",
-    "gaeng": "g\u00e4ng",
-    "gemaess": "gem\u00e4\u00df",
-    "gewoehn": "gew\u00f6hn",
-    "glueck": "gl\u00fcck",
-    "groess": "gr\u00f6\u00df",
-    "gross": "gro\u00df",
-    "gruend": "gr\u00fcnd",
-    "gueltig": "g\u00fcltig",
-    "haelf": "h\u00e4lf",
-    "haelt": "h\u00e4lt",
-    "haeng": "h\u00e4ng",
-    "haeufig": "h\u00e4ufig",
-    "heiss": "hei\u00df",
-    "hoech": "h\u00f6ch",
-    "hoeh": "h\u00f6h",
-    "hoer": "h\u00f6r",
-    "itaet": "it\u00e4t",
-    "knoepf": "kn\u00f6pf",
-    "koenn": "k\u00f6nn",
-    "koerper": "k\u00f6rper",
-    "kuenftig": "k\u00fcnftig",
-    "kuerz": "k\u00fcrz",
-    "laedt": "l\u00e4dt",
-    "laeng": "l\u00e4ng",
-    "laesst": "l\u00e4sst",
-    "laeuf": "l\u00e4uf",
-    "loes": "l\u00f6s",
-    "luege": "l\u00fcge",
-    "maessig": "m\u00e4\u00dfig",
-    "massnahm": "ma\u00dfnahm",
-    "moecht": "m\u00f6cht",
-    "moeglich": "m\u00f6glich",
-    "muend": "m\u00fcnd",
-    "muess": "m\u00fcss",
-    "naechst": "n\u00e4chst",
-    "naeh": "n\u00e4h",
-    "noetig": "n\u00f6tig",
-    "nuetz": "n\u00fctz",
-    "oberflaech": "oberfl\u00e4ch",
-    "oeffn": "\u00f6ffn",
-    "prioritaet": "priorit\u00e4t",
-    "pruef": "pr\u00fcf",
-    "raeum": "r\u00e4um",
-    "rueck": "r\u00fcck",
-    "saeh": "s\u00e4h",
-    "schlaegt": "schl\u00e4gt",
-    "schliess": "schlie\u00df",
-    "schluessel": "schl\u00fcssel",
-    "schoen": "sch\u00f6n",
-    "selbsttaetig": "selbstt\u00e4tig",
-    "spaeter": "sp\u00e4ter",
-    "spuer": "sp\u00fcr",
-    "staend": "st\u00e4nd",
-    "staetig": "st\u00e4tig",
-    "stoess": "st\u00f6\u00df",
-    "stoss": "sto\u00df",
-    "stueck": "st\u00fcck",
-    "stuend": "st\u00fcnd",
-    "taeglich": "t\u00e4glich",
-    "traeg": "tr\u00e4g",
-    "traegt": "tr\u00e4gt",
-    "ueber": "\u00fcber",
-    "uebrig": "\u00fcbrig",
-    "uebrigens": "\u00fcbrigens",
-    "uebung": "\u00fcbung",
-    "umhuell": "umh\u00fcll",
-    "unberuehrt": "unber\u00fchrt",
-    "veraender": "ver\u00e4nder",
-    "verfuegbar": "verf\u00fcgbar",
-    "vollstaend": "vollst\u00e4nd",
-    "waehl": "w\u00e4hl",
-    "waehr": "w\u00e4hr",
-    "waere": "w\u00e4re",
-    "waerts": "w\u00e4rts",
-    "wuensch": "w\u00fcnsch",
-    "wuerd": "w\u00fcrd",
-    "zaehl": "z\u00e4hl",
-    "zuegig": "z\u00fcgig",
-    "zusaetzlich": "zus\u00e4tzlich",
-    "zustaendig": "zust\u00e4ndig",
-}
+# The umlaut check's data, built from dictionaries (see the module docstring).
+UMLAUT_DATA = json.loads(Path(__file__).with_name("umlaut_stems.json").read_text(encoding="utf-8"))
+WHOLE_WORDS: dict[str, str] = UMLAUT_DATA["words"]
+STEMS: dict[str, str] = UMLAUT_DATA["stems"]
+UMLAUT_OF = {"ae": "\u00e4", "oe": "\u00f6", "ue": "\u00fc", "ss": "\u00df"}
 
-# Words a stem cannot reach without claiming an innocent one: "weiss" lives
-# inside "Hinweisschilder", so it is matched as a whole word instead. Swiss
-# spelling in a German set is the case this exists for.
-WHOLE_WORD_SUBSTITUTIONS = {
-    "weiss": "wei\u00df",
-    "weisst": "wei\u00dft",
-    "heisse": "hei\u00dfe",
-    "grosse": "gro\u00dfe",
-    "grosser": "gro\u00dfer",
-    "grosses": "gro\u00dfes",
-}
 
-# Words from the languages this content teaches that a German stem would
-# otherwise claim. Measured, not guessed: a run over every set in the
-# ecosystem produced exactly one family of false positives, the Spanish forms
-# around "ser/ir" and "fuerte", all caught by the stem "fuer". A new collision
-# belongs here together with the run that found it.
+def _pair_decisions(stem: str, correction: str) -> dict[int, str]:
+    """Offset of every letter pair in ``stem`` -> what the correct word makes
+    of it: the umlaut, or the pair itself ("ss" in "Zuverlässigkeit")."""
+    decisions: dict[int, str] = {}
+    i = j = 0
+    while i < len(stem):
+        pair = stem[i:i + 2]
+        if pair in UMLAUT_OF:
+            collapsed = correction[j] == UMLAUT_OF[pair]
+            decisions[i] = UMLAUT_OF[pair] if collapsed else pair
+            i, j = i + 2, j + (1 if collapsed else 2)
+        else:
+            i, j = i + 1, j + 1
+    return decisions
+
+
+STEM_DECISIONS = {stem: _pair_decisions(stem, correction) for stem, correction in STEMS.items()}
+STEM_SIZES = sorted({len(stem) for stem in STEMS}, reverse=True)
+
+# What the dictionaries cannot know. Measured on 2026-09-23 over the ten
+# content repositories: a surname (Ulric Neisser, alc-psychology) and two
+# Korean romanisations that sit in German prose of a Korean course. A new
+# collision belongs here together with the run that found it.
 FOREIGN_LOOKALIKES = {
-    "fuera",
-    "fueras",
-    "fueron",
-    "fuerte",
-    "fuertes",
-    "fuerza",
-    "fuerzas",
+    "neisser",
+    "jinaesseo",
+    "seonsaengnim",
 }
 
-# Fields of a lesson file that carry CODE rather than prose. The id fields
-# belong here for the same reason as an identifier in a sentence: an id is a
-# machine key, the app and the manifest look it up verbatim, and "correcting"
-# it silently renames the thing. It also happens to be how a slug stops being
-# ASCII without anyone noticing.
-CODE_KEYS = {
-    # code the learner reads
-    "passage",
-    "sentence",
-    "tokens",
-    "code",
-    "code_snippet",
-    "code_language",
-    "expected_output",
-    # machine keys: an id is looked up verbatim, so correcting its spelling
-    # renames the thing it names - and it is how a slug quietly stops being
-    # ASCII.
+# Fields of a lesson file that hold machine keys, not words: an id is looked up
+# verbatim by the app and the manifest, so "correcting" its spelling silently
+# renames the thing it names - and it is how a slug stops being ASCII without
+# anyone noticing. Paths, URLs and enum-ish values are not sentences either.
+# The stem generator skips these fields too when it reads foreign words.
+MACHINE_KEYS = {
     "stable_id",
     "id",
     "theory_ref",
@@ -250,7 +125,6 @@ CODE_KEYS = {
     "review_lesson_id",
     "variation_of",
     "tags",
-    # paths, URLs and enum-ish values: not sentences
     "example_url",
     "audio",
     "image",
@@ -259,9 +133,26 @@ CODE_KEYS = {
     "media_type",
 }
 
+# Fields of a lesson file that carry CODE rather than prose: the code the
+# learner reads, and the machine keys.
+CODE_KEYS = {
+    "passage",
+    "sentence",
+    "tokens",
+    "code",
+    "code_snippet",
+    "code_language",
+    "expected_output",
+} | MACHINE_KEYS
+
 
 # This gate and its test hold the misspellings on purpose.
-UMLAUT_EXEMPT = ("scripts/check_prose.py", "tests/test_check_prose.py")
+UMLAUT_EXEMPT = (
+    "scripts/check_prose.py",
+    "tests/test_check_prose.py",
+    "scripts/build_umlaut_stems.py",
+    "scripts/umlaut_stems.json",
+)
 
 # A run of word characters joined by internal separators: a slug
 # ("fuehrerschein-uebung"), a path ("sets/de/..."), a file name, a snake_case
@@ -304,8 +195,36 @@ def findings_in(text: str) -> list[tuple[int, str, str]]:
     return findings
 
 
+def _stem_corrected(lowered: str) -> str:
+    """``lowered`` with every letter pair a stem decides on replaced. Stems are
+    looked up in the original word and the longest one decides a pair, so the
+    result does not depend on the order stems are found in ("zurueckhaelt"
+    carries two, "groessen" two pairs in one stem)."""
+    if not any(pair in lowered for pair in UMLAUT_OF):
+        return lowered
+    matches = sorted(
+        ((size, start) for start in range(len(lowered)) for size in STEM_SIZES
+         if start + size <= len(lowered) and lowered[start:start + size] in STEMS),
+        reverse=True,
+    )
+    decisions: dict[int, str] = {}
+    for size, start in matches:
+        for offset, outcome in STEM_DECISIONS[lowered[start:start + size]].items():
+            decisions.setdefault(start + offset, outcome)
+    pieces, index = [], 0
+    while index < len(lowered):
+        if index in decisions:
+            pieces.append(decisions[index])
+            index += 2
+        else:
+            pieces.append(lowered[index])
+            index += 1
+    return "".join(pieces)
+
+
 def substituted_words(text: str) -> list[tuple[str, str]]:
-    """(word, correct spelling) for every ASCII-substituted German word."""
+    """(word, correct spelling) for every German word written without its
+    umlauts in ``text``."""
     findings = []
     text = INLINE_CODE.sub(" ", text)
     text = TECHNICAL_TOKEN.sub(
@@ -316,17 +235,10 @@ def substituted_words(text: str) -> list[tuple[str, str]]:
         lowered = word.lower()
         if lowered in FOREIGN_LOOKALIKES or _is_identifier(word):
             continue
-        if lowered in WHOLE_WORD_SUBSTITUTIONS:
-            suggestion = WHOLE_WORD_SUBSTITUTIONS[lowered]
+        if lowered in WHOLE_WORDS:
+            suggestion = WHOLE_WORDS[lowered]
         else:
-            suggestion = lowered
-        for stem, correct in SUBSTITUTED_STEMS.items():
-            # Every matching stem, not just the first: "zurueckhaelt" carries
-            # two ("rueck" and "haelt"), and stopping at one leaves half a
-            # correction behind - which is exactly how two words survived a
-            # full pass over a real set.
-            if stem in suggestion:
-                suggestion = suggestion.replace(stem, correct)
+            suggestion = _stem_corrected(lowered)
         if word.isupper():
             # In capitals the sharp s is regularly written SS
             # ("AUSSCHLIESSLICH"), so only the umlaut half of a correction
@@ -427,7 +339,7 @@ def self_test() -> int:
     if not substituted_words("Die Abhaengigkeitsliste laeuft"):
         print("self-test FAILED: substituted German not detected", file=sys.stderr)
         return 1
-    for clean in ("value true Sequence queue useState", "Die " + SUBSTITUTED_STEMS["abhaeng"] + "igkeit"):
+    for clean in ("value true Sequence queue useState", "Die Abh\u00e4ngigkeit l\u00e4uft \u00fcber Zuverl\u00e4ssigkeit"):
         if substituted_words(clean):
             print(f"self-test FAILED: flagged clean text {clean!r}", file=sys.stderr)
             return 1
@@ -436,8 +348,8 @@ def self_test() -> int:
         return 1
 
     print(
-        f"self-test passed: {len(BANNED)} banned characters and "
-        f"{len(SUBSTITUTED_STEMS)} substituted stems detected, clean text untouched"
+        f"self-test passed: {len(BANNED)} banned characters, "
+        f"{len(WHOLE_WORDS)} whole words and {len(STEMS)} stems loaded, clean text untouched"
     )
     return 0
 

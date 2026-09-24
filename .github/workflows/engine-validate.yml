@@ -44,6 +44,8 @@ jobs:
         # a newly pinned engine release becomes visible on its own: warnings
         # otherwise reach nobody unless someone runs `make lint-warnings` by
         # hand, so a pin bump changes a version number and nothing on screen.
+        # The findings go into the job summary, readable without opening the
+        # log.
         continue-on-error: true
         run: |
           # Keep the runner's exit code: it is 0 when it only finds warnings, so
@@ -54,14 +56,11 @@ jobs:
           status=$?
           set -e
           cat /tmp/lint-warnings.txt
+          # Per rule, and for every warning the repository decided to keep
+          # (.github/quality-state.json) the decision next to the number and a
+          # comparison of the recorded elements with the current ones.
+          python3 scripts/quality_state.py warnings /tmp/lint-warnings.txt >> "$GITHUB_STEP_SUMMARY"
           {
-            echo "### Author lints (warnings, non-blocking)"
-            echo
-            echo "| rule | count |"
-            echo "|---|---|"
-            grep -oE '\[W-[A-Z0-9-]+\]' /tmp/lint-warnings.txt \
-              | sort | uniq -c | sort -rn \
-              | awk '{gsub(/[][]/, "", $2); print "| `" $2 "` | " $1 " |"}' || true
             echo
             echo "<details><summary>full list</summary>"
             echo

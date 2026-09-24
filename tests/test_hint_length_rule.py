@@ -151,3 +151,85 @@ def test_compound_leerzeichen_is_not_flagged() -> None:
         lesson_with_exercise(cloze(hint="Einrückung: vier Leerzeichen pro Ebene."))
     )
     assert errors == []
+
+
+# --- 5. English count words + single-character adjectives (adaptive-learner-content#102)
+#
+# The #100 rule listed only German number words (+ digits), so English
+# length hints ("Two letters.") and the German "ein einzelnes Zeichen"
+# form (= answer length 1) slipped through the sweep.
+
+
+def test_english_letter_count_is_flagged() -> None:
+    errors = quality_errors(lesson_with_exercise(cloze(hint="Two letters.")))
+    assert errors, "an English letter-count hint must be reported"
+
+
+def test_english_count_inside_sentence_is_flagged() -> None:
+    errors = quality_errors(
+        lesson_with_exercise(
+            cloze(hint="Two short words; the first is two letters long.")
+        )
+    )
+    assert errors
+
+
+def test_english_count_with_content_tail_is_flagged() -> None:
+    errors = quality_errors(
+        lesson_with_exercise(cloze(hint="Four letters, starts with C."))
+    )
+    assert errors
+
+
+def test_english_hyphenated_count_adjective_is_flagged() -> None:
+    errors = quality_errors(lesson_with_exercise(cloze(hint="A five-letter word.")))
+    assert errors
+
+
+def test_single_character_form_is_flagged() -> None:
+    errors = quality_errors(
+        lesson_with_exercise(cloze(hint="A single character is enough."))
+    )
+    assert errors
+
+
+def test_einzelnes_zeichen_form_is_flagged() -> None:
+    errors = quality_errors(
+        lesson_with_exercise(cloze(hint="Ein einzelnes Zeichen, kein Doppelzeichen."))
+    )
+    assert errors
+
+
+def test_english_letter_as_mail_is_not_flagged() -> None:
+    """"letter" in the postal sense must pass (no count word before it)."""
+    errors = quality_errors(
+        lesson_with_exercise(cloze(hint="Object pronoun: *The letter she wrote…*"))
+    )
+    assert errors == []
+
+
+def test_compound_kleinbuchstabe_is_not_flagged() -> None:
+    """Compounds convey CASE, not length: the system hint shows no case."""
+    errors = quality_errors(
+        lesson_with_exercise(
+            cloze(hint="Ein einzelner Kleinbuchstabe, für 'general'.")
+        )
+    )
+    assert errors == []
+
+
+def test_first_letter_content_hint_is_not_flagged() -> None:
+    """Naming the FIRST letter is content, not a length statement."""
+    errors = quality_errors(
+        lesson_with_exercise(cloze(hint="Erster Buchstabe von 'write'."))
+    )
+    assert errors == []
+
+
+def test_capitalisation_advice_is_not_flagged() -> None:
+    errors = quality_errors(
+        lesson_with_exercise(
+            cloze(hint="Montag: im Englischen IMMER mit großem Anfangsbuchstaben.")
+        )
+    )
+    assert errors == []

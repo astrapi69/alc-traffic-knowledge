@@ -26,8 +26,8 @@ multiple files under ``exports/``, named
 ``<set-slug>-<lang>-<timestamp>-part<NN>-of-<MM>.<format>``).
 
 ``<set-slug>`` matches either a set id from the root manifest (e.g.
-``fuehrerschein-uebung-from-de``) or the basename of a set path (e.g.
-``fuehrerschein-uebung`` for ``sets/de/fuehrerschein-uebung``). When the
+``führerschein-übung-from-de``) or the basename of a set path (e.g.
+``führerschein-übung`` for ``sets/de/führerschein-übung``). When the
 same basename exists under several source-language directories,
 ``--lang`` (the ``sets/<lang>/`` directory, default ``de``) disambiguates.
 
@@ -37,7 +37,7 @@ order of the set manifest's ``metadata.lessons`` list):
 
     review_instructions: |
       <full content of docs/ai-review-prompt-template.md>
-    set: fuehrerschein-uebung
+    set: führerschein-übung
     language: de
     engine_version: "0.8.1"
     generated_at: "2026-07-11T12:34:56Z"
