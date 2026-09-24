@@ -95,7 +95,7 @@
       "id": "gleichrangig",
       "stable_id": "card-ms9411d9008hm",
       "front": "Gleichrangige Kreuzung",
-      "back": "Eine Kreuzung ohne Vorfahrtszeichen und ohne Ampel — hier gilt rechts vor links.",
+      "back": "Eine Kreuzung ohne Vorfahrtszeichen und ohne Ampel: Hier gilt rechts vor links.",
       "notes": "„Gleichrangig\" heißt: keine Straße hat Vorrang durch ein Schild.",
       "media_type": "text",
       "difficulty": 1,
@@ -109,7 +109,7 @@
       "id": "intro",
       "type": "theory",
       "title": "Wer darf zuerst?",
-      "body": "# Vorfahrt und Kreuzungen\n\nAn einer **gleichrangigen** Kreuzung — ohne Vorfahrtszeichen und ohne Ampel — gilt die Grundregel **rechts vor links**: Wer von rechts kommt, darf zuerst.\n\nZeichen und Ampeln ändern das:\n\n- **Vorfahrt gewähren** (Dreieck auf der Spitze): anderen die Vorfahrt lassen.\n- **Stopp** (Achteck): erst **anhalten**, dann Vorfahrt gewähren.\n- **Vorfahrtstraße** (gelber Diamant): du hast Vorfahrt.\n- **Ampel**: geht dem Schild vor.\n\n*Übungsfragen im Stil einer Führerscheinprüfung (Beispiel Deutschland) — eigene Formulierungen, kein Anspruch auf Prüfungsechtheit.*"
+      "body": "# Vorfahrt und Kreuzungen\n\nAn einer **gleichrangigen** Kreuzung (ohne Vorfahrtszeichen und ohne Ampel) gilt die Grundregel **rechts vor links**: Wer von rechts kommt, darf zuerst.\n\nZeichen und Ampeln ändern das:\n\n- **Vorfahrt gewähren** (Dreieck auf der Spitze): anderen die Vorfahrt lassen.\n- **Stopp** (Achteck): erst **anhalten**, dann Vorfahrt gewähren.\n- **Vorfahrtstraße** (gelber Diamant): du hast Vorfahrt.\n- **Ampel**: geht dem Schild vor.\n\n*Übungsfragen im Stil einer Führerscheinprüfung (Beispiel Deutschland). Eigene Formulierungen, kein Anspruch auf Prüfungsechtheit.*"
     },
     {
       "id": "step-kreisel",
@@ -124,26 +124,31 @@
       "title": "Kreuzung ohne Zeichen",
       "exercise": {
         "id": "ex-mc-rvl",
-        "stable_id": "ex-ms9411d9009kl",
-        "type": "cloze",
-        "prompt": "An einer Kreuzung ohne Verkehrszeichen und ohne Ampel — wer hat Vorfahrt?",
+        "stable_id": "ex-mue6bzkn001bs",
+        "type": "multiple_choice",
+        "prompt": "An einer Kreuzung ohne Verkehrszeichen und ohne Ampel: Wer hat Vorfahrt?",
         "card_ids": [
           "rvl",
           "gleichrangig"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "Wer von rechts kommt"
-            ]
+            "text": "Wer von rechts kommt",
+            "correct": true,
+            "stable_id": "opt-mue657kh001r9"
+          },
+          {
+            "text": "Wer von links kommt",
+            "stable_id": "opt-mue657kh002s1"
+          },
+          {
+            "text": "Wer schneller fährt",
+            "stable_id": "opt-mue657kh003a8"
+          },
+          {
+            "text": "Das größere Fahrzeug",
+            "stable_id": "opt-mue657kh004gz"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "Wer von links kommt",
-          "Wer schneller fährt",
-          "Das größere Fahrzeug"
         ],
         "hint": "Die Grundregel heißt „rechts vor …\"."
       }
@@ -155,25 +160,30 @@
       "title": "Dreieck auf der Spitze",
       "exercise": {
         "id": "ex-mc-dreieck",
-        "stable_id": "ex-ms9411d900axv",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzkn002h5",
+        "type": "multiple_choice",
         "prompt": "Was verlangt das auf der Spitze stehende Dreieck („Vorfahrt gewähren\")?",
         "card_ids": [
           "vorfahrt-gewaehren"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "Anderen die Vorfahrt lassen"
-            ]
+            "text": "Anderen die Vorfahrt lassen",
+            "correct": true,
+            "stable_id": "opt-mue657kh005b3"
+          },
+          {
+            "text": "Immer selbst Vorfahrt haben",
+            "stable_id": "opt-mue657kh006gg"
+          },
+          {
+            "text": "Anhalten und den Motor abstellen",
+            "stable_id": "opt-mue657kh00724"
+          },
+          {
+            "text": "Nur nachts darauf achten",
+            "stable_id": "opt-mue657kh008x9"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "Immer selbst Vorfahrt haben",
-          "Anhalten und den Motor abstellen",
-          "Nur nachts darauf achten"
         ],
         "hint": "Du musst warten, nicht der andere."
       }
@@ -185,25 +195,30 @@
       "title": "Das achteckige Zeichen",
       "exercise": {
         "id": "ex-mc-stopp",
-        "stable_id": "ex-ms9411d900bgg",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzkn003wu",
+        "type": "multiple_choice",
         "prompt": "Was schreibt das achteckige STOP-Zeichen vor?",
         "card_ids": [
           "stopp"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "Anhalten und dann Vorfahrt gewähren"
-            ]
+            "text": "Anhalten und dann Vorfahrt gewähren",
+            "correct": true,
+            "stable_id": "opt-mue657kh009ul"
+          },
+          {
+            "text": "Nur langsamer werden",
+            "stable_id": "opt-mue657kh00a95"
+          },
+          {
+            "text": "Nur hupen und weiterfahren",
+            "stable_id": "opt-mue657kh00bq3"
+          },
+          {
+            "text": "Freie Fahrt ohne Halt",
+            "stable_id": "opt-mue657kh00c38"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "Nur langsamer werden",
-          "Nur hupen und weiterfahren",
-          "Freie Fahrt ohne Halt"
         ],
         "hint": "Das Anhalten ist Pflicht."
       }
@@ -215,25 +230,30 @@
       "title": "Der gelbe Diamant",
       "exercise": {
         "id": "ex-mc-diamant",
-        "stable_id": "ex-ms9411d900c52",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzkn004nq",
+        "type": "multiple_choice",
         "prompt": "Der gelbe Diamant (Vorfahrtstraße) bedeutet für dich:",
         "card_ids": [
           "vorfahrtstrasse"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "Du hast Vorfahrt bis zum Ende-Zeichen"
-            ]
+            "text": "Du hast Vorfahrt bis zum Ende-Zeichen",
+            "correct": true,
+            "stable_id": "opt-mue657kh00d30"
+          },
+          {
+            "text": "Du musst überall anhalten",
+            "stable_id": "opt-mue657kh00e0c"
+          },
+          {
+            "text": "Rechts vor links gilt weiter",
+            "stable_id": "opt-mue657kh00f88"
+          },
+          {
+            "text": "Es gilt Tempo 30",
+            "stable_id": "opt-mue657kh00gqv"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "Du musst überall anhalten",
-          "Rechts vor links gilt weiter",
-          "Es gilt Tempo 30"
         ],
         "hint": "Der Diamant steht für Vorfahrt."
       }
@@ -245,25 +265,30 @@
       "title": "Einfahrt in den Kreisel",
       "exercise": {
         "id": "ex-mc-kreis-vorfahrt",
-        "stable_id": "ex-ms9411d900dcn",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzkn0053y",
+        "type": "multiple_choice",
         "prompt": "Wer hat beim üblichen Kreisverkehr Vorfahrt?",
         "card_ids": [
           "kreisverkehr"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "Die Fahrzeuge, die bereits im Kreis fahren"
-            ]
+            "text": "Die Fahrzeuge, die bereits im Kreis fahren",
+            "correct": true,
+            "stable_id": "opt-mue657kh00hb2"
+          },
+          {
+            "text": "Die einfahrenden Fahrzeuge",
+            "stable_id": "opt-mue657kh00iuv"
+          },
+          {
+            "text": "Wer zuerst blinkt",
+            "stable_id": "opt-mue657kh00jk9"
+          },
+          {
+            "text": "Immer der von rechts",
+            "stable_id": "opt-mue657kh00kgg"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "Die einfahrenden Fahrzeuge",
-          "Wer zuerst blinkt",
-          "Immer der von rechts"
         ],
         "hint": "Der Kreis hat Vorrang vor der Einfahrt."
       }
@@ -275,25 +300,30 @@
       "title": "Blinken im Kreisel",
       "exercise": {
         "id": "ex-mc-kreis-blinken",
-        "stable_id": "ex-ms9411d900enk",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzkn00698",
+        "type": "multiple_choice",
         "prompt": "Wann blinkt man im Kreisverkehr?",
         "card_ids": [
           "kreisverkehr"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "Beim Verlassen nach rechts"
-            ]
+            "text": "Beim Verlassen nach rechts",
+            "correct": true,
+            "stable_id": "opt-mue657kh00l1q"
+          },
+          {
+            "text": "Beim Einfahren nach links",
+            "stable_id": "opt-mue657kh00m2p"
+          },
+          {
+            "text": "Beim Einfahren nach rechts",
+            "stable_id": "opt-mue657kh00nf5"
+          },
+          {
+            "text": "Gar nicht",
+            "stable_id": "opt-mue657kh00oi5"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "Beim Einfahren nach links",
-          "Beim Einfahren nach rechts",
-          "Gar nicht"
         ],
         "hint": "Nur beim Hinausfahren."
       }
@@ -305,25 +335,30 @@
       "title": "Ampel und Schild widersprechen sich",
       "exercise": {
         "id": "ex-mc-ampel",
-        "stable_id": "ex-ms9411d900fmo",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzkn00792",
+        "type": "multiple_choice",
         "prompt": "Eine Ampel und ein Vorfahrtsschild widersprechen sich. Was gilt?",
         "card_ids": [
           "ampel-vorrang"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "Die Ampel"
-            ]
+            "text": "Die Ampel",
+            "correct": true,
+            "stable_id": "opt-mue657kh00p2g"
+          },
+          {
+            "text": "Das Schild",
+            "stable_id": "opt-mue657kh00qfl"
+          },
+          {
+            "text": "Rechts vor links",
+            "stable_id": "opt-mue657kh00rth"
+          },
+          {
+            "text": "Der Verkehrsfluss entscheidet",
+            "stable_id": "opt-mue657kh00shc"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "Das Schild",
-          "Rechts vor links",
-          "Der Verkehrsfluss entscheidet"
         ],
         "hint": "Lichtzeichen stehen über Schildern."
       }
@@ -335,25 +370,30 @@
       "title": "Linksabbiegen",
       "exercise": {
         "id": "ex-mc-linksab",
-        "stable_id": "ex-ms9411d900gc6",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzkn008u3",
+        "type": "multiple_choice",
         "prompt": "Du willst links abbiegen, es kommt Gegenverkehr. Wer fährt zuerst?",
         "card_ids": [
           "linksabbiegen"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "Der entgegenkommende Geradeausverkehr"
-            ]
+            "text": "Der entgegenkommende Geradeausverkehr",
+            "correct": true,
+            "stable_id": "opt-mue657kh00tbu"
+          },
+          {
+            "text": "Du, weil du blinkst",
+            "stable_id": "opt-mue657kh00ura"
+          },
+          {
+            "text": "Wer hupt",
+            "stable_id": "opt-mue657kh00vbk"
+          },
+          {
+            "text": "Immer der Linksabbieger",
+            "stable_id": "opt-mue657kh00wjb"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "Du, weil du blinkst",
-          "Wer hupt",
-          "Immer der Linksabbieger"
         ],
         "hint": "Gegenverkehr geradeaus hat Vorrang."
       }

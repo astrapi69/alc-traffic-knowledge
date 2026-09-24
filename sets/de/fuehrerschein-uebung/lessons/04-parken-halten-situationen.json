@@ -71,7 +71,7 @@
       "id": "feuerwehrzufahrt",
       "stable_id": "card-ms9411dc01o2f",
       "front": "Feuerwehrzufahrt",
-      "back": "Eine gekennzeichnete Feuerwehrzufahrt muss frei bleiben — dort darf man nicht parken.",
+      "back": "Eine gekennzeichnete Feuerwehrzufahrt muss frei bleiben; dort darf man nicht parken.",
       "notes": "Auch kurzes Zuparken kann Menschenleben gefährden.",
       "media_type": "text",
       "difficulty": 1,
@@ -97,13 +97,13 @@
       "id": "intro",
       "type": "theory",
       "title": "Halten, Parken und Rücksicht",
-      "body": "# Parken, Halten und besondere Situationen\n\n**Halten** ist ein kurzes Anhalten; **Parken** ist längeres Abstellen oder das **Verlassen** des Fahrzeugs. Beim **eingeschränkten Halteverbot** darf man **kurz halten**, aber nicht parken.\n\nBesondere Rücksicht gilt an **Fußgängerüberwegen** (Fußgänger haben Vorrang), an **haltenden Bussen** mit Warnblinklicht und beim **Öffnen der Autotür**.\n\n*Übungsfragen im Stil einer Führerscheinprüfung (Beispiel Deutschland) — eigene Formulierungen, kein Anspruch auf Prüfungsechtheit.*"
+      "body": "# Parken, Halten und besondere Situationen\n\n**Halten** ist ein kurzes Anhalten; **Parken** ist längeres Abstellen oder das **Verlassen** des Fahrzeugs. Beim **eingeschränkten Halteverbot** darf man **kurz halten**, aber nicht parken.\n\nBesondere Rücksicht gilt an **Fußgängerüberwegen** (Fußgänger haben Vorrang), an **haltenden Bussen** mit Warnblinklicht und beim **Öffnen der Autotür**.\n\n*Übungsfragen im Stil einer Führerscheinprüfung (Beispiel Deutschland). Eigene Formulierungen, kein Anspruch auf Prüfungsechtheit.*"
     },
     {
       "id": "step-rettungsgasse",
       "type": "theory",
       "title": "Rettungsgasse bilden",
-      "body": "## Rettungsgasse\n\nStockt auf Autobahnen oder mehrspurigen Straßen außerorts der Verkehr, bildet man **sofort** eine **Rettungsgasse** — und zwar **zwischen dem linken Fahrstreifen und den übrigen** Fahrstreifen. Man wartet damit **nicht**, bis Einsatzfahrzeuge sichtbar sind. So kommen Rettungskräfte schnell durch."
+      "body": "## Rettungsgasse\n\nStockt auf Autobahnen oder mehrspurigen Straßen außerorts der Verkehr, bildet man **sofort** eine **Rettungsgasse**, und zwar **zwischen dem linken Fahrstreifen und den übrigen** Fahrstreifen. Man wartet damit **nicht**, bis Einsatzfahrzeuge sichtbar sind. So kommen Rettungskräfte schnell durch."
     },
     {
       "id": "ex-mc-halten-parken",
@@ -112,25 +112,30 @@
       "title": "Halten oder Parken?",
       "exercise": {
         "id": "ex-mc-halten-parken",
-        "stable_id": "ex-ms9411dc01q3a",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzkr00toy",
+        "type": "multiple_choice",
         "prompt": "Worin unterscheiden sich Halten und Parken?",
         "card_ids": [
           "halten-parken"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "Parken ist längeres Abstellen oder das Verlassen des Fahrzeugs"
-            ]
+            "text": "Parken ist längeres Abstellen oder das Verlassen des Fahrzeugs",
+            "correct": true,
+            "stable_id": "opt-mue657kl02pc4"
+          },
+          {
+            "text": "Es gibt keinen Unterschied",
+            "stable_id": "opt-mue657kl02q00"
+          },
+          {
+            "text": "Halten dauert länger als Parken",
+            "stable_id": "opt-mue657kl02rto"
+          },
+          {
+            "text": "Parken ist nur nachts erlaubt",
+            "stable_id": "opt-mue657kl02sdr"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "Es gibt keinen Unterschied",
-          "Halten dauert länger als Parken",
-          "Parken ist nur nachts erlaubt"
         ],
         "hint": "Wer aussteigt, parkt."
       }
@@ -142,25 +147,30 @@
       "title": "Wo bildet man die Rettungsgasse?",
       "exercise": {
         "id": "ex-mc-rettungsgasse",
-        "stable_id": "ex-ms9411dc01riu",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzkr00uou",
+        "type": "multiple_choice",
         "prompt": "Wo bildet man bei stockendem Verkehr auf der Autobahn die Rettungsgasse?",
         "card_ids": [
           "rettungsgasse"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "Zwischen dem linken und den übrigen Fahrstreifen"
-            ]
+            "text": "Zwischen dem linken und den übrigen Fahrstreifen",
+            "correct": true,
+            "stable_id": "opt-mue657kl02t5g"
+          },
+          {
+            "text": "Ganz rechts am Standstreifen",
+            "stable_id": "opt-mue657kl02utp"
+          },
+          {
+            "text": "In der Mitte jeder Spur",
+            "stable_id": "opt-mue657kl02vkz"
+          },
+          {
+            "text": "Erst wenn die Polizei kommt",
+            "stable_id": "opt-mue657kl02wwi"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "Ganz rechts am Standstreifen",
-          "In der Mitte jeder Spur",
-          "Erst wenn die Polizei kommt"
         ],
         "hint": "Links außen und der Rest."
       }
@@ -172,25 +182,30 @@
       "title": "Am Zebrastreifen",
       "exercise": {
         "id": "ex-mc-zebra",
-        "stable_id": "ex-ms9411dc01slq",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzkr00vdc",
+        "type": "multiple_choice",
         "prompt": "Was gilt am Fußgängerüberweg (Zebrastreifen)?",
         "card_ids": [
           "zebrastreifen"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "Querenden Fußgängern Vorrang gewähren"
-            ]
+            "text": "Querenden Fußgängern Vorrang gewähren",
+            "correct": true,
+            "stable_id": "opt-mue657kl02xpp"
+          },
+          {
+            "text": "Fußgänger müssen warten",
+            "stable_id": "opt-mue657kl02yeh"
+          },
+          {
+            "text": "Nur bei Rot für Autos halten",
+            "stable_id": "opt-mue657kl02z3m"
+          },
+          {
+            "text": "Autos haben immer Vorrang",
+            "stable_id": "opt-mue657kl030fd"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "Fußgänger müssen warten",
-          "Nur bei Rot für Autos halten",
-          "Autos haben immer Vorrang"
         ],
         "hint": "Fußgänger dürfen zuerst."
       }
@@ -202,25 +217,30 @@
       "title": "Bus mit Warnblinklicht",
       "exercise": {
         "id": "ex-mc-schulbus",
-        "stable_id": "ex-ms9411dc01tbo",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzkr00wsk",
+        "type": "multiple_choice",
         "prompt": "Wie fährst du an einem haltenden Bus mit eingeschaltetem Warnblinklicht vorbei?",
         "card_ids": [
           "schulbus"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "Nur mit Schrittgeschwindigkeit"
-            ]
+            "text": "Nur mit Schrittgeschwindigkeit",
+            "correct": true,
+            "stable_id": "opt-mue657kl0315b"
+          },
+          {
+            "text": "Ganz normal weiter",
+            "stable_id": "opt-mue657kl032q8"
+          },
+          {
+            "text": "Zügig und hupend vorbei",
+            "stable_id": "opt-mue657kl033h7"
+          },
+          {
+            "text": "Überholen mit Tempo 50",
+            "stable_id": "opt-mue657kl034qs"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "Ganz normal weiter",
-          "Zügig und hupend vorbei",
-          "Überholen mit Tempo 50"
         ],
         "hint": "Kinder können plötzlich auf die Straße treten."
       }
@@ -232,25 +252,30 @@
       "title": "Eingeschränktes Halteverbot",
       "exercise": {
         "id": "ex-mc-eingeschr",
-        "stable_id": "ex-ms9411dc01ucc",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzkr00xjv",
+        "type": "multiple_choice",
         "prompt": "Was ist im eingeschränkten Halteverbot erlaubt?",
         "card_ids": [
           "eingeschr-halteverbot"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "Kurzes Halten, aber kein Parken"
-            ]
+            "text": "Kurzes Halten, aber kein Parken",
+            "correct": true,
+            "stable_id": "opt-mue657kl035n0"
+          },
+          {
+            "text": "Gar nichts, auch kein Halten",
+            "stable_id": "opt-mue657kl036yz"
+          },
+          {
+            "text": "Auch längeres Parken",
+            "stable_id": "opt-mue657kl037r3"
+          },
+          {
+            "text": "Nur das Parken von Lkw",
+            "stable_id": "opt-mue657kl038ex"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "Gar nichts, auch kein Halten",
-          "Auch längeres Parken",
-          "Nur das Parken von Lkw"
         ],
         "hint": "Kurz halten ja, parken nein."
       }
@@ -262,25 +287,30 @@
       "title": "Feuerwehrzufahrt",
       "exercise": {
         "id": "ex-mc-feuerwehr",
-        "stable_id": "ex-ms9411dc01vz3",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzkr00ykp",
+        "type": "multiple_choice",
         "prompt": "Was gilt für eine gekennzeichnete Feuerwehrzufahrt?",
         "card_ids": [
           "feuerwehrzufahrt"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "Sie muss frei bleiben, Parken ist verboten"
-            ]
+            "text": "Sie muss frei bleiben, Parken ist verboten",
+            "correct": true,
+            "stable_id": "opt-mue657kl03907"
+          },
+          {
+            "text": "Kurzes Parken ist erlaubt",
+            "stable_id": "opt-mue657kl03a5k"
+          },
+          {
+            "text": "Nachts darf man dort parken",
+            "stable_id": "opt-mue657kl03bs4"
+          },
+          {
+            "text": "Mit Warnblinker darf man parken",
+            "stable_id": "opt-mue657kl03c52"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "Kurzes Parken ist erlaubt",
-          "Nachts darf man dort parken",
-          "Mit Warnblinker darf man parken"
         ],
         "hint": "Sie muss jederzeit frei sein."
       }
@@ -292,25 +322,30 @@
       "title": "Abstand zur Kreuzung",
       "exercise": {
         "id": "ex-mc-5m",
-        "stable_id": "ex-ms9411dc01wfr",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzkr00z1t",
+        "type": "multiple_choice",
         "prompt": "In welchem Bereich vor und hinter Kreuzungen darf man nicht parken?",
         "card_ids": [
           "kreuzung-5m"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "5 Meter"
-            ]
+            "text": "5 Meter",
+            "correct": true,
+            "stable_id": "opt-mue657kl03ddz"
+          },
+          {
+            "text": "1 Meter",
+            "stable_id": "opt-mue657kl03ex0"
+          },
+          {
+            "text": "10 Meter",
+            "stable_id": "opt-mue657kl03fb3"
+          },
+          {
+            "text": "20 Meter",
+            "stable_id": "opt-mue657kl03gm6"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "1 Meter",
-          "10 Meter",
-          "20 Meter"
         ],
         "hint": "Damit die Sicht frei bleibt."
       }
@@ -370,6 +405,35 @@
           "Am rechten Fahrbahnrand, wo das Parken erlaubt ist"
         ],
         "hint": "Unübersichtlich oder gefährlich? Dann kein Halten."
+      }
+    },
+    {
+      "id": "ex-cl-rettungsgasse-drei",
+      "type": "exercise",
+      "theory_ref": "step-rettungsgasse",
+      "title": "Rettungsgasse auf drei Fahrstreifen",
+      "exercise": {
+        "id": "ex-cl-rettungsgasse-drei",
+        "stable_id": "ex-mue6p304001pr",
+        "type": "cloze",
+        "cloze_mode": "select",
+        "prompt": "Ergänze, neben welchem Fahrstreifen die Gasse entsteht.",
+        "card_ids": [
+          "rettungsgasse"
+        ],
+        "sentence": "Auf einer dreispurigen Autobahn stockt der Verkehr; die Rettungsgasse entsteht rechts neben dem ___ Fahrstreifen.",
+        "blanks": [
+          {
+            "accept": [
+              "linken"
+            ], "stable_id": "blank-mue6p304002pm"
+          }
+        ],
+        "distractors": [
+          "mittleren",
+          "rechten"
+        ],
+        "hint": "Überlege, welcher Fahrstreifen als einziger anders ausweicht als die übrigen."
       }
     }
   ]

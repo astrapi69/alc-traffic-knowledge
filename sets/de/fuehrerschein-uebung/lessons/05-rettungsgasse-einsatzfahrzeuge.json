@@ -1,7 +1,7 @@
 {
   "id": "05-rettungsgasse-einsatzfahrzeuge",
   "title": "Rettungsgasse und Einsatzfahrzeuge",
-  "description": "Übungsfragen im Stil einer Führerscheinprüfung (Beispiel Deutschland): Rettungsgasse, Blaulicht mit Einsatzhorn und Busse an Haltestellen. Referenz-Lektion für den nativen multiple_choice-Typ (Schema v1.6): zwei Single-Choice-Aufgaben, eine Mehrfachauswahl (multiple: true) und zwei klassische cloze-select-Fragen. Eigene Formulierungen, keine amtlichen Fragen.",
+  "description": "Übungsfragen im Stil einer Führerscheinprüfung (Beispiel Deutschland): Rettungsgasse, Blaulicht mit Einsatzhorn und Busse an Haltestellen. Referenz-Lektion für den nativen multiple_choice-Typ (Schema v1.6): vier Single-Choice-Aufgaben und eine Mehrfachauswahl (multiple: true). Eigene Formulierungen, keine amtlichen Fragen.",
   "target_language": "de",
   "source_language": "de",
   "domain": "knowledge",
@@ -184,25 +184,30 @@
       "title": "Blaulicht und Einsatzhorn",
       "exercise": {
         "id": "ex-mc-blaulicht",
-        "stable_id": "ex-ms9411dd027yx",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzks0128p",
+        "type": "multiple_choice",
         "prompt": "Was bedeutet blaues Blinklicht zusammen mit dem Einsatzhorn?",
         "card_ids": [
           "blaulicht-horn"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "Sofort freie Bahn schaffen"
-            ]
+            "text": "Sofort freie Bahn schaffen",
+            "correct": true,
+            "stable_id": "opt-mue657kl03tts"
+          },
+          {
+            "text": "Nur die Geschwindigkeit verringern",
+            "stable_id": "opt-mue657kl03uuj"
+          },
+          {
+            "text": "Sofort anhalten, egal wo man steht",
+            "stable_id": "opt-mue657kl03vki"
+          },
+          {
+            "text": "Nichts, solange man selbst Vorfahrt hat",
+            "stable_id": "opt-mue657kl03w9v"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "Nur die Geschwindigkeit verringern",
-          "Sofort anhalten, egal wo man steht",
-          "Nichts, solange man selbst Vorfahrt hat"
         ],
         "hint": "Ruhig bleiben und geordnet Platz machen."
       }
@@ -214,25 +219,30 @@
       "title": "Bus an der Haltestelle",
       "exercise": {
         "id": "ex-mc-bus",
-        "stable_id": "ex-ms9411dd028te",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzks013jh",
+        "type": "multiple_choice",
         "prompt": "Ein Bus steht mit Warnblinklicht an der Haltestelle. Wie darf man vorbeifahren?",
         "card_ids": [
           "bus-warnblink"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "Nur mit Schrittgeschwindigkeit"
-            ]
+            "text": "Nur mit Schrittgeschwindigkeit",
+            "correct": true,
+            "stable_id": "opt-mue657kl03xjb"
+          },
+          {
+            "text": "Mit höchstens 30 km/h",
+            "stable_id": "opt-mue657kl03y4q"
+          },
+          {
+            "text": "Mit normaler Geschwindigkeit",
+            "stable_id": "opt-mue657kl03znr"
+          },
+          {
+            "text": "Gar nicht, man muss immer warten",
+            "stable_id": "opt-mue657kl0401h"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "Mit höchstens 30 km/h",
-          "Mit normaler Geschwindigkeit",
-          "Gar nicht, man muss immer warten"
         ],
         "hint": "Das gilt auch für den Gegenverkehr."
       }

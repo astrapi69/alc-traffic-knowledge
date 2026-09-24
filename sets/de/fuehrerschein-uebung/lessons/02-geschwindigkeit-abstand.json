@@ -109,13 +109,13 @@
       "id": "intro",
       "type": "theory",
       "title": "Wie schnell ist erlaubt?",
-      "body": "# Geschwindigkeit und Abstand\n\nRichtwerte für PKW, wenn kein Zeichen etwas anderes sagt:\n\n| Bereich | Richtwert |\n|---|---|\n| **Innerorts** | 50 km/h |\n| **Außerorts** (Landstraße) | 100 km/h |\n| **Autobahn** | keine generelle Grenze, Richtgeschwindigkeit 130 km/h |\n| **Verkehrsberuhigter Bereich** | Schrittgeschwindigkeit |\n\n*Übungsfragen im Stil einer Führerscheinprüfung (Beispiel Deutschland) — eigene Formulierungen, kein Anspruch auf Prüfungsechtheit.*"
+      "body": "# Geschwindigkeit und Abstand\n\nRichtwerte für PKW, wenn kein Zeichen etwas anderes sagt:\n\n| Bereich | Richtwert |\n|---|---|\n| **Innerorts** | 50 km/h |\n| **Außerorts** (Landstraße) | 100 km/h |\n| **Autobahn** | keine generelle Grenze, Richtgeschwindigkeit 130 km/h |\n| **Verkehrsberuhigter Bereich** | Schrittgeschwindigkeit |\n\n*Übungsfragen im Stil einer Führerscheinprüfung (Beispiel Deutschland). Eigene Formulierungen, kein Anspruch auf Prüfungsechtheit.*"
     },
     {
       "id": "step-abstand",
       "type": "theory",
       "title": "Genug Abstand halten",
-      "body": "## Abstand und Anhalteweg\n\nEin einfacher Anhaltspunkt außerorts ist die **Halber-Tacho-Regel**: Der Abstand in Metern entspricht etwa dem **halben Tachowert** — bei 100 km/h also rund **50 m**.\n\nDer **Anhalteweg** setzt sich zusammen aus **Reaktionsweg** (bevor die Bremse wirkt) und **Bremsweg**. Wichtig: Verdoppelt sich das Tempo, wird der **Bremsweg etwa viermal** so lang. Bei Nässe langsamer fahren und mehr Abstand halten."
+      "body": "## Abstand und Anhalteweg\n\nEin einfacher Anhaltspunkt außerorts ist die **Halber-Tacho-Regel**: Der Abstand in Metern entspricht etwa dem **halben Tachowert**, bei 100 km/h also rund **50 m**.\n\nDer **Anhalteweg** setzt sich zusammen aus **Reaktionsweg** (bevor die Bremse wirkt) und **Bremsweg**. Wichtig: Verdoppelt sich das Tempo, wird der **Bremsweg etwa viermal** so lang. Bei Nässe langsamer fahren und mehr Abstand halten."
     },
     {
       "id": "ex-mc-innerorts",
@@ -124,25 +124,30 @@
       "title": "Tempo in der Stadt",
       "exercise": {
         "id": "ex-mc-innerorts",
-        "stable_id": "ex-ms9411da00ra5",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzko009bm",
+        "type": "multiple_choice",
         "prompt": "Welches Tempo gilt für PKW innerorts, wenn kein Zeichen etwas anderes vorgibt?",
         "card_ids": [
           "innerorts"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "50 km/h"
-            ]
+            "text": "50 km/h",
+            "correct": true,
+            "stable_id": "opt-mue657kj00x42"
+          },
+          {
+            "text": "30 km/h",
+            "stable_id": "opt-mue657kj00yhc"
+          },
+          {
+            "text": "60 km/h",
+            "stable_id": "opt-mue657kj00z60"
+          },
+          {
+            "text": "70 km/h",
+            "stable_id": "opt-mue657kj0104k"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "30 km/h",
-          "60 km/h",
-          "70 km/h"
         ],
         "hint": "Die übliche Ortsgrenze."
       }
@@ -154,25 +159,30 @@
       "title": "Tempo auf der Landstraße",
       "exercise": {
         "id": "ex-mc-ausserorts",
-        "stable_id": "ex-ms9411da00sk1",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzko00arn",
+        "type": "multiple_choice",
         "prompt": "Welches Tempo gilt für PKW außerorts auf Landstraßen in der Regel?",
         "card_ids": [
           "ausserorts"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "100 km/h"
-            ]
+            "text": "100 km/h",
+            "correct": true,
+            "stable_id": "opt-mue657kj011f7"
+          },
+          {
+            "text": "80 km/h",
+            "stable_id": "opt-mue657kj012fj"
+          },
+          {
+            "text": "120 km/h",
+            "stable_id": "opt-mue657kj013ab"
+          },
+          {
+            "text": "keine Begrenzung",
+            "stable_id": "opt-mue657kj014zz"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "80 km/h",
-          "120 km/h",
-          "keine Begrenzung"
         ],
         "hint": "Höher als innerorts, aber nicht unbegrenzt."
       }
@@ -184,25 +194,30 @@
       "title": "Autobahn",
       "exercise": {
         "id": "ex-mc-autobahn",
-        "stable_id": "ex-ms9411da00tq3",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzko00br5",
+        "type": "multiple_choice",
         "prompt": "Was gilt allgemein auf deutschen Autobahnen?",
         "card_ids": [
           "autobahn"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "Keine generelle Grenze, Richtgeschwindigkeit 130 km/h"
-            ]
+            "text": "Keine generelle Grenze, Richtgeschwindigkeit 130 km/h",
+            "correct": true,
+            "stable_id": "opt-mue657kj015wl"
+          },
+          {
+            "text": "Überall Pflichttempo 130",
+            "stable_id": "opt-mue657kj016vp"
+          },
+          {
+            "text": "Grundsätzlich 100 km/h",
+            "stable_id": "opt-mue657kj01767"
+          },
+          {
+            "text": "Eine feste Höchstgrenze von 160",
+            "stable_id": "opt-mue657kj018bc"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "Überall Pflichttempo 130",
-          "Grundsätzlich 100 km/h",
-          "Eine feste Höchstgrenze von 160"
         ],
         "hint": "Richtgeschwindigkeit ist keine feste Grenze."
       }
@@ -214,25 +229,30 @@
       "title": "Halber Tacho",
       "exercise": {
         "id": "ex-mc-tacho",
-        "stable_id": "ex-ms9411da00uh4",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzko00cxy",
+        "type": "multiple_choice",
         "prompt": "Wie groß ist nach der Halber-Tacho-Regel der Abstand außerorts bei 100 km/h?",
         "card_ids": [
           "halber-tacho"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "etwa 50 Meter"
-            ]
+            "text": "etwa 50 Meter",
+            "correct": true,
+            "stable_id": "opt-mue657kj01926"
+          },
+          {
+            "text": "etwa 10 Meter",
+            "stable_id": "opt-mue657kj01aw3"
+          },
+          {
+            "text": "etwa 100 Meter",
+            "stable_id": "opt-mue657kj01bwg"
+          },
+          {
+            "text": "etwa 25 Meter",
+            "stable_id": "opt-mue657kj01cfj"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "etwa 10 Meter",
-          "etwa 100 Meter",
-          "etwa 25 Meter"
         ],
         "hint": "Die Hälfte des Tachowerts in Metern."
       }
@@ -244,25 +264,30 @@
       "title": "Woraus besteht der Anhalteweg?",
       "exercise": {
         "id": "ex-mc-anhalteweg",
-        "stable_id": "ex-ms9411da00voj",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzko00d0k",
+        "type": "multiple_choice",
         "prompt": "Wie setzt sich der Anhalteweg zusammen?",
         "card_ids": [
           "anhalteweg"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "Reaktionsweg plus Bremsweg"
-            ]
+            "text": "Reaktionsweg plus Bremsweg",
+            "correct": true,
+            "stable_id": "opt-mue657kj01ds8"
+          },
+          {
+            "text": "Nur aus dem Bremsweg",
+            "stable_id": "opt-mue657kj01egp"
+          },
+          {
+            "text": "Nur aus dem Reaktionsweg",
+            "stable_id": "opt-mue657kj01fxm"
+          },
+          {
+            "text": "Bremsweg minus Reaktionsweg",
+            "stable_id": "opt-mue657kj01gh0"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "Nur aus dem Bremsweg",
-          "Nur aus dem Reaktionsweg",
-          "Bremsweg minus Reaktionsweg"
         ],
         "hint": "Zwei Strecken zusammen."
       }
@@ -274,25 +299,30 @@
       "title": "Spielstraße",
       "exercise": {
         "id": "ex-mc-verkehrsberuhigt",
-        "stable_id": "ex-ms9411da00wlp",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzko00eef",
+        "type": "multiple_choice",
         "prompt": "Wie schnell darf man im verkehrsberuhigten Bereich („Spielstraße\") fahren?",
         "card_ids": [
           "verkehrsberuhigt"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "Nur mit Schrittgeschwindigkeit"
-            ]
+            "text": "Nur mit Schrittgeschwindigkeit",
+            "correct": true,
+            "stable_id": "opt-mue657kj01h05"
+          },
+          {
+            "text": "30 km/h",
+            "stable_id": "opt-mue657kj01ibe"
+          },
+          {
+            "text": "50 km/h",
+            "stable_id": "opt-mue657kj01jld"
+          },
+          {
+            "text": "So schnell wie außerorts",
+            "stable_id": "opt-mue657kj01k44"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "30 km/h",
-          "50 km/h",
-          "So schnell wie außerorts"
         ],
         "hint": "Fußgänger und Kinder haben Vorrang."
       }
@@ -304,25 +334,30 @@
       "title": "Doppeltes Tempo",
       "exercise": {
         "id": "ex-mc-quadrat",
-        "stable_id": "ex-ms9411da00x90",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzko00fdh",
+        "type": "multiple_choice",
         "prompt": "Wie verändert sich der Bremsweg, wenn sich die Geschwindigkeit verdoppelt?",
         "card_ids": [
           "bremsweg-quadrat"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "Er wird etwa viermal so lang"
-            ]
+            "text": "Er wird etwa viermal so lang",
+            "correct": true,
+            "stable_id": "opt-mue657kj01lv2"
+          },
+          {
+            "text": "Er wird doppelt so lang",
+            "stable_id": "opt-mue657kj01mpm"
+          },
+          {
+            "text": "Er bleibt gleich",
+            "stable_id": "opt-mue657kj01nu1"
+          },
+          {
+            "text": "Er halbiert sich",
+            "stable_id": "opt-mue657kj01okn"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "Er wird doppelt so lang",
-          "Er bleibt gleich",
-          "Er halbiert sich"
         ],
         "hint": "Der Bremsweg wächst mit dem Quadrat des Tempos."
       }
@@ -334,25 +369,30 @@
       "title": "Bei Regen",
       "exercise": {
         "id": "ex-mc-naesse",
-        "stable_id": "ex-ms9411da00ys3",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzko00gjq",
+        "type": "multiple_choice",
         "prompt": "Wie fährt man bei Nässe und schlechter Sicht am sichersten?",
         "card_ids": [
           "naesse"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "Langsamer fahren und mehr Abstand halten"
-            ]
+            "text": "Langsamer fahren und mehr Abstand halten",
+            "correct": true,
+            "stable_id": "opt-mue657kj01puw"
+          },
+          {
+            "text": "Gleich schnell weiterfahren",
+            "stable_id": "opt-mue657kj01qj1"
+          },
+          {
+            "text": "Dichter auffahren",
+            "stable_id": "opt-mue657kj01rax"
+          },
+          {
+            "text": "Schneller, um schnell durchzukommen",
+            "stable_id": "opt-mue657kj01seb"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "Gleich schnell weiterfahren",
-          "Dichter auffahren",
-          "Schneller, um schnell durchzukommen"
         ],
         "hint": "Der Bremsweg wird länger."
       }
@@ -414,6 +454,37 @@
           "Mit Tempomat ist kein Abstand nötig"
         ],
         "hint": "Mehr Tempo und schlechtere Bedingungen brauchen mehr Abstand."
+      }
+    },
+    {
+      "id": "ex-cl-tacho-80",
+      "type": "exercise",
+      "theory_ref": "step-abstand",
+      "title": "Abstand bei 80 km/h",
+      "exercise": {
+        "id": "ex-cl-tacho-80",
+        "stable_id": "ex-mue6bzko00h5c",
+        "type": "cloze",
+        "cloze_mode": "select",
+        "prompt": "Wende die Faustregel auf eine andere Geschwindigkeit an.",
+        "card_ids": [
+          "halber-tacho"
+        ],
+        "sentence": "Bei 80 km/h sollte der Abstand zum Vorausfahrenden außerorts etwa ___ m betragen.",
+        "blanks": [
+          {
+            "accept": [
+              "40"
+            ],
+            "stable_id": "blank-mue6bzko00ilv"
+          }
+        ],
+        "distractors": [
+          "80",
+          "20",
+          "160"
+        ],
+        "hint": "Nimm den Tachowert und halbiere ihn."
       }
     }
   ]

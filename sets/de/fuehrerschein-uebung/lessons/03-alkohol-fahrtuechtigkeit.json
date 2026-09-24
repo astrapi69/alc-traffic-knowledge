@@ -11,7 +11,7 @@
       "id": "grenze-05",
       "stable_id": "card-ms9411db011z7",
       "front": "0,5-Promille-Grenze",
-      "back": "Ab 0,5 ‰ handelt man in der Regel ordnungswidrig — mit Bußgeld, Punkten und Fahrverbot.",
+      "back": "Ab 0,5 ‰ handelt man in der Regel ordnungswidrig (Bußgeld, Punkte, Fahrverbot).",
       "notes": "Die allgemein bekannte Grenze für erfahrene Fahrer.",
       "media_type": "text",
       "difficulty": 2,
@@ -23,7 +23,7 @@
       "id": "grenze-11",
       "stable_id": "card-ms9411db012i3",
       "front": "1,1 Promille",
-      "back": "Ab 1,1 ‰ gilt absolute Fahruntüchtigkeit — das ist eine Straftat.",
+      "back": "Ab 1,1 ‰ gilt absolute Fahruntüchtigkeit. Das ist eine Straftat.",
       "notes": "Unabhängig davon, ob man Ausfallerscheinungen zeigt.",
       "media_type": "text",
       "difficulty": 2,
@@ -83,7 +83,7 @@
       "id": "muedigkeit",
       "stable_id": "card-ms9411db017og",
       "front": "Müdigkeit",
-      "back": "Müdigkeit mindert die Fahrtüchtigkeit ähnlich wie Alkohol — besser eine Pause machen.",
+      "back": "Müdigkeit mindert die Fahrtüchtigkeit ähnlich wie Alkohol, also besser eine Pause machen.",
       "notes": "Sekundenschlaf ist eine häufige Unfallursache.",
       "media_type": "text",
       "difficulty": 2,
@@ -109,13 +109,13 @@
       "id": "intro",
       "type": "theory",
       "title": "Nüchtern und wach fahren",
-      "body": "# Alkohol, Drogen und Fahrtüchtigkeit\n\nWichtige Grenzwerte in Deutschland:\n\n- **0,5 ‰** — allgemeine Grenze; darüber droht in der Regel eine Ordnungswidrigkeit (Bußgeld, Punkte, Fahrverbot).\n- **1,1 ‰** — absolute Fahruntüchtigkeit, eine **Straftat**.\n- **0,3 ‰** — schon strafbar, wenn Ausfallerscheinungen oder ein Unfall hinzukommen (relative Fahruntüchtigkeit).\n- **0,0 ‰** — für Fahranfänger in der **Probezeit** und alle **unter 21**.\n\nFür **illegale Drogen** gilt **null Toleranz**. *Übungsfragen im Stil einer Führerscheinprüfung (Beispiel Deutschland) — eigene Formulierungen.*"
+      "body": "# Alkohol, Drogen und Fahrtüchtigkeit\n\nWichtige Grenzwerte in Deutschland:\n\n- **0,5 ‰**: allgemeine Grenze; darüber droht in der Regel eine Ordnungswidrigkeit (Bußgeld, Punkte, Fahrverbot).\n- **1,1 ‰**: absolute Fahruntüchtigkeit, eine **Straftat**.\n- **0,3 ‰**: schon strafbar, wenn Ausfallerscheinungen oder ein Unfall hinzukommen (relative Fahruntüchtigkeit).\n- **0,0 ‰**: für Fahranfänger in der **Probezeit** und alle **unter 21**.\n\nFür **illegale Drogen** gilt **null Toleranz**. *Übungsfragen im Stil einer Führerscheinprüfung (Beispiel Deutschland). Eigene Formulierungen.*"
     },
     {
       "id": "step-probe",
       "type": "theory",
       "title": "Probezeit und Konsequenzen",
-      "body": "## Probezeit\n\nFür Fahranfänger gilt eine **Probezeit von zwei Jahren**. In dieser Zeit werden Verstöße strenger behandelt: Ein **schwerer Verstoß** führt in der Regel zu einer **Verlängerung der Probezeit** (um zwei Jahre) und zur Pflicht, ein **Aufbauseminar** zu besuchen.\n\nAuch **Müdigkeit** senkt die Fahrtüchtigkeit spürbar — bei ersten Anzeichen besser eine **Pause** einlegen."
+      "body": "## Probezeit\n\nFür Fahranfänger gilt eine **Probezeit von zwei Jahren**. In dieser Zeit werden Verstöße strenger behandelt: Ein **schwerer Verstoß** führt in der Regel zu einer **Verlängerung der Probezeit** (um zwei Jahre) und zur Pflicht, ein **Aufbauseminar** zu besuchen.\n\nAuch **Müdigkeit** senkt die Fahrtüchtigkeit spürbar. Bei ersten Anzeichen besser eine **Pause** einlegen."
     },
     {
       "id": "ex-mc-05",
@@ -124,25 +124,30 @@
       "title": "Die bekannte Grenze",
       "exercise": {
         "id": "ex-mc-05",
-        "stable_id": "ex-ms9411db0194n",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzkp00jt6",
+        "type": "multiple_choice",
         "prompt": "Ab welchem Promillewert handelt ein erfahrener Fahrer in der Regel ordnungswidrig?",
         "card_ids": [
           "grenze-05"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "0,5 ‰"
-            ]
+            "text": "0,5 ‰",
+            "correct": true,
+            "stable_id": "opt-mue657kj01trc"
+          },
+          {
+            "text": "0,3 ‰",
+            "stable_id": "opt-mue657kj01uqv"
+          },
+          {
+            "text": "0,8 ‰",
+            "stable_id": "opt-mue657kj01vzg"
+          },
+          {
+            "text": "1,0 ‰",
+            "stable_id": "opt-mue657kj01wjh"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "0,3 ‰",
-          "0,8 ‰",
-          "1,0 ‰"
         ],
         "hint": "Die allgemein bekannte Grenze."
       }
@@ -154,25 +159,30 @@
       "title": "Absolute Fahruntüchtigkeit",
       "exercise": {
         "id": "ex-mc-11",
-        "stable_id": "ex-ms9411db01anw",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzkp00k1v",
+        "type": "multiple_choice",
         "prompt": "Ab welchem Wert spricht man von absoluter Fahruntüchtigkeit (Straftat)?",
         "card_ids": [
           "grenze-11"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "1,1 ‰"
-            ]
+            "text": "1,1 ‰",
+            "correct": true,
+            "stable_id": "opt-mue657kj01xyp"
+          },
+          {
+            "text": "0,5 ‰",
+            "stable_id": "opt-mue657kj01yqd"
+          },
+          {
+            "text": "0,8 ‰",
+            "stable_id": "opt-mue657kj01z7o"
+          },
+          {
+            "text": "2,0 ‰",
+            "stable_id": "opt-mue657kj020wi"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "0,5 ‰",
-          "0,8 ‰",
-          "2,0 ‰"
         ],
         "hint": "Deutlich über der Ordnungswidrigkeits-Grenze."
       }
@@ -184,25 +194,30 @@
       "title": "Fahranfänger und Alkohol",
       "exercise": {
         "id": "ex-mc-null",
-        "stable_id": "ex-ms9411db01bn3",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzkp00l0w",
+        "type": "multiple_choice",
         "prompt": "Welche Promillegrenze gilt in der Probezeit und für Fahrer unter 21?",
         "card_ids": [
           "null-promille"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "0,0 ‰ (absolutes Alkoholverbot)"
-            ]
+            "text": "0,0 ‰ (absolutes Alkoholverbot)",
+            "correct": true,
+            "stable_id": "opt-mue657kj021k6"
+          },
+          {
+            "text": "0,3 ‰",
+            "stable_id": "opt-mue657kj022x6"
+          },
+          {
+            "text": "0,5 ‰",
+            "stable_id": "opt-mue657kj023f6"
+          },
+          {
+            "text": "Dieselbe wie für alle",
+            "stable_id": "opt-mue657kj024mm"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "0,3 ‰",
-          "0,5 ‰",
-          "Dieselbe wie für alle"
         ],
         "hint": "Kein Alkohol erlaubt."
       }
@@ -214,25 +229,30 @@
       "title": "Dauer der Probezeit",
       "exercise": {
         "id": "ex-mc-probe",
-        "stable_id": "ex-ms9411db01ck7",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzkp00mj5",
+        "type": "multiple_choice",
         "prompt": "Wie lange dauert die Probezeit für Fahranfänger?",
         "card_ids": [
           "probezeit"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "Zwei Jahre"
-            ]
+            "text": "Zwei Jahre",
+            "correct": true,
+            "stable_id": "opt-mue657kj025dn"
+          },
+          {
+            "text": "Ein Jahr",
+            "stable_id": "opt-mue657kj0264c"
+          },
+          {
+            "text": "Drei Jahre",
+            "stable_id": "opt-mue657kj027eb"
+          },
+          {
+            "text": "Fünf Jahre",
+            "stable_id": "opt-mue657kj028zk"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "Ein Jahr",
-          "Drei Jahre",
-          "Fünf Jahre"
         ],
         "hint": "Zwei Jahre nach Erwerb der Fahrerlaubnis."
       }
@@ -244,25 +264,30 @@
       "title": "Illegale Drogen",
       "exercise": {
         "id": "ex-mc-drogen",
-        "stable_id": "ex-ms9411db01drp",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzkp00nl3",
+        "type": "multiple_choice",
         "prompt": "Was gilt für illegale Drogen am Steuer?",
         "card_ids": [
           "drogen"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "Grundsätzlich null Toleranz"
-            ]
+            "text": "Grundsätzlich null Toleranz",
+            "correct": true,
+            "stable_id": "opt-mue657kj029kg"
+          },
+          {
+            "text": "Dieselbe 0,5-Grenze wie bei Alkohol",
+            "stable_id": "opt-mue657kj02ap6"
+          },
+          {
+            "text": "Nur nachts verboten",
+            "stable_id": "opt-mue657kj02b64"
+          },
+          {
+            "text": "Erst ab Ausfallerscheinungen verboten",
+            "stable_id": "opt-mue657kj02ceb"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "Dieselbe 0,5-Grenze wie bei Alkohol",
-          "Nur nachts verboten",
-          "Erst ab Ausfallerscheinungen verboten"
         ],
         "hint": "Auch ohne sichtbare Wirkung verboten."
       }
@@ -274,25 +299,30 @@
       "title": "Schon ab 0,3 Promille",
       "exercise": {
         "id": "ex-mc-03",
-        "stable_id": "ex-ms9411db01evs",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzkp00oi2",
+        "type": "multiple_choice",
         "prompt": "Wann kann man sich bereits ab 0,3 ‰ strafbar machen?",
         "card_ids": [
           "grenze-03"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "Wenn Ausfallerscheinungen oder ein Unfall hinzukommen"
-            ]
+            "text": "Wenn Ausfallerscheinungen oder ein Unfall hinzukommen",
+            "correct": true,
+            "stable_id": "opt-mue657kj02dcx"
+          },
+          {
+            "text": "Wenn man über 21 ist",
+            "stable_id": "opt-mue657kj02ehs"
+          },
+          {
+            "text": "Wenn man einen Beifahrer hat",
+            "stable_id": "opt-mue657kj02f8y"
+          },
+          {
+            "text": "Nie, 0,3 ‰ ist immer erlaubt",
+            "stable_id": "opt-mue657kj02gcb"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "Wenn man über 21 ist",
-          "Wenn man einen Beifahrer hat",
-          "Nie, 0,3 ‰ ist immer erlaubt"
         ],
         "hint": "Man nennt das relative Fahruntüchtigkeit."
       }
@@ -304,25 +334,30 @@
       "title": "Müdigkeit am Steuer",
       "exercise": {
         "id": "ex-mc-muede",
-        "stable_id": "ex-ms9411db01fie",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzkp00pj7",
+        "type": "multiple_choice",
         "prompt": "Wie wirkt sich starke Müdigkeit auf das Fahren aus?",
         "card_ids": [
           "muedigkeit"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "Sie mindert die Fahrtüchtigkeit ähnlich wie Alkohol"
-            ]
+            "text": "Sie mindert die Fahrtüchtigkeit ähnlich wie Alkohol",
+            "correct": true,
+            "stable_id": "opt-mue657kj02hil"
+          },
+          {
+            "text": "Sie ist völlig unproblematisch",
+            "stable_id": "opt-mue657kj02izb"
+          },
+          {
+            "text": "Sie erhöht die Konzentration",
+            "stable_id": "opt-mue657kj02juh"
+          },
+          {
+            "text": "Sie ist nur auf der Autobahn gefährlich",
+            "stable_id": "opt-mue657kj02knv"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "Sie ist völlig unproblematisch",
-          "Sie erhöht die Konzentration",
-          "Sie ist nur auf der Autobahn gefährlich"
         ],
         "hint": "Besser eine Pause machen."
       }
@@ -334,25 +369,30 @@
       "title": "Schwerer Verstoß in der Probezeit",
       "exercise": {
         "id": "ex-mc-verstoss",
-        "stable_id": "ex-ms9411db01gzh",
-        "type": "cloze",
+        "stable_id": "ex-mue6bzkp00q45",
+        "type": "multiple_choice",
         "prompt": "Welche Folge hat ein schwerer Verstoß in der Probezeit meist?",
         "card_ids": [
           "verstoss-probezeit"
         ],
-        "sentence": "___",
-        "blanks": [
+        "options": [
           {
-            "accept": [
-              "Verlängerung der Probezeit und ein Aufbauseminar"
-            ]
+            "text": "Verlängerung der Probezeit und ein Aufbauseminar",
+            "correct": true,
+            "stable_id": "opt-mue657kj02l8u"
+          },
+          {
+            "text": "Sofortiger Entzug des Führerscheins für immer",
+            "stable_id": "opt-mue657kj02ma0"
+          },
+          {
+            "text": "Gar keine Folge",
+            "stable_id": "opt-mue657kj02net"
+          },
+          {
+            "text": "Nur eine mündliche Verwarnung",
+            "stable_id": "opt-mue657kj02o74"
           }
-        ],
-        "cloze_mode": "select",
-        "distractors": [
-          "Sofortiger Entzug des Führerscheins für immer",
-          "Gar keine Folge",
-          "Nur eine mündliche Verwarnung"
         ],
         "hint": "Die Probezeit wird verlängert."
       }
@@ -413,6 +453,38 @@
           "Eine kalte Dusche beseitigt die Wirkung von Alkohol"
         ],
         "hint": "Nur Zeit baut Alkohol ab – keine Hausmittel."
+      }
+    },
+    {
+      "id": "ex-cl-grenze-lea",
+      "type": "exercise",
+      "theory_ref": "intro",
+      "title": "Promillegrenze für Lea",
+      "exercise": {
+        "id": "ex-cl-grenze-lea",
+        "stable_id": "ex-mue6bzkp00rmw",
+        "type": "cloze",
+        "cloze_mode": "select",
+        "prompt": "Ergänze den Grenzwert, der für diese Fahrerin gilt.",
+        "card_ids": [
+          "null-promille",
+          "probezeit"
+        ],
+        "sentence": "Lea ist 22 Jahre alt und hat den Führerschein seit acht Monaten; für sie gilt eine Grenze von ___ Promille.",
+        "blanks": [
+          {
+            "accept": [
+              "0,0"
+            ],
+            "stable_id": "blank-mue6bzkp00sie"
+          }
+        ],
+        "distractors": [
+          "0,3",
+          "0,5",
+          "1,1"
+        ],
+        "hint": "Das Alter allein entscheidet hier nicht."
       }
     }
   ]
