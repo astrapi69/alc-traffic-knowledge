@@ -97,7 +97,7 @@ lint-warnings: $(ENGINE_STAMP)
 #     make generate ARGS="--topic 'Im Cafe bestellen' --target-lang fr --source-lang de"
 # Braucht einen API-Schlüssel in der Umgebung (ANTHROPIC_API_KEY / OPENAI_API_KEY /
 # GEMINI_API_KEY), siehe README.
-generate: $(VENV)/.ready
+generate: $(VENV)/.ready $(ENGINE_STAMP)
 	@$(PY) scripts/generate_exercises.py $(ARGS)
 
 # Ein Set für KI-Review exportieren, z. B.:
