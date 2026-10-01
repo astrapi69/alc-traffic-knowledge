@@ -247,20 +247,20 @@ python3 scripts/generate_exercises.py \
 ### What happens, and what you still owe
 
 The script pins the exact lesson-schema JSON in the prompt, parses the
-model's reply, and runs it through `validate_content.py`. If validation
-fails, the errors go back to the model and it retries (up to `--retries`);
-a draft that never validates is discarded, not written. A valid draft
-lands in `generated/<set-id>/`, never directly in `sets/`.
+model's reply, and checks it twice: against the mirrored schema, then
+through the pinned engine (`scripts/engine_check.mjs`: the semantic rules
+such as cloze `___` markers equal to the blanks, `card_ids` integrity and
+multiselect disjointness, plus the quality minimums). If a check fails, the
+errors go back to the model and it retries (up to `--retries`); a draft
+that never passes is discarded, not written. A passing draft lands in
+`generated/<set-id>/`, never directly in `sets/`. Without the installed
+engine the generator stops before it calls the model (`make generate`
+installs it, and so does `make lint`).
 
-Two gates remain after generation, neither of them automatic:
-
-1. **Engine semantic gate** (cloze `___` markers equal the blanks,
-   `card_ids` integrity, multiselect disjointness). It runs when the
-   pinned `learn-content-engine` is installed, otherwise it is deferred to
-   CI. The plain validator does not cover it.
-2. **Native-speaker review** for a language you do not speak natively. No
-   validator catches an unnatural phrasing or a wrong romanization.
-   Machine-generated, then human-verified, is the only trustworthy order.
+One gate remains after generation, and it is not automatic: the
+**native-speaker review** for a language you do not speak natively. No
+validator catches an unnatural phrasing or a wrong romanization.
+Machine-generated, then human-verified, is the only trustworthy order.
 
 When a draft is good, move it from `generated/` into your set under
 `sets/<source>/<target>-<level>/lessons/`, register it in the set
