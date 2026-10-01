@@ -5,11 +5,12 @@
 # fields are validated against the canonical JSON Schema vendored
 # under schema/ (a mirror of the pinned learn-content-engine
 # release; source-of-truth chain: engine (canonical) -> this
-# mirror), the quality minimums are read from
-# schema/quality-rules.json, and the content-repo specifics
-# (language pair, directory structure, non-Latin scripts) stay in
-# the validator. Everything here reads only committed files - the
-# validation itself works fully offline.
+# mirror), and the directory structure, which needs the file system,
+# stays in the validator. Every rule about the content itself (the
+# semantic rules, the quality minimums, the language rules, unique
+# ids) is the engine's and runs in engine-validate.yml. Everything
+# here reads only committed files - the validation itself works fully
+# offline.
 name: Validate content
 
 on:
@@ -36,6 +37,14 @@ jobs:
         # same file in every repository, so the hub's need is installed
         # everywhere; it is one small package.
         run: pip install "pyyaml>=6,<7" "jsonschema>=4,<5" "pytest>=8,<9" "requests>=2,<3" regex "genanki>=0.13,<0.14"
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "24"
+      - name: Install the pinned engine release
+        # The test suite needs it: generate_exercises.py asks the engine
+        # (scripts/engine_check.mjs) for the semantic rules and the quality
+        # minimums instead of keeping a copy of them.
+        run: npm install --no-save "learn-content-engine@$(cat schema/engine-version.txt)" "yaml@^2.9.0"
       - name: Prose gate self-test
         # Blocking always: a gate that does not fire on known-bad input is
         # broken, whatever the repository's backlog.
