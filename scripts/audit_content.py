@@ -7,17 +7,19 @@ softer quality problems a schema check can miss and prints them as a
 table so they can be fixed:
 
   * duplicate cards within a lesson (same front, or same front/back pair)
-  * exercises whose answer set is malformed for their type
-    (matching pairs, free_text accept/distractors overlap, cloze blanks,
-    word_tiles tiles, picture_choice single correct)
+  * a free_text answer that is also listed as a distractor
   * matching pairs / free_text accepts that don't line up with any
     card the exercise references (possible wrong "correct" answer)
   * empty / whitespace-only fields (card front/back, prompts, theory
-    body, titles)
+    body, titles, matching pair sides): the schema's ``minLength`` lets a
+    string of spaces through
   * lessons missing in their set manifest, or set fields missing
 
-Not here any more, because the engine gate (validate_with_engine.mjs) blocks
-on them: duplicate card, step and exercise ids (learn-content-engine#202), and
+Not here, because the engine gate (validate_with_engine.mjs) blocks on them,
+and one rule lives in one place: malformed answer sets (cloze markers and
+blanks, multiselect accept/distractors, word_tiles with fewer than two tiles,
+picture_choice without exactly one correct image, a repeated matching left
+term), duplicate card, step and exercise ids (learn-content-engine#202), and
 the quality minimums such as matching pairs and free_text accepts (#185, keyed
 to a lesson's ``purpose``). The distractor requirement on free_text and
 picture_choice was dropped by the same decision.
@@ -83,16 +85,9 @@ def audit_lesson(lesson: dict, label: str, findings: list[tuple]):
             add(f"exercise '{eid}' ({etype}) has empty prompt", "add a prompt")
 
         if etype == "matching":
-            pairs = ex.get("pairs") or []
-            seen_left = set()
-            for p in pairs:
-                left = (p.get("left") or "").strip()
-                right = (p.get("right") or "").strip()
+            for p in ex.get("pairs") or []:
                 if is_blank(p.get("left")) or is_blank(p.get("right")):
                     add(f"matching '{eid}' has an empty pair side", "fill left/right")
-                if left.lower() in seen_left:
-                    add(f"matching '{eid}' duplicate left '{left}'", "remove duplicate pair")
-                seen_left.add(left.lower())
                 # NB: we deliberately do NOT cross-check the pair's right side
                 # against the card gloss - matching exercises legitimately pair
                 # a word with its article / gender / category, not its dictionary
@@ -108,40 +103,6 @@ def audit_lesson(lesson: dict, label: str, findings: list[tuple]):
             if overlap:
                 add(f"free_text '{eid}' accept & distractors overlap: {sorted(overlap)}",
                     "remove the overlap")
-        elif etype == "cloze":
-            # cloze has three modes. "multiselect" ("select all that apply")
-            # deliberately carries NO ___ markers and NO blanks: the sentence
-            # is the question stem, and accept/distractors hold the options.
-            # Auditing it against the type/select marker+blanks shape produces
-            # only false positives, so branch on cloze_mode (mirrors the
-            # engine's per-mode semantics; validate_content.py already does).
-            if (ex.get("cloze_mode") or "type") == "multiselect":
-                accept = {a.strip() for a in (ex.get("accept") or []) if not is_blank(a)}
-                distractors = {d.strip() for d in (ex.get("distractors") or []) if not is_blank(d)}
-                if not accept:
-                    add(f"cloze '{eid}' (multiselect) has no accepted options", "add accept options")
-                if not distractors:
-                    add(f"cloze '{eid}' (multiselect) has no distractors", "add distractors")
-                overlap = accept & distractors
-                if overlap:
-                    add(f"cloze '{eid}' (multiselect) accept & distractors overlap: {sorted(overlap)}",
-                        "remove the overlap")
-            else:
-                blanks = ex.get("blanks") or []
-                sentence = ex.get("sentence") or ""
-                if "___" not in sentence:
-                    add(f"cloze '{eid}' sentence has no ___ gap", "add a ___ gap")
-                if not blanks or any(not (b.get("accept") or []) for b in blanks):
-                    add(f"cloze '{eid}' has a blank with no accepted answers", "add accepts")
-        elif etype == "word_tiles":
-            if len(ex.get("tiles") or []) < 2:
-                add(f"word_tiles '{eid}' has < 2 tiles", "add tiles")
-        elif etype == "picture_choice":
-            images = ex.get("images") or []
-            correct = [i for i in images if str(i.get("is_correct")).lower() == "true"]
-            if len(correct) != 1:
-                add(f"picture_choice '{eid}' has {len(correct)} correct images (need 1)",
-                    "mark exactly one is_correct")
 
 
 def main() -> int:
