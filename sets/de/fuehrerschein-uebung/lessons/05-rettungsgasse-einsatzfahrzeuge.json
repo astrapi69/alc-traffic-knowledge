@@ -1,6 +1,7 @@
 {
   "id": "05-rettungsgasse-einsatzfahrzeuge",
   "title": "Rettungsgasse und Einsatzfahrzeuge",
+  "purpose": "quiz",
   "description": "Übungsfragen im Stil einer Führerscheinprüfung (Beispiel Deutschland): Rettungsgasse, Blaulicht mit Einsatzhorn und Busse an Haltestellen. Referenz-Lektion für den nativen multiple_choice-Typ (Schema v1.6): vier Single-Choice-Aufgaben und eine Mehrfachauswahl (multiple: true). Eigene Formulierungen, keine amtlichen Fragen.",
   "target_language": "de",
   "source_language": "de",
