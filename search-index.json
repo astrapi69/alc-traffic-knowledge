@@ -1,12 +1,12 @@
 {
   "repo": "astrapi69/alc-traffic-knowledge",
-  "generated": "2026-10-01T09:20:36Z",
+  "generated": "2026-10-10T07:13:52Z",
   "schema_version": "1.0",
   "sets": [
     {
       "id": "fuehrerschein-uebung-from-de",
       "name": "Führerscheinprüfung (Übungsfragen)",
-      "description": "Fünf Lektionen mit ausschließlich Auswahl-Übungen (multiple_choice, cloze multiselect und Lückentexte mit Auswahl) rund um freie Fakten der deutschen StVO: Vorfahrt und Kreuzungen, Geschwindigkeit und Abstand, Alkohol/Drogen und Fahrtüchtigkeit, Parken/Halten sowie Rettungsgasse und Einsatzfahrzeuge. Eigene Formulierungen, keine amtlichen Prüfungsfragen, keine Bilder, kein Anspruch auf Prüfungsechtheit. Test-Set zum Festnageln der MC-Mechanik.",
+      "description": "Ausschließlich Multiple-Choice: eigene, frei formulierte Übungsfragen im Stil einer Führerscheinprüfung (Beispiel Deutschland) über freie Fakten der deutschen StVO: Vorfahrt, Geschwindigkeit/Abstand, Alkohol/Fahrtüchtigkeit, Parken/Halten sowie Rettungsgasse und Einsatzfahrzeuge. Keine amtlichen Fragen oder Bilder, kein Anspruch auf Prüfungsechtheit. Test-Set zum Festnageln der Auswahl-Mechanik (nativer multiple_choice-Typ, cloze multiselect und Lückentexte mit Auswahl).",
       "source_language": "de",
       "target_language": "de",
       "level": "a2",
@@ -24,7 +24,7 @@
       "ai_validated": false,
       "trust_level": 1,
       "book": null,
-      "updated_at": "2026-10-01T09:19:44Z"
+      "updated_at": "2026-10-10T07:13:41Z"
     }
   ],
   "total_lessons": 5,
